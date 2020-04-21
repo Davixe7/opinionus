@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Survey;
 use Illuminate\Http\Request;
+use App\Http\Resources\Survey as SurveyResource;
 
 class SurveyController extends Controller
 {
@@ -14,7 +15,11 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //
+      $surveys = Survey::all();
+      if( request()->expectsJson() ){
+        return SurveyResource::collection( $surveys );
+      }
+      return view('surveys.index', ['surveys'=>$surveys]);
     }
 
     /**
@@ -24,7 +29,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        //
+      return view('surveys.create');
     }
 
     /**
@@ -35,7 +40,10 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $survey = Survey::create([
+        'name' => $request->name
+      ]);
+      return new SurveyResource( $survey );
     }
 
     /**
@@ -46,7 +54,10 @@ class SurveyController extends Controller
      */
     public function show(Survey $survey)
     {
-        //
+      if( request()->expectsJson() ){
+        return new SurveyResource( $survey );
+      }
+      return view('surveys.create', $survey);
     }
 
     /**
@@ -57,7 +68,7 @@ class SurveyController extends Controller
      */
     public function edit(Survey $survey)
     {
-        //
+      return view('surveys.edit', $survey);
     }
 
     /**
@@ -69,7 +80,10 @@ class SurveyController extends Controller
      */
     public function update(Request $request, Survey $survey)
     {
-        //
+      $survey->update([
+        'name' => $request->name
+      ]);
+      return new SurveyResource( $survey );
     }
 
     /**
@@ -80,6 +94,7 @@ class SurveyController extends Controller
      */
     public function destroy(Survey $survey)
     {
-        //
+      $survey->delete();
+      return response()->json(['data'=>"Survey {$survey->id} deleted successfully"]);
     }
 }
