@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::resource('surveys', 'SurveyController');
 Route::resource('choices', 'ChoiceController');
+Route::resource('banners', 'BannerController');
