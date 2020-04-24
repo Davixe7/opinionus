@@ -1,1 +1,94 @@
 //
+// @import '~bootstrap/scss/bootstrap';
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+@import './material-icons';
+
+#app {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #1e1e1e;
+  background: #fbfbfb;
+  min-height: 100vh;
+}
+h1,h2,h3,h4,h5 {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 2em;
+}
+
+.container, .container-fluid {
+  padding: 0 20px;
+}
+
+.card {
+  border-radius: 3px;
+}
+.z1 {
+  border: none;
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.2);
+}
+.form-section-title {
+  font-size: .9em;
+  color: gray;
+  display: block;
+  margin-bottom: 20px;
+}
+.fab {
+  display: inline-block;
+  line-height: 1.75em;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+  color: #fff;
+  
+  i.material-icons {
+    font-size: 1.25em;
+    vertical-align: middle;
+  }
+  &.small {
+    width: 30px;
+    height: 30px;
+    i.material-icons {
+      font-size: .9em;
+    }
+  }
+}
+
+.survey-content {
+  h4 {
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+  .input-group {
+    border: 1px solid gray;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  .input-group-append, .input-group-append .input-group-text,
+  .input-group .form-control {
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+    background: #efefef;
+    border: none !important;
+  }
+  .actions {
+    text-align: right;
+    margin: -15px;
+    padding: 15px;
+  }
+}
+
+.table .btn-group a i.material-icons,
+.table .btn-group button i.material-icons{
+  cursor: pointer;
+  color: lightgray;
+}
+table.table td {
+  border-top: none;
+}

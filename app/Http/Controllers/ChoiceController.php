@@ -6,6 +6,7 @@ use App\Choice;
 use Illuminate\Http\Request;
 use App\Http\Resources\Choice as ChoiceResource;
 use App\Traits\Uploads;
+use App\Http\Requests\StoreChoices;
 
 class ChoiceController extends Controller
 {
@@ -20,9 +21,10 @@ class ChoiceController extends Controller
     public function index()
     {
       $choices = Choice::all();
-      if( request()->expectsJson() ){
-        return ChoiceResource::collection( $choices );
-      }
+      // return ChoiceResource::collection( $choices );
+      // if( request()->expectsJson() ){
+      //   return ChoiceResource::collection( $choices );
+      // }
       return view('choices.index', ['choices'=>$choices]);
     }
 
@@ -53,6 +55,32 @@ class ChoiceController extends Controller
       ]);
       
       return new ChoiceResource( $choice );
+    }
+    
+    public function storeList(StoreChoices $request)
+    {
+      // return response()->json(['data'=>$request->all()]);
+      
+      $count = 0;
+      foreach( $request->choices as $choice ){
+        $choice = json_decode($choice);
+        $data = [
+          'name'      => $choice->name,
+          'link_text' => $choice->link_text,
+          'link_url'  => $choice->link_url,
+          'survey_id' => $request->survey_id
+        ];
+        $choice_id = isset( $choice->id ) ? $choice->id : null;
+      
+        if( $updated_file = $this->upload( $request, "images_$count") ){
+          $data['image'] = $updated_file;
+        }
+      
+        $choices[] = Choice::updateOrCreate(['id'=>$choice_id], $data);
+        $count++;
+      }
+      
+      return ChoiceResource::collection($choices);
     }
 
     /**
@@ -110,5 +138,10 @@ class ChoiceController extends Controller
     {
       $choice->delete();
       return response()->json(['data'=>"Choice {$choice->id} deleted successfully"]);
+    }
+    
+    public function deleteAll(Request $request){
+      Choice::all()->each(function($c){ $c->delete(); });
+      return response()->json(['data'=>'Choices deleted succesfully']);
     }
 }

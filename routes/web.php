@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+  return view('welcome');
 });
+
+Route::post('choices/storeList', 'ChoiceController@storeList');
+Route::get('choices/deleteAll', 'ChoiceController@deleteAll')->name('choices.deleteAll');
+Route::get('surveys/deleteAll', 'SurveyController@deleteAll')->name('surveys.deleteAll');
+
+Route::get('/surveys/{survey}/results', 'SurveyController@results')->name('surveys.results');
+Route::get('/surveys/{survey}/vote', 'SurveyController@vote')->name('surveys.vote');
 
 Route::resource('surveys', 'SurveyController');
 Route::resource('choices', 'ChoiceController');

@@ -33,7 +33,8 @@ class BannerController extends Controller
      */
     public function create()
     {
-      return view('banners.create');
+      $banners = Banner::all();
+      return view('banners.create', ['banners'=>$banners]);
     }
 
     /**
@@ -51,7 +52,12 @@ class BannerController extends Controller
         'iframe'    => $request->iframe,
       ]);
       
-      return new BannerResource( $banner );
+      if( $request->expectsJson() ){
+        return new BannerResource( $banner );
+      }
+      
+      $request->session()->flash('message', 'Banner Ad Created Successfully!');
+      return redirect()->route('banners.index');
     }
 
     /**
@@ -76,7 +82,8 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-      return view('banners.edit', $banner);
+      $banners = Banner::all();
+      return view('banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
     }
 
     /**
@@ -96,7 +103,9 @@ class BannerController extends Controller
         'url'       => $request->url    ?: $banner->url,
         'iframe'    => $request->iframe ?: $banner->iframe
       ]);
-      return new BannerResource( $banner );
+      
+      $request->session()->flash('message', 'Banner Ad Updated Successfully!');
+      return redirect()->route('banners.index');
     }
 
     /**
@@ -105,9 +114,14 @@ class BannerController extends Controller
      * @param  \App\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Banner $banner)
+    public function destroy(Request $request, Banner $banner)
     {
       $banner->delete();
-      return response()->json(['data'=>"Banner {$banner->id} deleted successfully"]);
+      if( $request->expectsJson() ){
+        return response()->json(['data'=>"Banner {$banner->id} deleted successfully"]);
+      }
+      $banners = Banner::all();
+      $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
+      return redirect()->route('banners.index');
     }
 }
