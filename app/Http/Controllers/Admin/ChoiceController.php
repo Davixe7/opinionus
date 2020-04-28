@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Choice;
 use Illuminate\Http\Request;
 use App\Http\Resources\Choice as ChoiceResource;
 use App\Traits\Uploads;
 use App\Http\Requests\StoreChoices;
+use App\Http\Controllers\Controller;
 
 class ChoiceController extends Controller
 {
@@ -25,7 +26,7 @@ class ChoiceController extends Controller
       // if( request()->expectsJson() ){
       //   return ChoiceResource::collection( $choices );
       // }
-      return view('choices.index', ['choices'=>$choices]);
+      return view('admin.choices.index', ['choices'=>$choices]);
     }
 
     /**
@@ -35,7 +36,7 @@ class ChoiceController extends Controller
      */
     public function create()
     {
-      return view('choices.create');
+      return view('admin.choices.create');
     }
 
     /**
@@ -94,7 +95,7 @@ class ChoiceController extends Controller
       if( request()->expectsJson() ){
         return new ChoiceResource( $choice );
       }
-      return view('choices.create', $choice);
+      return view('admin.choices.create', $choice);
     }
 
     /**
@@ -105,7 +106,7 @@ class ChoiceController extends Controller
      */
     public function edit(Choice $choice)
     {
-      return view('choices.edit', $choice);
+      return view('admin.choices.edit', $choice);
     }
 
     /**

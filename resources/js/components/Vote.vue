@@ -1,11 +1,12 @@
 <template>
   <div id="vote">
+    <confirm-modal :choice="selection" :survey="survey" :staging="staging" @undoSelection="staging=false"/>
     <div class="row choices-wrapper">
       
-        <div v-for="choice in choices" :key="choice.id" class="col-md-3 choice-content">
+        <div v-for="choice in choices" :key="choice.id" class="col-sm-6 col-md-4 col-lg-4 choice-content">
           <div class="card mb-3">
             <div class="card-body">
-              <img :src="choice.image.replace('public', '/storage')" alt="">
+              <img :src="imageUrl(choice.image)" alt="">
               <div class="row footer">
                 <div class="col-7">
                   <div class="name">{{ choice.name }}</div>
@@ -31,7 +32,7 @@
         <div class="form-section-title mb-0">Your Selection</div>
         <span>{{ selection.name || "No candidate selected"  }}</span>
       </div>
-      <button class="ml-auto btn btn-primary btn-submit" :class="{disabled: !(selection && selection.id)}">Submit</button>
+      <button @click="(selection.id) ? staging=true : null" class="ml-auto btn btn-primary btn-submit" :class="{disabled: !(selection && selection.id)}">Confirm</button>
     </div>
     
   </div>
@@ -39,11 +40,22 @@
 
 <script>
 export default {
-  props: [ 'choices' ],
+  props: ['survey'],
   name: 'Vote',
   data(){return{
-    selection: {}
-  }}
+    selection: {},
+    staging: false
+  }},
+  computed:{
+    choices(){
+      return this.survey.choices
+    }
+  },
+  methods:{
+    imageUrl(image){
+      return image ? image.replace('public/images', '/storage/thumbnails/500') : '';
+    }
+  }
 }
 </script>
 

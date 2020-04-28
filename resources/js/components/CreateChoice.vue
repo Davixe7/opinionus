@@ -1,6 +1,6 @@
 <template>
   <div class="choice-form">
-    <img v-if="choice.image" :src="choice.image.replace('public', '/storage')" alt="">
+    <img v-if="choice.image" :src="thumbUrl" alt="">
     <form v-show="!saving" ref="choiceForm">
       <div class="form-group">
         <label for="name">Name</label>
@@ -8,7 +8,7 @@
       </div>
       <div class="form-group">
         <label for="image">Image</label>
-        <input type="file" @change="onFileInput" ref="fileInput">
+        <input type="file" @change="onFileInput" ref="fileInput" accept="image/*">
       </div>
       <div class="form-group">
         <label for="url">Link URL</label>
@@ -22,7 +22,7 @@
       <div class="actions">
         <slot></slot>
         <a v-if="choice.id"  @click="deleteChoice" class="btn btn-link btn-link-danger">delete</a>
-        <a v-if="choice.id"  @click="updateChoice" class="btn btn-link btn-link-danger">udpate</a>
+        <a v-if="choice.id"  @click="updateChoice" class="btn btn-link btn-link-danger">update</a>
         <a v-if="!choice.id" @click="storeChoice"  class="btn btn-link btn-link-danger">save</a>
       </div>
     </form>
@@ -42,6 +42,11 @@ export default {
       saving: false
     }
   },
+  computed:{
+    thumbUrl(){
+      return this.choice.image ? this.choice.image.replace('public/images', '/storage/thumbnails/300') : '';
+    }
+  },
   methods:{
     onFileInput(){
       this.choice.newImage = this.$refs.fileInput.files[0]
@@ -49,7 +54,7 @@ export default {
     storeChoice(){
       if( !this.$refs.choiceForm.reportValidity() ) return
       this.saving = true
-      axios.post('/choices', this.loadData()).then(response=>{
+      axios.post('/admin/choices', this.loadData()).then(response=>{
         this.$emit('choiceStored', response.data.data)
         this.$refs.fileInput.value = ''
         this.saving = false
@@ -61,16 +66,20 @@ export default {
       let data = this.loadData()
       data.append('_method', 'PUT')
       
-      axios.post(`/choices/${this.choice.id}`, data).then(response=>{
-        this.$emit('choiceUpdated', response.data.data)
+      axios.post(`/admin/choices/${this.choice.id}`, data).then(response=>{
+        let newChoice = response.data.data
         this.$refs.fileInput.value = ''
+        this.choice.image = newChoice.image ? newChoice.image : this.choice.image
         this.saving = false
+        this.$toasted.show('Choice updated succesfully')
+        this.$emit('choiceUpdated', response.data.data)
       })
     },
     deleteChoice(){
       if( confirm('Are you sure you want to deleted the choice?') ){
-        axios.delete(`/choices/${this.choice.id}`).then(response=>{
+        axios.delete(`/admin/choices/${this.choice.id}`).then(response=>{
           this.$emit('choiceDeleted', this.choice.id)
+          this.$toasted.show('Choice deleted succesfully')
         })
       }
     },
@@ -90,6 +99,7 @@ export default {
 <style lang="scss">
   .choice-form {
     overflow: hidden;
+    margin-bottom: 20px;
   }
   .choice-form img {
     width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="results">
+  <div id="results">
     <div class="row">
       
       <div class="col-md-6">
@@ -45,6 +45,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  #results {
+    padding-bottom: 40px;
+  }
   table.table-results td {
     border-bottom: 1px solid #efefef;
   }

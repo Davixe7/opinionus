@@ -1,60 +1,49 @@
 @extends('layouts.app')
 @section('content')
-  <h1>Surveys</h1>
   <div class="row">
-    @if( session()->has('message') )
-      <div class="col-md-12">
-        <div class="alert alert-success">
-          {{ session('message') }}
+    <div class="col-md-9">
+      
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Select a survey</h1>
+          <span class="subheading">Showing results: 37</span>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <input type="search" class="form-control" style="border-radius: 30px;">
         </div>
       </div>
-    @endif
-    @foreach($surveys as $survey)
-      <div class="col-md-4 mb-3 survey-content">
-        <div class="card">
-          <div class="card-body">
-            <h5>{{ $survey->name }}</h5>
-            <div class="input-group mb-2">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <i class="material-icons">language</i>
-                </div>
+      
+      <div class="row">
+        @foreach( $surveys as $survey )
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body pb-0">
+                <survey-content :survey="{{ json_encode($survey) }}"></survey-content>
               </div>
-              <input type="text" class="form-control form-control-disabled" value="{{ route('surveys.results', ['survey'=>$survey->id]) }}" disabled>
-            </div>
-            
-            <div class="input-group mb-2">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <i class="material-icons">language</i>
-                </div>
-              </div>
-              <input type="text" class="form-control form-control-disabled" value="{{ route('surveys.vote', ['survey'=>$survey->id]) }}" disabled>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <a href="/surveys/{{ $survey->id }}/vote"><i class="material-icons">open_in_new</i></a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="actions">
-              <form id="form-{{$survey->id}}" action="{{route('surveys.destroy', ['survey'=>$survey->id])}}" method="POST">
-                @csrf
-                @method('DELETE')
-              </form>
-              <button 
-                  onclick="document.querySelector('#form-{{$survey->id}}').submit()" 
-                  class="btn btn-link">Delete</button>
-              <a href="/surveys/{{ $survey->id }}/edit" class="btn btn-link">Edit</a>
             </div>
           </div>
+        @endforeach
+      </div>
+    </div>
+    <div class="col-md-3 ads-column">
+      <div class="card ad-banner">
+        <div class="card-body">
+          <h4>Best choices</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus sunt, animi asperiores, error obcaecati perferendis quisquam </p>
         </div>
       </div>
-    @endforeach
+      <div class="card ad-banner">
+        <div class="card-body">
+          <h4>Best choices</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus sunt, animi asperiores, error obcaecati perferendis quisquam </p>
+        </div>
+      </div>
+      <div class="card ad-banner">
+        <div class="card-body">
+          <h4>Cool ad here</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus sunt, animi asperiores, error obcaecati perferendis quisquam </p>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  
-  <a href="{{ route('choices.deleteAll') }}" class="btn btn-danger">Delete Choices</a>
-  <a href="{{ route('surveys.deleteAll') }}" class="btn btn-danger">Delete Surveys</a>
-  <a href="{{ route('surveys.create') }}" class="btn btn-danger">Create Survey</a>
 @endsection

@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
   <h1>Update Banner Ad</h1>
+  
+  @if( session()->has('message') )
+    <div class="alert alert-success align-items-center d-sm-none d-flex">
+      {{ session('message') }}
+      <i class="ml-auto material-icons">check</i>
+    </div>
+  @endif
+  
   <div class="row">
     <div class="col-md-4">
       <div class="card mb-3">
@@ -38,8 +46,9 @@
     <div class="col-md-7 offset-md-1">
       
       @if( session()->has('message') )
-        <div class="alert alert-success">
+        <div class="alert alert-success align-items-center d-none d-sm-flex">
           {{ session('message') }}
+          <i class="ml-auto material-icons">check</i>
         </div>
       @endif
       

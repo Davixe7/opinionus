@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Banner;
 use Illuminate\Http\Request;
 use App\Http\Resources\Banner as BannerResource;
 use App\Traits\Uploads;
+use App\Http\Controllers\Controller;
 
 class BannerController extends Controller
 {
@@ -23,7 +24,7 @@ class BannerController extends Controller
       if( request()->expectsJson() ){
         return BannerResource::collection( $banners );
       }
-      return view('banners.index', ['banners'=>$banners]);
+      return view('admin.banners.index', ['banners'=>$banners]);
     }
 
     /**
@@ -34,7 +35,7 @@ class BannerController extends Controller
     public function create()
     {
       $banners = Banner::all();
-      return view('banners.create', ['banners'=>$banners]);
+      return view('admin.banners.create', ['banners'=>$banners]);
     }
 
     /**
@@ -71,7 +72,7 @@ class BannerController extends Controller
       if( request()->expectsJson() ){
         return new BannerResource( $banner );
       }
-      return view('banners.create', $banner);
+      return view('admin.banners.create', $banner);
     }
 
     /**
@@ -83,7 +84,7 @@ class BannerController extends Controller
     public function edit(Banner $banner)
     {
       $banners = Banner::all();
-      return view('banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
+      return view('admin.banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
     }
 
     /**

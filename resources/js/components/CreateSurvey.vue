@@ -1,61 +1,72 @@
 <template>
   <div id="surveys-form">
-    <div class="col-md-4 p-0">
-      <form>
-        <div class="form-group">
-          <label for="name">Survey name</label>
-          <div class="input-group">
-            <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" required minlength="3">
-            <span class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</span>
-            <div class="input-group-append">
-              <button v-if="surveyId" type="button" class="btn btn-primary">Update Survey</button>
-              <button @click="storeSurvey"v-if="!(surveyId)" type="button" class="btn btn-primary">Save Survey</button>
+    <div class="row">
+      <div class="col-md-5">
+        <form>
+          <div class="form-group">
+            <label for="name">Survey name</label>
+            <div class="input-group">
+              <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" required minlength="3" :disabled="updating">
+              <span class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</span>
+              <div class="input-group-append">
+                <button @click="updateSurvey" v-if="surveyId" type="button" class="btn btn-danger" :disabled="updating">Update</button>
+                <button @click="storeSurvey"  v-if="!(surveyId)" type="button" class="btn btn-danger">Save</button>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
+      <div class="col-md-7 right-survey-menu">
+        <transition enter-active-class="animated slideInRight">
+          <div v-if="surveyId" class="card d-inline-block">
+            <div class="card-body">
+              <div class="btn-group">
+                <a :href="`/admin/surveys/${surveyId}/vote`" class="btn btn-link">Go to voting page</a>
+                <a :href="`/admin/surveys/${surveyId}/results`" class="btn btn-link">Go to results page</a>
+                <a href="#" @click="deleteSurvey()" class="btn btn-link">Delete this survey</a>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
     </div>
     
-    <div class="row">
-      <transition enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
-        <div class="col-md-3" v-show="creatingChoice">
-          <span class="form-section-title">Add a new choice</span>
-          <CreateChoice :choice="{}" :surveyId="surveyId" @choiceStored="addChoice">
-            <a class="btn btn-link-danger" @click="creatingChoice=false">Close</a>
-          </CreateChoice>
+    <div class="row py-3" style="overflow: hidden;">
+      <!-- Create Choice Form -->
+      <div class="col-md-3 create-choice-form" :class="{'slideout-enter-active':!creatingChoice}">
+        <div class="card">
+          <div class="card-body">
+            <span class="form-section-title">Add a new choice</span>
+            <CreateChoice :choice="{}" :surveyId="surveyId" @choiceStored="addChoice">
+              <a class="btn btn-link-danger" @click="creatingChoice=false">Close</a>
+            </CreateChoice>
+          </div>
         </div>
-      </transition>
+      </div>
       
       <div class="col col-choices-container">
         <span class="form-section-title">Choices</span>
-        <div v-show="loading" class="text-center py-4">
-          loading...
-        </div>
         
-        <div v-if="choices && choices.length" v-show="!loading">
-          <div class="choices-container-wrap">
-            <transition-group enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
-            <div v-for="(choice,i) in choices" :key="choice.id" class="col-12 col-sm-4 col-lg-4 col-xl-3 mb-2">
-              <div class="card">
-                <div class="card-body">
-                  <span class="number">{{ i+1 }}</span>
-                  <CreateChoice :choice="choice" @choiceDeleted="removeChoice"/>
-                </div>
+        <div class="choices-container-wrap" :class="{'choices-empty-state': !choices.length}">
+          <span v-show="!choices.length" class="message">{{ surveyId ? 'No choices added yet' : 'Create a new survey to start adding choices' }}</span>
+          <transition-group enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+          <div v-for="(choice,i) in choices" :key="choice.id" class="col-12 col-sm-4 col-lg-4 col-xl-3 mb-2">
+            <div class="card">
+              <div class="card-body">
+                <span class="number">{{ i+1 }}</span>
+                <CreateChoice :choice="choice" @choiceDeleted="removeChoice"/>
               </div>
             </div>
-            </transition-group>
           </div>
-          
-          <button @click="creatingChoice=!creatingChoice" class="btn btn-primary fab">
+          </transition-group>
+        </div>
+        
+        <transition enter-active-class="animated zoomIn">
+          <button v-if="surveyId" @click="creatingChoice=!creatingChoice" class="btn btn-danger fab fab-fixed">
             <i class="material-icons">add</i>
           </button>
-        </div>
-        <div v-else-if="surveyId" class="col-md-4 p-0">
-          <div class="alert alert-info d-flex align-items-center">
-            <i class="material-icons mr-3">info</i> No choices added yet
-            <button @click="creatingChoice=true" class="ml-auto btn btn-primary btn-sm">start now</button>
-          </div>
-        </div>
+        </transition>
+        
       </div>
     </div>
     
@@ -73,7 +84,7 @@ export default {
   },
   watch:{
     surveyId(newVal){
-      document.querySelector('h1').innerText = 'Update Survey #' + newVal
+      document.querySelector('h1').innerText = newVal ? 'Update Survey #' + newVal : 'Create a new survey'
     }
   },
   computed:{
@@ -86,7 +97,7 @@ export default {
     choices: [],
     
     errors: {},
-    loading: false,
+    updating: false,
     creatingChoice: false,
   }},
   methods:{
@@ -99,20 +110,31 @@ export default {
     },
     storeSurvey(){
       let data = {name: this.name}
-      axios.post('/surveys', data).then(response => {
+      axios.post('/admin/surveys', data).then(response => {
         this.surveyId = response.data.data.id
         this.name    = response.data.data.name
+        this.$toasted.show('Survey created successfully')
       })
     },
     updateSurvey(){
-      this.loading = true
+      this.updating = true
       let data = {name: this.name, '_method':'PUT'}
-      axios.post(`/surveys/${this.surveyId}`, data).then(response => {
+      axios.post(`/admin/surveys/${this.surveyId}`, data).then(response => {
         this.name  = response.data.data.name
+        this.updating = false
+        this.$toasted.show('Survey updated successfully')
       })
     },
+    deleteSurvey(){
+      if( confirm('Are you sure you want to delete the survey?') ){
+        axios.post(`/admin/surveys/${this.surveyId}`, {_method:'DELETE'}).then(response=>{
+          this.surveyId = null
+          this.$toasted.show('Survey deleted successfully')
+        })
+      }
+    },
     storeChoicesList(survey){
-      this.loading = true
+      this.updating = true
       let data = new FormData()
       let toStore = []
       data.append('surveyId', survey)
@@ -125,7 +147,7 @@ export default {
       this.choices = this.choices.filter(c=>{ toStore.indexOf( c.id ) == -1 })
       
       axios.post('/choices/storeList', data).then(response=>{
-        this.loading = false
+        this.updating = false
         this.choices = response.data.data
       })
     }
@@ -141,9 +163,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .create-choice-form {
+    margin-bottom: 20px;
+    transition: all .5s;
+    will-change: margin-left;
+  }
+  .create-choice-form .card {
+    background: linear-gradient(45deg, #efefef, #fff) !important;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 1px 12px 1px rgba(0,0,0,.1);
+  }
+  .slideout-enter-active {
+    margin-left: calc(-100vw + 30px);
+  }
+  @media(min-width: 991px){
+    .slideout-enter-active {
+      margin-left: calc(-25vw + 10px);
+    }
+  }
+  .choices-container-wrap {
+    transition: all .5s;
+    background: transparent;
+    min-height: 300px;
+    margin: 0 -15px;
+  }
   .choices-container-wrap > span {
     display: flex;
-    margin: 0 -15px;
     position: relative;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -151,45 +197,29 @@ export default {
     max-width: 100%;
     border-bottom: 1px solid #efefef;
   }
-  .form-section-title {
-    font-size: .9em;
-    color: gray;
-    display: block;
-    margin-bottom: 10px;
-  }
   .col-choices-container {
     overflow: hidden;
   }
-  .number {
-    display: block;
-    text-align: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    color: #fff;
-    background: #f2467f;
-    font-size: 1em;
-    line-height: 1.5em;
-    vertical-align: middle;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    z-index: 30;
+  .choices-empty-state {
+    justify-content: center;
+    align-items: center;
+    background: lightgray;
+    border-radius: 5px;
+    flex-flow: column nowrap;
+    max-height: 300px;
+    overflow: hidden;
+    .message {
+      display: block;
+      line-height: 300px;
+      flex: 0 0 100%;
+      font-size: 1.25em;
+      font-weight: 500;
+      color: rgba(0,0,0,.5);
+      text-align: center;
+    }
   }
-  .fab {
-    position: absolute;
-    bottom: 20px;
-    right: 10px;
-    z-index: 100;
-  }
-  .bottom-app-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    border-top: 1px solid #efefef;
-    background: #fff;
-    display: none;
+  .right-survey-menu {
+    overflow: hidden;
+    text-align: right;
   }
 </style>
