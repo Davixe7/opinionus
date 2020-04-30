@@ -58,7 +58,7 @@ class BannerController extends Controller
       }
       
       $request->session()->flash('message', 'Banner Ad Created Successfully!');
-      return redirect()->route('banners.index');
+      return redirect()->route('admin.banners.index');
     }
 
     /**
@@ -106,7 +106,7 @@ class BannerController extends Controller
       ]);
       
       $request->session()->flash('message', 'Banner Ad Updated Successfully!');
-      return redirect()->route('banners.index');
+      return redirect()->route('admin.banners.index');
     }
 
     /**
@@ -123,6 +123,6 @@ class BannerController extends Controller
       }
       $banners = Banner::all();
       $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
-      return redirect()->route('banners.index');
+      return redirect()->route('admin.banners.index');
     }
 }

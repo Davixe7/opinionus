@@ -13,7 +13,7 @@
     <div class="col-md-5 mx-auto">
       <div class="card mb-3">
         <div class="card-body">
-          <form action="{{ route('banners.store') }}" method="POST">
+          <form action="{{ route('admin.banners.store') }}" method="POST">
             @csrf
             <div class="form-group">
               <label for="image">Image</label>
@@ -40,7 +40,7 @@
           </div>
         @endif
         
-        @include('banners.table')
+        @include('admin.banners.table')
       </div>
     </div>
   </div>

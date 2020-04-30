@@ -32,3 +32,5 @@ Route::get('/surveys/{survey}/vote', 'SurveyController@vote')->name('surveys.vot
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/votes', 'VoteController@store')->name('votes.store');

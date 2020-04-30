@@ -8,7 +8,7 @@
     <div class="poll-footer">
       <div>
         <div class="label-small">votes</div>
-        <div class="poll-content-number">420</div>
+        <div class="poll-content-number">{{ survey.votes_count }}</div>
       </div>
       <a :href="`/surveys/${survey.id}/vote`" class="ml-auto btn btn-primary btn-sm">
         Take Survey
@@ -61,6 +61,7 @@ export default {
   }
   .label-small {
     font-size: .70em;
+    font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 0;
   }

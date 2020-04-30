@@ -58,7 +58,7 @@
   
   <a href="{{ route('admin.choices.deleteAll') }}" class="btn btn-danger">Delete Choices</a>
   <a href="{{ route('admin.surveys.deleteAll') }}" class="btn btn-danger">Delete Surveys</a>
-  <a href="{{ route('admin.surveys.create') }}" class="btn btn-danger fab" style="position: fixed; right: 20px; bottom: 20px; z-index: 300;">
+  <a href="{{ route('admin.surveys.create') }}" class="btn btn-danger fab-fixed fab">
     <i class="material-icons">add</i>
   </a>
 @endsection

@@ -6,11 +6,17 @@
           <div class="form-group">
             <label for="name">Survey name</label>
             <div class="input-group">
-              <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" required minlength="3" :disabled="updating">
+              <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" required minlength="3" :disabled="saving">
               <span class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</span>
               <div class="input-group-append">
-                <button @click="updateSurvey" v-if="surveyId" type="button" class="btn btn-danger" :disabled="updating">Update</button>
-                <button @click="storeSurvey"  v-if="!(surveyId)" type="button" class="btn btn-danger">Save</button>
+                <button @click="updateSurvey" v-if="surveyId" type="button" class="btn btn-danger btn-sender" :disabled="saving">
+                  <i v-show="saving" class="material-icons small preloader">sync</i>
+                  <span>Update</span>
+                </button>
+                <button @click="storeSurvey"  v-if="!(surveyId)" type="button" class="btn btn-danger btn-sender">
+                  <i v-show="saving" class="material-icons preloader">sync</i>
+                  <span>Save</span>
+                </button>
               </div>
             </div>
           </div>
@@ -18,11 +24,11 @@
       </div>
       <div class="col-md-7 right-survey-menu">
         <transition enter-active-class="animated slideInRight">
-          <div v-if="surveyId" class="card d-inline-block">
+          <div v-if="surveyId" class="card d-sm-inline-block">
             <div class="card-body">
               <div class="btn-group">
-                <a :href="`/admin/surveys/${surveyId}/vote`" class="btn btn-link">Go to voting page</a>
-                <a :href="`/admin/surveys/${surveyId}/results`" class="btn btn-link">Go to results page</a>
+                <a v-if="choices.length >= 2" :href="`/surveys/${surveyId}/vote`" class="btn btn-link">Go to voting page</a>
+                <a v-if="choices.length >= 2" :href="`/surveys/${surveyId}/results`" class="btn btn-link">Go to results page</a>
                 <a href="#" @click="deleteSurvey()" class="btn btn-link">Delete this survey</a>
               </div>
             </div>
@@ -97,7 +103,7 @@ export default {
     choices: [],
     
     errors: {},
-    updating: false,
+    saving: false,
     creatingChoice: false,
   }},
   methods:{
@@ -109,19 +115,21 @@ export default {
       this.newChoice = {name:'', link_text: '', link_url: ''}
     },
     storeSurvey(){
+      this.saving = true
       let data = {name: this.name}
       axios.post('/admin/surveys', data).then(response => {
         this.surveyId = response.data.data.id
         this.name    = response.data.data.name
         this.$toasted.show('Survey created successfully')
+        this.saving = false
       })
     },
     updateSurvey(){
-      this.updating = true
+      this.saving = true
       let data = {name: this.name, '_method':'PUT'}
       axios.post(`/admin/surveys/${this.surveyId}`, data).then(response => {
         this.name  = response.data.data.name
-        this.updating = false
+        this.saving = false
         this.$toasted.show('Survey updated successfully')
       })
     },
@@ -134,7 +142,7 @@ export default {
       }
     },
     storeChoicesList(survey){
-      this.updating = true
+      this.saving = true
       let data = new FormData()
       let toStore = []
       data.append('surveyId', survey)
@@ -147,7 +155,7 @@ export default {
       this.choices = this.choices.filter(c=>{ toStore.indexOf( c.id ) == -1 })
       
       axios.post('/choices/storeList', data).then(response=>{
-        this.updating = false
+        this.saving = false
         this.choices = response.data.data
       })
     }
@@ -163,6 +171,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .btn.btn-sender {
+    display: inline-flex;
+    align-items: center;
+    i.material-icons {
+      font-size: 1.25em;
+      margin-right: 10px;
+    }
+  }
   .create-choice-form {
     margin-bottom: 20px;
     transition: all .5s;
@@ -219,7 +235,9 @@ export default {
     }
   }
   .right-survey-menu {
-    overflow: hidden;
     text-align: right;
+    .card-body {
+      padding: 10px;
+    }
   }
 </style>

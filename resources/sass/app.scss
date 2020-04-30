@@ -1,8 +1,16 @@
 // Variables
 @import 'variables';
-
+@import 'material-icons';
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
+
+.preloader {
+  animation: rotate .7s infinite linear;
+}
+@keyframes rotate {
+  from {transform: rotateZ(0deg)}
+  to {transform: rotateZ(360deg)}
+}
 
 .ad-banner {
   margin-bottom: 20px;
@@ -61,15 +69,51 @@ h1 {
 }
 
 .fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  line-height: 40px;
   padding: 0;
   border-radius: 50%;
+  line-height: 0;
+  text-transform: none;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  box-sizing: border-box;
 }
 .fab-fixed {
   position: fixed;
   z-index: 1000;
   right: 40px;
   bottom: 40px;
+}
+
+.bg-pink {
+  background: #ed145b !important;
+}
+
+.number {
+  width: 30px;
+  height: 30px;
+  background: red;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px 1px rgba(0,0,0,.25);
+  color: #fff;
+  position: absolute;
+  z-index: 200;
+  top: 5px;
+  right: 5px;
+}
+
+.toasted-container.top-right {
+  right: 20px !important;
+  top: 15% !important;
+}
+.toasted-primary {
+  font-family: "Roboto" !important;
 }

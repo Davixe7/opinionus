@@ -15,9 +15,9 @@
               <a onclick=" confirm('Are you sure you want to delete the banner?') ? document.querySelector('#form-{{$banner->id}}').submit() : ''">
                 <i class="material-icons">delete</i>
               </a>
-              <a href="{{ route('banners.edit', ['banner'=>$banner->id]) }}"><i class="material-icons">edit</i></a>
+              <a href="{{ route('admin.banners.edit', ['banner'=>$banner->id]) }}"><i class="material-icons">edit</i></a>
             </div>
-            <form id="form-{{$banner->id}}" action="{{ route('banners.destroy', ['banner'=>$banner->id]) }}" method="POST">
+            <form id="form-{{$banner->id}}" action="{{ route('admin.banners.destroy', ['banner'=>$banner->id]) }}" method="POST">
               @csrf
               @method('DELETE')
             </form>

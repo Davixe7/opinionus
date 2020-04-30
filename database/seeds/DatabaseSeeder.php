@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Banner::class, 30)->create();
+      // factory(App\Banner::class, 30)->create();
       
       App\User::create([
         'name'     => 'Admin',

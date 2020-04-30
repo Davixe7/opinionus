@@ -9,14 +9,14 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,600,700&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
   <div id="app">
     <div class="circle-bg" style="background: lightblue; width: 25vw; height: 25vw; border-radius: 50%;position: absolute; bottom: 10px; right: 200px; z-index: 100;"></div>
     <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div>
-    <nav class="navbar navbar-expand-md navbar-light mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light mb-4">
       <a class="navbar-brand" href="{{ url('/') }}">
         PollyPolls
       </a>
@@ -24,8 +24,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       
-      <div class="collapse navbar-collapse">
-        <div class="navbar-nav ml-auto">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
           </li>
@@ -38,8 +38,7 @@
             <a href="{{ route('admin.banners.index') }}" class="nav-link">Manage Banners</a>
           </li>
           <li class="nav-item dropdown">
-            <a onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" v-pre>
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" v-pre>
               Welcome, Admin <span class="caret"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -51,7 +50,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
           </li>
           @endif
-        </div>
+        </ul>
       </div>
     </nav>
     <main style="position: relative; z-index: 200;">
@@ -63,5 +62,7 @@
   <footer>
     @yield('footer')
   </footer>
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

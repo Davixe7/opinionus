@@ -58,29 +58,36 @@
 <script>
 export default {
   props: ['surveys'],
-  mounted(){
-    jQuery('.polls-container').slick({
-      autoplay: true,
-      autoplaySpeed: 2000,
-      infinite: true,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      arrows: false,
-      responsive:[{
-        breakpoint: 867,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }]
-    });
+  created(){
+    // const script = document.createElement('script');
+    // script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js')
+    // document.querySelector('body').append( script )
+    
+    setTimeout(function(){
+      $('.polls-container').slick({
+        autoplay: true,
+        autoplaySpeed: 2000,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: false,
+        responsive:[{
+          breakpoint: 867,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        }]
+      });
+    },1000);
+    
   }
 }
 </script>
@@ -108,9 +115,6 @@ export default {
     p {
       font-weight: 400;
     }
-    .header {
-      height: 25vh;
-    }
     .footer {
       padding: 50px 0;
       height: 25vh;
@@ -127,6 +131,11 @@ export default {
     }
   }
   
+  @media(min-width: 991px){
+    .header {
+      height: 25vh;
+    }
+  }
   .content {
     padding: 50px 0;
   }
@@ -148,6 +157,7 @@ export default {
   }
   
   .copyright {
+    font-weight: 400;
     margin-bottom: 20px;
     h4 {
       margin-bottom: 10px;

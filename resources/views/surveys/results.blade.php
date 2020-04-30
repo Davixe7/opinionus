@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
   <h1>Survey Results</h1>
-  <results :choices="{{ json_encode( $survey->choices ) }}"/>
+  <results :choices="{{ json_encode( $survey->choices ) }}" :survey="{{ json_encode( $survey ) }}"/>
 @endsection
 @section('footer')
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ea225ac6489781d"></script>

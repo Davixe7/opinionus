@@ -1,3 +1,60 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/MaterialIcons-Regular.eot?e79bfd88537def476913f3ed52f4f4b3);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(/fonts/MaterialIcons-Regular.woff2?570eb83859dc23dd0eec423a49e147fe) format("woff2"), url(/fonts/MaterialIcons-Regular.woff?012cf6a10129e2275d79d6adac7f3b02) format("woff"), url(/fonts/MaterialIcons-Regular.ttf?a37b0c01c0baf1888ca812cc0508f6e2) format("truetype");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.preloader {
+  -webkit-animation: rotate 0.7s infinite linear;
+          animation: rotate 0.7s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
 .ad-banner {
   margin-bottom: 20px;
   box-shadow: 0 3px 12px 2px rgba(0, 0, 0, 0.24);
@@ -66,11 +123,22 @@ h1 {
 }
 
 .fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  line-height: 40px;
   padding: 0;
   border-radius: 50%;
+  line-height: 0;
+  text-transform: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .fab-fixed {
@@ -78,5 +146,34 @@ h1 {
   z-index: 1000;
   right: 40px;
   bottom: 40px;
+}
+
+.bg-pink {
+  background: #ed145b !important;
+}
+
+.number {
+  width: 30px;
+  height: 30px;
+  background: red;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  position: absolute;
+  z-index: 200;
+  top: 5px;
+  right: 5px;
+}
+
+.toasted-container.top-right {
+  right: 20px !important;
+  top: 15% !important;
+}
+
+.toasted-primary {
+  font-family: "Roboto" !important;
 }
 

@@ -16,7 +16,7 @@ class SurveyController extends Controller
      */
     public function index()
     {
-      $surveys = Survey::with('choices')->get();
+      $surveys = Survey::has('choices', '>=', 2)->with('choices')->get();
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }

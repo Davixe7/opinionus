@@ -12,14 +12,21 @@
             </td>
             <td>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+                <div class="progress-bar" :style="{width: globalPercent(choice.votes_count) + '%'}" aria-valuemin="0" aria-valuemax="100">
+                  {{ globalPercent(choice.votes_count) + '%' }}
+                </div>
               </div>
             </td>
           </tr>
         </table>
         
         <div class="card mb-3">
-          <div class="card-body">Lorem ipsum dolor sit amet</div>
+          <div class="card-body">
+            <div class="metter">
+              <div class="supheading">votes</div>
+              <div class="amount">{{ survey.votes_count }}</div>
+            </div>
+          </div>
         </div>
         
         <div class="share-section">
@@ -39,8 +46,16 @@
 <script>
 
 export default {
-  props: ['choices'],
-  name: 'results'
+  props: ['choices', 'survey'],
+  name: 'results',
+  methods:{
+    globalPercent(value){
+      if( this.survey.votes_count ){
+        return ( (value / this.survey.votes_count) * 100 ).toFixed(2)
+      }
+      return 0
+    }
+  }
 }
 </script>
 
@@ -56,5 +71,29 @@ export default {
     font-weight: 600;
     color: gray;
     font-size: 1em;
+  }
+  .progress {
+    min-width: 150px;
+    height: 1.5rem;
+    font-size: 1rem;
+    background: #cdcdcd !important;
+  }
+  
+  .metter {
+    text-transform: uppercase;
+    font-size: 1rem;
+    .supheading {
+      display: block;
+      font-size: .8em;
+      font-weight: 400;
+      line-height: 1em;
+      margin-bottom: 0;
+    }
+    .amount {
+      font-weight: 600;
+      font-size: 1.5em;
+      display: block;
+      line-height: 1.25em;
+    }
   }
 </style>
