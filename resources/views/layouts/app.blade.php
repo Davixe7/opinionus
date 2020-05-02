@@ -62,7 +62,30 @@
   <footer>
     @yield('footer')
   </footer>
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ea225ac6489781d"></script> -->
+  <style>
+    @media(min-width: 992px){
+      #at4-share {
+        top: 25% !important;
+      }
+    }
+    @media(max-width: 991px){
+      .at-share-dock.atss {
+        top: 28%;
+        left: 0;
+        right: auto;
+        bottom: auto !important;
+        width: 40px !important;
+        max-width: 40px !important;
+        z-index: 1000200;
+        box-shadow: 0 0 1px 1px #e2dfe2;
+        height: auto !important;
+      }
+      .at-share-btn,.at4-count {
+        width: 40px !important;
+      }
+    }
+  </style>
 </body>
 </html>

@@ -20,6 +20,8 @@ class CreateBannersTable extends Migration
           $table->string('image')->nullable();
           $table->string('url')->nullable();
           $table->text('iframe')->nullable();
+          $table->unsignedInteger('duration')->default(60);
+          $table->boolean('is_active')->default(0);
         });
     }
 

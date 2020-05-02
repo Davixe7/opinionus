@@ -31,6 +31,13 @@
               <label for="iframe">iFrame</label>
               <textarea name="iframe" class="form-control" rows="4"></textarea>
             </div>
+            <div class="form-group form-row">
+              <label class="col" for="duration">Duration</label>
+              <time-picker class="col" :selector="'#timepicker2'"/>
+            </div>
+            
+            <input type="hidden" name="duration" id="timepicker2">
+            
             <button type="submit" class="btn btn-primary">Save Banner</button>
           </form>
         </div>

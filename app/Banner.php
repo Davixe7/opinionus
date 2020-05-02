@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
-  protected $fillable = ['name', 'image', 'url', 'iframe'];
-  protected $hidden = ['created_at', 'updated_at'];
+  protected $fillable = ['name', 'image', 'url', 'iframe', 'is_active'];
+  protected $hidden = ['created_at'];
   
 }

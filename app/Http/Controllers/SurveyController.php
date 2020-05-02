@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Survey;
+use App\Banner;
 use Illuminate\Http\Request;
 use App\Http\Resources\Survey as SurveyResource;
 use App\Http\Resources\Choice as ChoiceResource;
@@ -30,7 +31,7 @@ class SurveyController extends Controller
     
     public function results(Survey $survey)
     {
-      return view('surveys.results', ['survey'=>$survey->load('choices')]);
+      return view('surveys.results', ['survey'=>$survey->load('choices'), 'banner'=>Banner::where('is_active', 1)->first()]);
     }
 
     /**

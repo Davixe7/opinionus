@@ -12,7 +12,11 @@
           <td><span>{{ $banner->url }}</span></td>
           <td class="text-right">
             <div class="btn-group">
-              <a onclick=" confirm('Are you sure you want to delete the banner?') ? document.querySelector('#form-{{$banner->id}}').submit() : ''">
+              <a
+                href="#"
+                onclick="confirm('Are you sure you want to delete the banner?')
+                  ? document.querySelector('#form-{{$banner->id}}').submit() 
+                  : ''">
                 <i class="material-icons">delete</i>
               </a>
               <a href="{{ route('admin.banners.edit', ['banner'=>$banner->id]) }}"><i class="material-icons">edit</i></a>

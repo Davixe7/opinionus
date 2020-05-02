@@ -19,7 +19,7 @@ class CreateVotesTable extends Migration
       $table->unsignedBigInteger('survey_id');
       $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
       $table->unsignedBigInteger('choice_id');
-      $table->foreign('choice_id')->references('id')->on('choice_id')->onDelete('cascade');
+      $table->foreign('choice_id')->references('id')->on('choices')->onDelete('cascade');
       $table->string('ip_address');
     });
   }

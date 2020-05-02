@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Banner;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +25,27 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function(){
+          $banners = Banner::all();
+        
+          if($banners && ($count = $banners->count())){
+            for ($i=0; $i < $count; $i++) {
+              if( $banners[$i]->is_active ){
+                $banner = $banners[$i];
+                $expireDate = $banner->updated_at->toDate()->add( new \DateInterval('PT' . $banner->duration . 'S') );
+                $now = new \DateTime();
+                if( ( $now->getTimestamp() - $expireDate->getTimestamp()) > 0 ){
+                  $banner->update(['is_active'=>0]);
+                  if( $i < ($count - 2) ){
+                    $banners[$i+1]->update(['is_active'=>1]);
+                    return;
+                  }
+                  $banners[0]->update(['is_active'=>1]);
+                }
+              }
+            }
+          }
+        })->everyMinute();
     }
 
     /**

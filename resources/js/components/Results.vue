@@ -38,7 +38,11 @@
         </div>
         
       </div>
-      
+      <div class="col-md-3 offset-md-3">
+        <a v-if="banner" :href="banner.url">
+          <img :src="banner.image.replace('public', '/storage')" style="max-width: 100%;" alt="">
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +50,7 @@
 <script>
 
 export default {
-  props: ['choices', 'survey'],
+  props: ['choices', 'survey', 'banner'],
   name: 'results',
   methods:{
     globalPercent(value){
