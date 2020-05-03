@@ -7550,7 +7550,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}", ""]);
+exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\n#results .atss-left[data-v-8ef50b4a] {\n  display: none !important;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}", ""]);
 
 // exports
 

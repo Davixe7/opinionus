@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+      Schema::defaultStringLength(191);
     }
 
     /**
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
       // app()->bind('path.public', function(){
-      //   return env('PATH_PUBLIC');
+      //   return env('PUBLIC_PATH');
       // });
     }
 }
