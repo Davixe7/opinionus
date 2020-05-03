@@ -24,11 +24,12 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
   Route::resource('surveys', 'Admin\SurveyController');
   Route::resource('choices', 'Admin\ChoiceController');
   Route::resource('banners', 'Admin\BannerController');
+  Route::post('updateLogo', 'Admin\DashboardController@updateLogo')->name('updateLogo');
 });
 
 Route::get('/surveys', 'SurveyController@index')->name('surveys.index');
-Route::get('/surveys/{survey}/results', 'SurveyController@results')->name('surveys.results');
-Route::get('/surveys/{survey}/vote', 'SurveyController@vote')->name('surveys.vote');
+Route::get('/surveys/{slug}/results', 'SurveyController@results')->name('surveys.results');
+Route::get('/surveys/{slug}/vote', 'SurveyController@vote')->name('surveys.vote');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

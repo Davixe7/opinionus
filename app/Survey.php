@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Survey extends Model
 {
-  protected $fillable = ['name'];
+  protected $fillable = ['name', 'slug'];
   protected $hidden = ['created_at', 'updated_at'];
   protected $appends = ['votes_count'];
   

@@ -4,7 +4,14 @@ import Toasted from 'vue-toasted'
 Vue.use(Toasted, {
   position: 'top-right',
   type: 'default',
-  icon: 'check'
+  icon: 'check',
+  duration: 2500,
+  action : {
+    text : 'x',
+    onClick : (e, toastObject) => {
+      toastObject.goAway(0);
+    }
+  },
 })
 
 const files = require.context('./', true, /\.vue$/i)

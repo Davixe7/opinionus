@@ -23,7 +23,7 @@
               </div>
               <input
                 class="form-control form-control-disabled"
-                value="{{ route('surveys.results', ['survey'=>$survey->id]) }}"
+                value="{{ route('surveys.results', ['slug'=>$survey->slug]) }}"
                 onclick=" window.location.href=event.target.value "/>
             </div>
             
@@ -35,7 +35,7 @@
               </div>
               <input
                 class="form-control form-control-disabled"
-                value="{{ route('surveys.vote', ['survey'=>$survey->id]) }}"
+                value="{{ route('surveys.vote', ['slug'=>$survey->slug]) }}"
                 onclick=" window.location.href=event.target.value "/>
             </div>
             

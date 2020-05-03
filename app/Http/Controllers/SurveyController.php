@@ -24,13 +24,15 @@ class SurveyController extends Controller
       return view('surveys.index', ['surveys'=>$surveys]);
     }
     
-    public function vote(Survey $survey)
+    public function vote(Request $request)
     {
+      $survey = Survey::where('slug', $request->slug)->firstOrFail();
       return view('surveys.vote', ['survey'=>$survey->load('choices')]);
     }
     
-    public function results(Survey $survey)
+    public function results(Request $request)
     {
+      $survey = Survey::where('slug', $request->slug)->firstOrFail();
       return view('surveys.results', ['survey'=>$survey->load('choices'), 'banner'=>Banner::where('is_active', 1)->first()]);
     }
 
@@ -40,8 +42,9 @@ class SurveyController extends Controller
      * @param  \App\Survey  $survey
      * @return \Illuminate\Http\Response
      */
-    public function show(Survey $survey)
+    public function show(Request $request)
     {
+      $survey = Survey::where('slug', $request->slug)->firstOrFail();
       if( request()->expectsJson() ){
         return new SurveyResource( $survey );
       }

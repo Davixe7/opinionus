@@ -31,7 +31,10 @@
     <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div>
     <nav class="navbar navbar-expand-lg navbar-light mb-4">
       <a class="navbar-brand" href="{{ url('/') }}">
-        PollyPolls
+        <!-- PollyPolls -->
+        @if( Storage::exists('/public/brand-logo.png') )
+          <img src="/storage/brand-logo.png" alt="site logo">
+        @endif
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
@@ -77,6 +80,8 @@
   </footer>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ea225ac6489781d"></script> -->
+  
+  <!-- AddThis overriding styles -->
   <style>
     @media(min-width: 992px){
       #at4-share {

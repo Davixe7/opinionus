@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Survey;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\Survey as SurveyResource;
 use App\Http\Resources\Choice as ChoiceResource;
@@ -24,16 +25,6 @@ class SurveyController extends Controller
       return view('admin.surveys.index', ['surveys'=>$surveys]);
     }
     
-    public function vote(Survey $survey)
-    {
-      return view('admin.surveys.vote', ['survey'=>$survey->load('choices')]);
-    }
-    
-    public function results(Survey $survey)
-    {
-      return view('admin.surveys.results', ['survey'=>$survey->load('choices')]);
-    }
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -53,7 +44,8 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
       $survey = Survey::create([
-        'name' => $request->name
+        'name' => $request->name,
+        'slug' => Str::slug($request->name)
       ]);
       return new SurveyResource( $survey );
     }
@@ -82,7 +74,7 @@ class SurveyController extends Controller
     {
       $survey->choices = ChoiceResource::collection($survey->choices);
       return view('admin.surveys.edit', [
-        'survey'=>$survey
+        'survey' =>$survey
       ]);
     }
 
@@ -96,7 +88,8 @@ class SurveyController extends Controller
     public function update(Request $request, Survey $survey)
     {
       $survey->update([
-        'name' => $request->name
+        'name' => $request->name,
+        'slug' => Str::slug($request->name)
       ]);
       return new SurveyResource( $survey );
     }

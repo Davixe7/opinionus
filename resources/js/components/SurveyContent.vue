@@ -10,7 +10,7 @@
         <div class="label-small">votes</div>
         <div class="poll-content-number">{{ survey.votes_count }}</div>
       </div>
-      <a :href="`/surveys/${survey.id}/vote`" class="ml-auto btn btn-primary btn-sm">
+      <a :href="`/surveys/${survey.slug}/vote`" class="ml-auto btn btn-primary btn-sm">
         Take Survey
       </a>
     </div>
