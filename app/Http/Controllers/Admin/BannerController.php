@@ -51,6 +51,7 @@ class BannerController extends Controller
         'image'     => $this->upload( $request, 'image'),
         'url'       => $request->url,
         'iframe'    => $request->iframe,
+        'duration'  => $request->duration
       ]);
       
       if( $request->expectsJson() ){
@@ -102,7 +103,8 @@ class BannerController extends Controller
         'name'      => $request->name   ?: $banner->name,
         'image'     => $updated_file    ?: $banner->image,
         'url'       => $request->url    ?: $banner->url,
-        'iframe'    => $request->iframe ?: $banner->iframe
+        'iframe'    => $request->iframe ?: $banner->iframe,
+        'duration'  => $request->duration ?: $banner->duration
       ]);
       
       $request->session()->flash('message', 'Banner Ad Updated Successfully!');

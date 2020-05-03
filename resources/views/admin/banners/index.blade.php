@@ -17,7 +17,7 @@
             @csrf
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name">
+              <input type="text" class="form-control" name="name" required>
             </div>
             <div class="form-group">
               <label for="image">Image</label>
@@ -36,7 +36,7 @@
               <time-picker class="col" :selector="'#timepicker2'"/>
             </div>
             
-            <input type="hidden" name="duration" id="timepicker2">
+            <input type="hidden" name="duration" id="timepicker2" required>
             
             <button type="submit" class="btn btn-primary">Save Banner</button>
           </form>

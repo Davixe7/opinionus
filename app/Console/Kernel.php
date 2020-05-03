@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
                 $now = new \DateTime();
                 if( ( $now->getTimestamp() - $expireDate->getTimestamp()) > 0 ){
                   $banner->update(['is_active'=>0]);
-                  if( $i < ($count - 2) ){
+                  if( $i < ($count - 1) ){
                     $banners[$i+1]->update(['is_active'=>1]);
                     return;
                   }

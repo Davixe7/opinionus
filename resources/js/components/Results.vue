@@ -66,6 +66,9 @@ export default {
 <style lang="scss" scoped>
   #results {
     padding-bottom: 40px;
+    .atss-left {
+      display: none !important;
+    }
   }
   table.table-results td {
     border-bottom: 1px solid #efefef;
