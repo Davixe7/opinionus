@@ -2824,8 +2824,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['selector'],
+  props: {
+    "selector": {
+      type: String
+    },
+    "duration": {
+      type: Number,
+      "default": 60
+    }
+  },
   data: function data() {
     return {
       hours: 0,
@@ -2841,6 +2858,13 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     total: function total() {
       return this.hours * 3600 + this.minutes * 60 + this.seconds;
+    }
+  },
+  mounted: function mounted() {
+    if (this.duration) {
+      this.hours = Math.floor(this.duration / 3600);
+      this.minutes = Math.floor(this.duration / 60) % 60;
+      this.seconds = this.duration % 60;
     }
   }
 });
@@ -7692,7 +7716,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".time-picker[data-v-424ede34] {\n  border: 1px solid #ced4da;\n  border-radius: 3px;\n  display: flex;\n  flex-flow: row wrap;\n  text-align: center;\n}\n.time-picker input[data-v-424ede34] {\n  border: none;\n  font-size: 1.5em;\n  height: 2em;\n  vertical-align: middle;\n  width: 33%;\n  flex: 1 1 33%;\n  text-align: center;\n}", ""]);
+exports.push([module.i, ".time-picker[data-v-424ede34] {\n  border: 1px solid #ced4da;\n  border-radius: 3px;\n  display: flex;\n  flex-flow: row wrap;\n  text-align: center;\n}\n.time-picker .input-wrap[data-v-424ede34] {\n  flex: 1 1 33%;\n  text-align: center;\n}\n.time-picker .input-wrap span[data-v-424ede34] {\n  display: block;\n  font-size: 0.75em;\n  font-weight: 600;\n  text-transform: uppercase;\n  margin-bottom: 10px;\n}\n.time-picker input[data-v-424ede34] {\n  border: none;\n  font-size: 1.5em;\n  height: 2em;\n  vertical-align: middle;\n  width: 100%;\n  text-align: center;\n}", ""]);
 
 // exports
 
@@ -41170,71 +41194,83 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "time-picker" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.hours,
-          expression: "hours"
-        }
-      ],
-      attrs: { type: "number", min: "0", max: "24" },
-      domProps: { value: _vm.hours },
-      on: {
-        change: _vm.emitValue,
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+    _c("div", { staticClass: "input-wrap" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.hours,
+            expression: "hours"
           }
-          _vm.hours = $event.target.value
+        ],
+        attrs: { type: "number", min: "0", max: "24" },
+        domProps: { value: _vm.hours },
+        on: {
+          change: _vm.emitValue,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.hours = $event.target.value
+          }
         }
-      }
-    }),
+      }),
+      _vm._v(" "),
+      _c("span", [_vm._v("hours")])
+    ]),
     _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.minutes,
-          expression: "minutes"
-        }
-      ],
-      attrs: { type: "number", min: "0", max: "59" },
-      domProps: { value: _vm.minutes },
-      on: {
-        change: _vm.emitValue,
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+    _c("div", { staticClass: "input-wrap" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.minutes,
+            expression: "minutes"
           }
-          _vm.minutes = $event.target.value
+        ],
+        attrs: { type: "number", min: "0", max: "59" },
+        domProps: { value: _vm.minutes },
+        on: {
+          change: _vm.emitValue,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.minutes = $event.target.value
+          }
         }
-      }
-    }),
+      }),
+      _vm._v(" "),
+      _c("span", [_vm._v("mins")])
+    ]),
     _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.seconds,
-          expression: "seconds"
-        }
-      ],
-      attrs: { type: "number", min: "0", max: "59" },
-      domProps: { value: _vm.seconds },
-      on: {
-        change: _vm.emitValue,
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+    _c("div", { staticClass: "input-wrap" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.seconds,
+            expression: "seconds"
           }
-          _vm.seconds = $event.target.value
+        ],
+        attrs: { type: "number", min: "0", max: "59" },
+        domProps: { value: _vm.seconds },
+        on: {
+          change: _vm.emitValue,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.seconds = $event.target.value
+          }
         }
-      }
-    })
+      }),
+      _vm._v(" "),
+      _c("span", [_vm._v("secs")])
+    ])
   ])
 }
 var staticRenderFns = []

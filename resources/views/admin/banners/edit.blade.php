@@ -14,7 +14,7 @@
       <div class="card mb-3">
         <div class="card-body">
           @if( !empty($banner->image) )
-            <div style="height: 300px; overflow: hidden;">
+            <div style="overflow: hidden;">
               <img src="{{ Storage::url($banner->image) }}" alt="" style="max-width: 100%;">
             </div>
           @endif
@@ -37,7 +37,17 @@
               <label for="iframe">iFrame</label>
               <textarea name="iframe" class="form-control" rows="4">{{ $banner->iframe }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <div class="form-row">
+              <div class="form-group col-7">
+                <label>Duration</label>
+                <time-picker :selector="'#timepicker2'" :duration="{{ $banner->duration }}"/>
+              </div>
+              <div class="col d-flex align-items-center justify-content-end">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+            
+            <input type="hidden" name="duration" id="timepicker2" required>
           </form>
         </div>
       </div>
