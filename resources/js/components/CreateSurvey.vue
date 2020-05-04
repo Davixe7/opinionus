@@ -31,11 +31,11 @@
                   <i class="material-icons">arrow_back</i>&nbsp;
                   <span>Go back</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${surveyId}/vote`" class="btn btn-link" title="vote">
+                <a v-if="choices.length >= 2" :href="`/surveys/${survey.slug}/vote`" class="btn btn-link" title="vote">
                   <i class="material-icons">how_to_vote</i>&nbsp;
                   <span>Vote</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${surveyId}/results`" class="btn btn-link" title="results">
+                <a v-if="choices.length >= 2" :href="`/surveys/${survey.slug}/results`" class="btn btn-link" title="results">
                   <i class="material-icons">ballot</i>&nbsp;
                   <span>Results</span>
                 </a>
