@@ -2802,7 +2802,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['surveyId']
+  props: ['slug']
 });
 
 /***/ }),
@@ -7659,7 +7659,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}", ""]);
+exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\n#results > .row[data-v-8ef50b4a] {\n  flex-direction: column-reverse;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n  height: 100vh;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}\n.bounce[data-v-8ef50b4a] {\n  -webkit-animation: bounce-data-v-8ef50b4a 0.5s infinite alternate linear;\n          animation: bounce-data-v-8ef50b4a 0.5s infinite alternate linear;\n  font-size: 2.5em;\n}\n@-webkit-keyframes bounce-data-v-8ef50b4a {\nfrom {\n    transform: translateY(-7px);\n}\nto {\n    transform: translateY(7px);\n}\n}\n@keyframes bounce-data-v-8ef50b4a {\nfrom {\n    transform: translateY(-7px);\n}\nto {\n    transform: translateY(7px);\n}\n}\n@media (min-width: 576px) {\n#results > .row[data-v-8ef50b4a] {\n    flex-direction: row;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n    height: auto;\n}\n}", ""]);
 
 // exports
 
@@ -40808,6 +40808,8 @@ var render = function() {
   return _c("div", { attrs: { id: "results" } }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-6" }, [
+        _c("h1", [_vm._v("Survey results")]),
+        _vm._v(" "),
         _c(
           "table",
           { staticClass: "table table-results mb-3" },
@@ -40875,7 +40877,9 @@ var render = function() {
                 }
               })
             ])
-          : _vm._e()
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._m(1)
       ])
     ])
   ])
@@ -40891,6 +40895,16 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "addthis_inline_share_toolbox" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center d-block d-sm-none" }, [
+      _c("i", { staticClass: "material-icons bounce" }, [
+        _vm._v("keyboard_arrow_down")
+      ])
     ])
   }
 ]
@@ -41130,7 +41144,7 @@ var render = function() {
               "a",
               {
                 staticClass: "btn btn-danger w-100 bg-pink mb-2 order-sm-2",
-                attrs: { href: "/surveys/" + _vm.surveyId + "/results" }
+                attrs: { href: "/surveys/" + _vm.slug + "/results" }
               },
               [_vm._v("Go to results page")]
             )
@@ -41444,7 +41458,7 @@ var render = function() {
           _vm.voted
             ? _c(
                 "thanks",
-                { attrs: { surveyId: _vm.survey.id } },
+                { attrs: { slug: _vm.survey.slug } },
                 [
                   _c("choice-content", {
                     attrs: { choice: _vm.selection, selected: true }

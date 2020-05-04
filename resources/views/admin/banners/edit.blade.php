@@ -37,9 +37,9 @@
               <label for="iframe">iFrame</label>
               <textarea name="iframe" class="form-control" rows="4">{{ $banner->iframe }}</textarea>
             </div>
+            <label>Duration</label>
             <div class="form-row">
               <div class="form-group col-7">
-                <label>Duration</label>
                 <time-picker :selector="'#timepicker2'" :duration="{{ $banner->duration }}"/>
               </div>
               <div class="col d-flex align-items-center justify-content-end">

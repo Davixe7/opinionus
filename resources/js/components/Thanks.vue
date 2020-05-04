@@ -16,7 +16,7 @@
       
       <div class="actions row">
         <div class="col-md-6">
-          <a :href="`/surveys/${surveyId}/results`" class="btn btn-danger w-100 bg-pink mb-2 order-sm-2">Go to results page</a>
+          <a :href="`/surveys/${slug}/results`" class="btn btn-danger w-100 bg-pink mb-2 order-sm-2">Go to results page</a>
         </div>
         <div class="col-md-6">
           <a href="/surveys" class="btn btn-danger w-100 bg-pink mb-2 order-sm-1">Vote in another poll</a>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  props: ['surveyId']
+  props: ['slug']
 }
 </script>
 

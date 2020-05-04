@@ -1,9 +1,8 @@
 <template>
   <div id="results">
     <div class="row">
-      
       <div class="col-md-6">
-        
+        <h1>Survey results</h1>
         <table class="table table-results mb-3">
           <tr v-for="choice in choices" :key="choice.id">
             <td>
@@ -31,17 +30,18 @@
         
         <div class="share-section">
           <div class="form-section-title mb-3">Share results</div>
-          
           <!-- Go to www.addthis.com/dashboard to customize your tools -->
           <div class="addthis_inline_share_toolbox"></div>
-            
         </div>
-        
       </div>
+      
       <div class="col-md-3 offset-md-3">
         <a v-if="banner" :href="banner.url">
           <img :src="banner.image.replace('public', '/storage')" style="max-width: 100%;" alt="">
         </a>
+        <div class="text-center d-block d-sm-none">
+          <i class="material-icons bounce">keyboard_arrow_down</i>
+        </div>
       </div>
     </div>
   </div>
@@ -64,40 +64,64 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #results {
-    padding-bottom: 40px;
+#results {
+  padding-bottom: 40px;
+  > .row {
+    flex-direction: column-reverse;
+    .col-md-3 {
+      height: 100vh;
+    }
   }
-  table.table-results td {
-    border-bottom: 1px solid #efefef;
-  }
-  .choice-name {
+} 
+table.table-results td {
+  border-bottom: 1px solid #efefef;
+}
+.choice-name {
+  display: block;
+  font-weight: 600;
+  color: gray;
+  font-size: 1em;
+}
+.progress {
+  min-width: 150px;
+  height: 1.5rem;
+  font-size: 1rem;
+  background: #cdcdcd !important;
+}
+
+.metter {
+  text-transform: uppercase;
+  font-size: 1rem;
+  .supheading {
     display: block;
+    font-size: .8em;
+    font-weight: 400;
+    line-height: 1em;
+    margin-bottom: 0;
+  }
+  .amount {
     font-weight: 600;
-    color: gray;
-    font-size: 1em;
+    font-size: 1.5em;
+    display: block;
+    line-height: 1.25em;
   }
-  .progress {
-    min-width: 150px;
-    height: 1.5rem;
-    font-size: 1rem;
-    background: #cdcdcd !important;
-  }
-  
-  .metter {
-    text-transform: uppercase;
-    font-size: 1rem;
-    .supheading {
-      display: block;
-      font-size: .8em;
-      font-weight: 400;
-      line-height: 1em;
-      margin-bottom: 0;
-    }
-    .amount {
-      font-weight: 600;
-      font-size: 1.5em;
-      display: block;
-      line-height: 1.25em;
+}
+
+.bounce {
+  animation: bounce .5s infinite alternate linear;
+  font-size: 2.5em;
+}
+@keyframes bounce {
+  from {transform: translateY(-7px);}
+  to {transform: translateY(7px);}
+}
+
+@media(min-width: 576px){
+  #results > .row {
+    flex-direction: row;
+    .col-md-3 {
+      height: auto;
     }
   }
+}
 </style>

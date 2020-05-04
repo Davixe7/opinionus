@@ -1,7 +1,7 @@
 <template>
   <div id="vote">
     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-      <thanks v-if="voted" :surveyId="survey.id">
+      <thanks v-if="voted" :slug="survey.slug">
         <choice-content :choice="selection" :selected="true"/>
       </thanks>
       
