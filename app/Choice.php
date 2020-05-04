@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Image;
 
 class Choice extends Model
 {
@@ -20,5 +21,24 @@ class Choice extends Model
   
   public function getVotesCountAttribute(){
     return $this->votes()->count();
+  }
+  
+  public static function regenerateThumbnails(){
+    $choices = self::all();
+
+    foreach( $choices as $choice ){
+      $image = $choice->image;
+      $filename = str_replace('public/images', '', $image);
+      $path = storage_path( "app/{$image}" );
+      
+      $thumbnail_small = Image::make( $path )->fit(40,40);
+      $thumbnail_small->save(storage_path("app/public/thumbnails/40/{$filename}"));
+      
+      $thumbnail_medium = Image::make( $path )->fit(300,300);
+      $thumbnail_medium->save(storage_path("app/public/thumbnails/300/{$filename}"));
+      
+      $thumbnail_large = Image::make( $path )->fit(500,500);
+      $thumbnail_large->save(storage_path("app/public/thumbnails/500/{$filename}"));
+    }
   }
 }

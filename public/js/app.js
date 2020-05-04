@@ -2285,6 +2285,7 @@ var _this = undefined;
   data: function data() {
     return {
       surveyId: null,
+      slug: null,
       name: 'New survey #' + String(Math.random(0, 99)).substring(2, 4),
       defaultChoice: {
         name: 'Choice 0' + String(Math.random(0, 99)).substring(2, 4),
@@ -2321,6 +2322,7 @@ var _this = undefined;
       };
       axios.post('/admin/surveys', data).then(function (response) {
         _this2.surveyId = response.data.data.id;
+        _this2.slug = response.data.data.slug;
         _this2.name = response.data.data.name;
 
         _this2.$toasted.show('Survey created successfully');
@@ -2382,6 +2384,7 @@ var _this = undefined;
       this.surveyId = this.survey.id;
       this.name = this.survey.name;
       this.choices = this.survey.choices;
+      this.slug = this.survey.slug;
     }
   }
 });
@@ -40128,7 +40131,7 @@ var render = function() {
                               {
                                 staticClass: "btn btn-link",
                                 attrs: {
-                                  href: "/surveys/" + _vm.survey.slug + "/vote",
+                                  href: "/surveys/" + _vm.slug + "/vote",
                                   title: "vote"
                                 }
                               },
@@ -40148,8 +40151,7 @@ var render = function() {
                               {
                                 staticClass: "btn btn-link",
                                 attrs: {
-                                  href:
-                                    "/surveys/" + _vm.survey.slug + "/results",
+                                  href: "/surveys/" + _vm.slug + "/results",
                                   title: "results"
                                 }
                               },

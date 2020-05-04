@@ -27,7 +27,6 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function(){
           $banners = Banner::all();
-        
           if($banners && ($count = $banners->count())){
             for ($i=0; $i < $count; $i++) {
               if( $banners[$i]->is_active ){

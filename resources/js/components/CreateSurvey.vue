@@ -31,11 +31,11 @@
                   <i class="material-icons">arrow_back</i>&nbsp;
                   <span>Go back</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${survey.slug}/vote`" class="btn btn-link" title="vote">
+                <a v-if="choices.length >= 2" :href="`/surveys/${slug}/vote`" class="btn btn-link" title="vote">
                   <i class="material-icons">how_to_vote</i>&nbsp;
                   <span>Vote</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${survey.slug}/results`" class="btn btn-link" title="results">
+                <a v-if="choices.length >= 2" :href="`/surveys/${slug}/results`" class="btn btn-link" title="results">
                   <i class="material-icons">ballot</i>&nbsp;
                   <span>Results</span>
                 </a>
@@ -111,6 +111,7 @@ export default {
   },
   data(){ return {
     surveyId: null,
+    slug: null,
     name: 'New survey #' + String( Math.random(0,99) ).substring(2,4),
     defaultChoice:{ name: 'Choice 0' + String( Math.random(0,99) ).substring(2,4), link_text: 'Click me!', link_url: 'http://localhost:8080/', image: null },
     choices: [],
@@ -132,6 +133,7 @@ export default {
       let data = {name: this.name}
       axios.post('/admin/surveys', data).then(response => {
         this.surveyId = response.data.data.id
+        this.slug = response.data.data.slug
         this.name    = response.data.data.name
         this.$toasted.show('Survey created successfully')
         this.saving = false
@@ -175,9 +177,10 @@ export default {
   },
   mounted(){
     if( this.survey ){
-      this.surveyId  = this.survey.id
-      this.name       = this.survey.name
-      this.choices    = this.survey.choices
+      this.surveyId = this.survey.id
+      this.name     = this.survey.name
+      this.choices  = this.survey.choices
+      this.slug     = this.survey.slug
     }
   }
 }

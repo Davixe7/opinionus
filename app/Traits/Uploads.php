@@ -10,7 +10,7 @@ trait Uploads
   {
     if( $file = $request->file( $inputfilename ) ){
       if( is_array( $file ) ) $file = $file[0];
-      $nameWithoutExtension = pathinfo( $file->getClientOriginalName(), PATHINFO_FILENAME );
+      $nameWithoutExtension = str_replace(" ", "", pathinfo( $file->getClientOriginalName(), PATHINFO_FILENAME ));
       $extension = "." . $file->getClientOriginalExtension();
       $newFileName = $nameWithoutExtension . "_" . time() . $extension;
       
