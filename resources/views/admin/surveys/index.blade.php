@@ -18,7 +18,7 @@
             <div class="input-group mb-2">
               <div class="input-group-append">
                 <div class="input-group-text">
-                  <i class="material-icons">language</i>
+                  <i class="material-icons">pie_chart</i>
                 </div>
               </div>
               <input
@@ -30,7 +30,7 @@
             <div class="input-group mb-2">
               <div class="input-group-append">
                 <div class="input-group-text">
-                  <i class="material-icons">language</i>
+                  <i class="material-icons">how_to_vote</i>
                 </div>
               </div>
               <input

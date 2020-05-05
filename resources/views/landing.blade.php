@@ -68,7 +68,7 @@
     <div class="circle-bg" style="background: lightblue; width: 25vw; height: 25vw; border-radius: 50%;position: absolute; bottom: 10px; right: 200px; z-index: 100;"></div>
     <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div>
     <main>
-      <landing :surveys="{{ json_encode($surveys) }}"/>
+      <landing :surveys="{{ json_encode($surveys) }}" :siteconfig="{{ $siteconfig }}"/>
     </main>
   </div>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

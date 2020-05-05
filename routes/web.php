@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function(){
-  return view('landing', ['surveys'=>App\Survey::with('choices')->get()]);
+  $siteconfig = Storage::get('/public/frontend-config.json');
+  return view('landing', [
+    'surveys' => App\Survey::with('choices')->get(),
+    'siteconfig' => $siteconfig
+  ]);
 });
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
@@ -25,6 +29,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
   Route::resource('choices', 'Admin\ChoiceController');
   Route::resource('banners', 'Admin\BannerController');
   Route::post('updateLogo', 'Admin\DashboardController@updateLogo')->name('updateLogo');
+  Route::post('siteconfig', 'Admin\FrontendController@store');
 });
 
 Route::get('/surveys', 'SurveyController@index')->name('surveys.index');

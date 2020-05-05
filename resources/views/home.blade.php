@@ -32,7 +32,7 @@
         </div>
       </div>
       
-      <div class="row">
+      <div class="row mb-4">
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">Update site logo</div>
@@ -42,6 +42,8 @@
           </div>
         </div>
       </div>
+      
+      <siteconfig :siteconfig="{{ $siteconfig }}"/>
       
     </div>
   </div>

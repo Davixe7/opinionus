@@ -22,4 +22,12 @@ class Survey extends Model
     return $this->votes()->count();
   }
   
+  public function regenerateSlugs(){
+    $surveys = self::all();
+    $surveys->each( function($s){ 
+      $s->slug = Str::slug( $s->name);
+      $s-save(); 
+    });
+  }
+  
 }

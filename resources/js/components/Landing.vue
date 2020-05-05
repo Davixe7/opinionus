@@ -5,8 +5,8 @@
       <div class="content">
         <div class="row">
           <div class="col-md-5 text-left">
-            <h1>Polly</h1>
-            <p>Access to a whole set of surveys and interesting content<br> know what others think, share with others!</p>
+            <h1>{{ headline }}</h1>
+            <p>{{ description }}</p>
           </div>
           <div class="col-xl-7">
             <div class="polls-container">
@@ -57,11 +57,16 @@
 
 <script>
 export default {
-  props: ['surveys'],
+  props: ['surveys', 'siteconfig'],
+  data(){
+    return {
+      headline: 'Polly',
+      description: 'Access to a whole set of surveys and interesting content know what others think, share with others',
+    }
+  },
   created(){
-    // const script = document.createElement('script');
-    // script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js')
-    // document.querySelector('body').append( script )
+    this.headline = this.siteconfig.headline
+    this.description = this.siteconfig.description
     
     setTimeout(function(){
       $('.polls-container').slick({

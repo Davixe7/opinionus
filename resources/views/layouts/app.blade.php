@@ -20,7 +20,7 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
   <script src="{{ mix('js/app.js') }}" defer></script>
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,600,700&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -33,6 +33,12 @@
       <a class="navbar-brand" href="{{ url('/') }}">
         @if( Storage::exists('/public/brand-logo.png') )
           <img src="/storage/brand-logo.png" alt="site logo">
+        @endif
+        @if( $config = json_decode( Storage::get('public/frontend-config.json' ) ) )
+          <div class="d-inline-block" style="vertical-align: middle; padding-left: 10px;">
+            <span>{{ $config->brandname }}</span>
+            <span style="font-weight: 400; font-size: .9em; display: block;">{{ $config->catchphrase }}</span>
+          </div>
         @else
           PollyPolls
         @endif

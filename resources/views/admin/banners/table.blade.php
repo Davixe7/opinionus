@@ -5,6 +5,9 @@
     <table class="table table-sm">
       @foreach($banners as $banner)
         <tr>
+          <td>
+            <update-banner-status :banner="{{ json_encode( $banner ) }}">
+          </td>
           <td>{{ $banner->name }}</td>
           <td>
             <span><a target="_blank" href="{{ Storage::url($banner->image) }}"><i class="material-icons">photo</i></a></span>
