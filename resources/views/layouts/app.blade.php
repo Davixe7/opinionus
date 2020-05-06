@@ -37,7 +37,7 @@
         @if( $config = json_decode( Storage::get('public/frontend-config.json' ) ) )
           <div class="d-inline-block" style="vertical-align: middle; padding-left: 10px;">
             <span>{{ $config->brandname }}</span>
-            <span style="font-weight: 400; font-size: .9em; display: block;">{{ $config->catchphrase }}</span>
+            <span class="navbar-catchphrase">{{ $config->catchphrase }}</span>
           </div>
         @else
           PollyPolls
@@ -49,11 +49,14 @@
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+          
+          @if( Auth::check())
+          <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link">Dashboard</a>
+          </li>
           <li class="nav-item">
             <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
           </li>
-          
-          @if( Auth::check())
           <li class="nav-item">
             <a href="{{ route('admin.surveys.index') }}" class="nav-link">Manage surveys</a>
           </li>
@@ -72,6 +75,10 @@
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
           </li>
+          @else
+            <li class="nav-item">
+              <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
+            </li>
           @endif
         </ul>
       </div>

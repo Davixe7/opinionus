@@ -18,7 +18,7 @@ export default {
     update(){
       this.saving = true
       console.log( Number( this.status ) );
-      let data = {is_active: Number(this.status), _method:'PUT'}
+      let data = {enabled: Number(this.status), _method:'PUT'}
       axios.post(`/admin/banners/${this.banner.id}`, data).then(response=>{
         console.log(response.data.data);
         this.$toasted.show('Updated successfully')
@@ -27,7 +27,7 @@ export default {
     }
   },
   mounted(){
-    this.status = this.banner.is_active
+    this.status = this.banner.enabled
   }
 }
 </script>

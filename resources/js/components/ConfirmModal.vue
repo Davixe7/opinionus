@@ -70,7 +70,7 @@ export default {
     right: 0;
     height: 100vh;
     width: 100vw;
-    z-index: 100;
+    z-index: 1000;
     background: rgba(0,0,0,.8);
   }
   
@@ -84,7 +84,7 @@ export default {
     top: 0;
     right: 0;
     overflow: auto;
-    z-index: 300;
+    z-index: 1001;
     width: 100vw;
     height: 100vh;
     padding: 20px;

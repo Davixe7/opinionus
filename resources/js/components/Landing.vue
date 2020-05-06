@@ -24,14 +24,14 @@
         <div class="row">
           <div class="col-md-4">
             <div class="copyright">
-              <h4>Polly</h4>
-              &copy; All rights reserved Polly 2020 <br>
+              <h4>{{ brandname }}</h4>
+              &copy; All rights reserved {{ brandname }} 2020 <br>
               United States
             </div>
           </div>
           <div class="col-md-4"></div>
           <div class="col-md-4">
-            <ul class="socials">
+            <!-- <ul class="socials">
               <li>
                 <a class="fab">
                   <span class="fab fa-facebook-square"></span>
@@ -47,7 +47,7 @@
                   <span class="fab fa-instagram"></span>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </footer>
@@ -67,6 +67,7 @@ export default {
   created(){
     this.headline = this.siteconfig.headline
     this.description = this.siteconfig.description
+    this.brandname = this.siteconfig.brandname
     
     setTimeout(function(){
       $('.polls-container').slick({

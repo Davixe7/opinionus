@@ -2501,6 +2501,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.headline = this.siteconfig.headline;
     this.description = this.siteconfig.description;
+    this.brandname = this.siteconfig.brandname;
     setTimeout(function () {
       $('.polls-container').slick({
         autoplay: true,
@@ -2574,21 +2575,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['choices', 'survey', 'banner'],
+  props: ['choices', 'survey'],
   name: 'results',
   methods: {
     globalPercent: function globalPercent(value) {
@@ -2910,7 +2898,7 @@ __webpack_require__.r(__webpack_exports__);
       this.saving = true;
       console.log(Number(this.status));
       var data = {
-        is_active: Number(this.status),
+        enabled: Number(this.status),
         _method: 'PUT'
       };
       axios.post("/admin/banners/".concat(this.banner.id), data).then(function (response) {
@@ -2923,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.status = this.banner.is_active;
+    this.status = this.banner.enabled;
   }
 });
 
@@ -7757,7 +7745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".overlay[data-v-23992138] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 100;\n  background: rgba(0, 0, 0, 0.8);\n}\n.content[data-v-23992138] {\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n  font-size: 9px;\n  text-align: center;\n  position: fixed;\n  top: 0;\n  right: 0;\n  overflow: auto;\n  z-index: 300;\n  width: 100vw;\n  height: 100vh;\n  padding: 20px;\n  background: #fff;\n}\n.body[data-v-23992138] {\n  padding: 3px;\n}\n.header[data-v-23992138], .actions[data-v-23992138] {\n  height: 20vh;\n  display: flex;\n  align-items: center;\n}\n.supheading[data-v-23992138], .link-text[data-v-23992138] {\n  font-weight: 300;\n  font-size: 1.8571em;\n  line-height: 1em;\n  margin-bottom: 10px;\n}\n.survey-name[data-v-23992138] {\n  font-size: 2.95em;\n  font-weight: 500;\n  line-height: 1em;\n  margin-bottom: 1.85rem;\n}\n.card-body[data-v-23992138] {\n  padding: 2.55em;\n}\n.card-body img[data-v-23992138] {\n  max-width: 75%;\n  margin-bottom: 20px;\n}\n.choice-detail[data-v-23992138] {\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n}\n.choice-name[data-v-23992138] {\n  font-size: 2.95em;\n  line-height: 1em;\n  margin-bottom: 0.5em;\n  font-weight: 500;\n}\n.actions[data-v-23992138] {\n  justify-content: flex-end;\n  padding: 1.5em 1.5em 0;\n  text-align: right;\n}\n.actions .btn.btn-primary[data-v-23992138] {\n  background: blue;\n  display: inline-flex;\n  align-items: center;\n}\n.actions .btn.btn-primary i.material-icons[data-v-23992138] {\n  margin-right: 10px;\n}\nspan[data-v-23992138] {\n  display: block;\n}\n@media (min-width: 768px) {\n.content[data-v-23992138] {\n    font-size: 12px;\n    width: 70vw;\n    overflow: hidden;\n}\n.supheading[data-v-23992138] {\n    margin-bottom: 1.4285rem;\n}\n.choice-detail[data-v-23992138] {\n    padding-left: 2em;\n}\n.survey-name[data-v-23992138] {\n    font-size: 3.7em;\n}\nimg[data-v-23992138] {\n    max-width: 100%;\n    margin-bottom: 0;\n}\n}", ""]);
+exports.push([module.i, ".overlay[data-v-23992138] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 100vh;\n  width: 100vw;\n  z-index: 1000;\n  background: rgba(0, 0, 0, 0.8);\n}\n.content[data-v-23992138] {\n  display: flex;\n  flex-flow: column;\n  justify-content: space-between;\n  font-size: 9px;\n  text-align: center;\n  position: fixed;\n  top: 0;\n  right: 0;\n  overflow: auto;\n  z-index: 1001;\n  width: 100vw;\n  height: 100vh;\n  padding: 20px;\n  background: #fff;\n}\n.body[data-v-23992138] {\n  padding: 3px;\n}\n.header[data-v-23992138], .actions[data-v-23992138] {\n  height: 20vh;\n  display: flex;\n  align-items: center;\n}\n.supheading[data-v-23992138], .link-text[data-v-23992138] {\n  font-weight: 300;\n  font-size: 1.8571em;\n  line-height: 1em;\n  margin-bottom: 10px;\n}\n.survey-name[data-v-23992138] {\n  font-size: 2.95em;\n  font-weight: 500;\n  line-height: 1em;\n  margin-bottom: 1.85rem;\n}\n.card-body[data-v-23992138] {\n  padding: 2.55em;\n}\n.card-body img[data-v-23992138] {\n  max-width: 75%;\n  margin-bottom: 20px;\n}\n.choice-detail[data-v-23992138] {\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n}\n.choice-name[data-v-23992138] {\n  font-size: 2.95em;\n  line-height: 1em;\n  margin-bottom: 0.5em;\n  font-weight: 500;\n}\n.actions[data-v-23992138] {\n  justify-content: flex-end;\n  padding: 1.5em 1.5em 0;\n  text-align: right;\n}\n.actions .btn.btn-primary[data-v-23992138] {\n  background: blue;\n  display: inline-flex;\n  align-items: center;\n}\n.actions .btn.btn-primary i.material-icons[data-v-23992138] {\n  margin-right: 10px;\n}\nspan[data-v-23992138] {\n  display: block;\n}\n@media (min-width: 768px) {\n.content[data-v-23992138] {\n    font-size: 12px;\n    width: 70vw;\n    overflow: hidden;\n}\n.supheading[data-v-23992138] {\n    margin-bottom: 1.4285rem;\n}\n.choice-detail[data-v-23992138] {\n    padding-left: 2em;\n}\n.survey-name[data-v-23992138] {\n    font-size: 3.7em;\n}\nimg[data-v-23992138] {\n    max-width: 100%;\n    margin-bottom: 0;\n}\n}", ""]);
 
 // exports
 
@@ -7833,7 +7821,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\n#results > .row[data-v-8ef50b4a] {\n  flex-direction: column-reverse;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n  height: 100vh;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}\n.bounce[data-v-8ef50b4a] {\n  -webkit-animation: bounce-data-v-8ef50b4a 0.5s infinite alternate linear;\n          animation: bounce-data-v-8ef50b4a 0.5s infinite alternate linear;\n  font-size: 2.5em;\n}\n@-webkit-keyframes bounce-data-v-8ef50b4a {\nfrom {\n    transform: translateY(-7px);\n}\nto {\n    transform: translateY(7px);\n}\n}\n@keyframes bounce-data-v-8ef50b4a {\nfrom {\n    transform: translateY(-7px);\n}\nto {\n    transform: translateY(7px);\n}\n}\n@media (min-width: 576px) {\n#results > .row[data-v-8ef50b4a] {\n    flex-direction: row;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n    height: auto;\n}\n}", ""]);
+exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\n#results > .row[data-v-8ef50b4a] {\n  flex-direction: column-reverse;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n  height: 100vh;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}\n.bounce[data-v-8ef50b4a] {\n  -webkit-animation: bounce-data-v-8ef50b4a 0.5s infinite alternate linear;\n          animation: bounce-data-v-8ef50b4a 0.5s infinite alternate linear;\n  font-size: 2.5em;\n}\n@-webkit-keyframes bounce-data-v-8ef50b4a {\nfrom {\n    transform: translateY(-7px);\n}\nto {\n    transform: translateY(7px);\n}\n}\n@keyframes bounce-data-v-8ef50b4a {\nfrom {\n    transform: translateY(-7px);\n}\nto {\n    transform: translateY(7px);\n}\n}", ""]);
 
 // exports
 
@@ -40676,53 +40664,30 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "footer" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "copyright" }, [
-            _c("h4", [_vm._v("Polly")]),
-            _vm._v("\n            © All rights reserved Polly 2020 "),
-            _c("br"),
-            _vm._v("\n            United States\n          ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("ul", { staticClass: "socials" }, [
-            _c("li", [
-              _c("a", { staticClass: "fab" }, [
-                _c("span", { staticClass: "fab fa-facebook-square" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { staticClass: "fab" }, [
-                _c("span", { staticClass: "fab fa-twitter" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { staticClass: "fab" }, [
-                _c("span", { staticClass: "fab fa-instagram" })
-              ])
+      _c("footer", { staticClass: "footer" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "copyright" }, [
+              _c("h4", [_vm._v(_vm._s(_vm.brandname))]),
+              _vm._v(
+                "\n            © All rights reserved " +
+                  _vm._s(_vm.brandname) +
+                  " 2020 "
+              ),
+              _c("br"),
+              _vm._v("\n            United States\n          ")
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" })
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40745,82 +40710,60 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "results" } }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("h1", [_vm._v("Survey results")]),
-        _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table table-results mb-3" },
-          _vm._l(_vm.choices, function(choice) {
-            return _c("tr", { key: choice.id }, [
-              _c("td", [
-                _c("span", { staticClass: "choice-name" }, [
-                  _vm._v(_vm._s(choice.name))
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: choice.link_url } }, [
-                  _vm._v(_vm._s(choice.link_text))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("div", { staticClass: "progress" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress-bar",
-                      style: {
-                        width: _vm.globalPercent(choice.votes_count) + "%"
-                      },
-                      attrs: { "aria-valuemin": "0", "aria-valuemax": "100" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.globalPercent(choice.votes_count) + "%") +
-                          "\n              "
-                      )
-                    ]
-                  )
-                ])
-              ])
+    _c("h1", [_vm._v("Survey results")]),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "table table-results mb-3" },
+      _vm._l(_vm.choices, function(choice) {
+        return _c("tr", { key: choice.id }, [
+          _c("td", [
+            _c("span", { staticClass: "choice-name" }, [
+              _vm._v(_vm._s(choice.name))
+            ]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: choice.link_url } }, [
+              _vm._v(_vm._s(choice.link_text))
             ])
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card mb-3" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "metter" }, [
-              _c("div", { staticClass: "supheading" }, [_vm._v("votes")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "amount" }, [
-                _vm._v(_vm._s(_vm.survey.votes_count))
-              ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("div", { staticClass: "progress" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "progress-bar",
+                  style: { width: _vm.globalPercent(choice.votes_count) + "%" },
+                  attrs: { "aria-valuemin": "0", "aria-valuemax": "100" }
+                },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.globalPercent(choice.votes_count) + "%") +
+                      "\n          "
+                  )
+                ]
+              )
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 offset-md-3" }, [
-        _vm.banner
-          ? _c("a", { attrs: { href: _vm.banner.url } }, [
-              _c("img", {
-                staticStyle: { "max-width": "100%" },
-                attrs: {
-                  src: _vm.banner.image.replace("public", "/storage"),
-                  alt: ""
-                }
-              })
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm._m(1)
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "card mb-3" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "metter" }, [
+          _c("div", { staticClass: "supheading" }, [_vm._v("votes")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "amount" }, [
+            _vm._v(_vm._s(_vm.survey.votes_count))
+          ])
+        ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
@@ -40834,16 +40777,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "addthis_inline_share_toolbox" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center d-block d-sm-none" }, [
-      _c("i", { staticClass: "material-icons bounce" }, [
-        _vm._v("keyboard_arrow_down")
-      ])
     ])
   }
 ]

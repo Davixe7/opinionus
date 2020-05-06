@@ -105,7 +105,7 @@ class BannerController extends Controller
         'url'       => $request->url    ?: $banner->url,
         'iframe'    => $request->iframe ?: $banner->iframe,
         'duration'  => $request->duration ?: $banner->duration,
-        'is_active' => $request->has('is_active') ? $request->is_active : $banner->is_active
+        'enabled'   => $request->has('enabled') ? $request->enabled : $banner->enabled
       ]);
       
       if( $request->expectsJson() ){

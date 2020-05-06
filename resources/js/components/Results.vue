@@ -1,48 +1,35 @@
 <template>
   <div id="results">
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Survey results</h1>
-        <table class="table table-results mb-3">
-          <tr v-for="choice in choices" :key="choice.id">
-            <td>
-              <span class="choice-name">{{ choice.name }}</span>
-              <a :href="choice.link_url">{{ choice.link_text }}</a>
-            </td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" :style="{width: globalPercent(choice.votes_count) + '%'}" aria-valuemin="0" aria-valuemax="100">
-                  {{ globalPercent(choice.votes_count) + '%' }}
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-        
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="metter">
-              <div class="supheading">votes</div>
-              <div class="amount">{{ survey.votes_count }}</div>
+    <h1>Survey results</h1>
+    <table class="table table-results mb-3">
+      <tr v-for="choice in choices" :key="choice.id">
+        <td>
+          <span class="choice-name">{{ choice.name }}</span>
+          <a :href="choice.link_url">{{ choice.link_text }}</a>
+        </td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" :style="{width: globalPercent(choice.votes_count) + '%'}" aria-valuemin="0" aria-valuemax="100">
+              {{ globalPercent(choice.votes_count) + '%' }}
             </div>
           </div>
-        </div>
-        
-        <div class="share-section">
-          <div class="form-section-title mb-3">Share results</div>
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-          <div class="addthis_inline_share_toolbox"></div>
-        </div>
-      </div>
-      
-      <div class="col-md-3 offset-md-3">
-        <a v-if="banner" :href="banner.url">
-          <img :src="banner.image.replace('public', '/storage')" style="max-width: 100%;" alt="">
-        </a>
-        <div class="text-center d-block d-sm-none">
-          <i class="material-icons bounce">keyboard_arrow_down</i>
+        </td>
+      </tr>
+    </table>
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="metter">
+          <div class="supheading">votes</div>
+          <div class="amount">{{ survey.votes_count }}</div>
         </div>
       </div>
+    </div>
+    
+    <div class="share-section">
+      <div class="form-section-title mb-3">Share results</div>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <div class="addthis_inline_share_toolbox"></div>
     </div>
   </div>
 </template>
@@ -50,7 +37,7 @@
 <script>
 
 export default {
-  props: ['choices', 'survey', 'banner'],
+  props: ['choices', 'survey'],
   name: 'results',
   methods:{
     globalPercent(value){
@@ -114,14 +101,5 @@ table.table-results td {
 @keyframes bounce {
   from {transform: translateY(-7px);}
   to {transform: translateY(7px);}
-}
-
-@media(min-width: 576px){
-  #results > .row {
-    flex-direction: row;
-    .col-md-3 {
-      height: auto;
-    }
-  }
 }
 </style>

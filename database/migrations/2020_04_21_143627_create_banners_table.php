@@ -22,6 +22,7 @@ class CreateBannersTable extends Migration
           $table->text('iframe')->nullable();
           $table->unsignedInteger('duration')->default(60);
           $table->boolean('is_active')->default(0);
+          $table->boolean('enabled')->default(0);
         });
     }
 
