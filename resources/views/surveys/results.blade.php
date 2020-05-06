@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('head')
-<meta property="og:image" content="{{ str_replace('public', '/storage', $survey->choices->first()->image) }}" />
+<meta property="og:image" content="{{ url(str_replace('public', '/storage', $survey->choices->first()->image)) }}" />
+<meta property="og:title" content="{{ $survey->name }}">
 @endsection
 
 @section('content')
