@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-          $banners = Banner::where('is_active', 1)->get();
+          $banners = Banner::where('enabled', 1)->get();
           if($banners && ($count = $banners->count())){
             for ($i=0; $i < $count; $i++) {
               if( $banners[$i]->is_active ){

@@ -1,5 +1,6 @@
 <template>
   <div id="vote">
+    <sharer :message="survey.name" :link="link" :vertical="true"/>
     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <thanks v-if="voted" :slug="survey.slug">
         <choice-content :choice="selection" :selected="true"/>
@@ -36,6 +37,7 @@ export default {
   props: ['survey'],
   name: 'Vote',
   data(){return{
+    link: window.location.href,
     selection: {},
     staging: false,
     voted: false,

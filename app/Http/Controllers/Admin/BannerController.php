@@ -103,8 +103,8 @@ class BannerController extends Controller
         'name'      => $request->name   ?: $banner->name,
         'image'     => $updated_file    ?: $banner->image,
         'url'       => $request->url    ?: $banner->url,
-        'iframe'    => $request->iframe ?: $banner->iframe,
         'duration'  => $request->duration ?: $banner->duration,
+        'iframe'    => $request->has('iframe')  ? $request->iframe : $banner->iframe,
         'enabled'   => $request->has('enabled') ? $request->enabled : $banner->enabled
       ]);
       

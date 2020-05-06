@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $siteconfig = Storage::get('/public/frontend-config.json');
+      $siteconfig = Storage::get('/frontend-config.json');
       return view('home', ['siteconfig'=>$siteconfig]);
     }
 }

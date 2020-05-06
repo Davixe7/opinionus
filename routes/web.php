@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', function(){
-  $siteconfig = Storage::get('/public/frontend-config.json');
+  $siteconfig = Storage::get('/frontend-config.json');
   return view('landing', [
     'surveys' => App\Survey::with('choices')->get(),
     'siteconfig' => $siteconfig

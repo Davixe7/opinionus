@@ -24,6 +24,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,600,700&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  @yield('head')
 </head>
 <body>
   <div id="app">
@@ -34,7 +35,7 @@
         @if( Storage::exists('/public/brand-logo.png') )
           <img src="/storage/brand-logo.png" alt="site logo">
         @endif
-        @if( $config = json_decode( Storage::get('public/frontend-config.json' ) ) )
+        @if( $config = json_decode( Storage::get('/frontend-config.json' ) ) )
           <div class="d-inline-block" style="vertical-align: middle; padding-left: 10px;">
             <span>{{ $config->brandname }}</span>
             <span class="navbar-catchphrase">{{ $config->catchphrase }}</span>

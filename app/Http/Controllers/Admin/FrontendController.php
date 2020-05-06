@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Storage;
 class FrontendController extends Controller
 {
   public function index(){
-    $siteconfig = Storage::get('/public/frontend-config.json');
+    $siteconfig = Storage::get('/frontend-config.json');
     return response()->json(['data'=>$siteconfig]);
   }
   
   public function store(Request $request){
     $siteconfig = json_encode( $request->siteconfig );
-    Storage::put('/public/frontend-config.json', $siteconfig);
+    Storage::put('/frontend-config.json', $siteconfig);
     return response()->json(['data'=>$siteconfig]);
   }
 }

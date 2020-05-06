@@ -17,20 +17,20 @@
       </tr>
     </table>
     
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="metter">
-          <div class="supheading">votes</div>
-          <div class="amount">{{ survey.votes_count }}</div>
-        </div>
+    <div class="results-summary">
+      <div class="metter">
+        <div class="supheading">opts</div>
+        <div class="amount">{{ choices.length }}</div>
+      </div>
+      <div class="metter">
+        <div class="supheading">votes</div>
+        <div class="amount">{{ survey.votes_count }}</div>
+      </div>
+      <div class="ml-auto">
+        <sharer :message="survey.name" :link="url" class="ml-auto"/>
       </div>
     </div>
     
-    <div class="share-section">
-      <div class="form-section-title mb-3">Share results</div>
-      <!-- Go to www.addthis.com/dashboard to customize your tools -->
-      <div class="addthis_inline_share_toolbox"></div>
-    </div>
   </div>
 </template>
 
@@ -39,6 +39,9 @@
 export default {
   props: ['choices', 'survey'],
   name: 'results',
+  data(){
+    return { url: window.location.href }
+  },
   methods:{
     globalPercent(value){
       if( this.survey.votes_count ){
@@ -67,7 +70,7 @@ table.table-results td {
   display: block;
   font-weight: 600;
   color: gray;
-  font-size: 1em;
+  font-size: 1.35em;
 }
 .progress {
   min-width: 150px;
@@ -94,12 +97,14 @@ table.table-results td {
   }
 }
 
-.bounce {
-  animation: bounce .5s infinite alternate linear;
-  font-size: 2.5em;
-}
-@keyframes bounce {
-  from {transform: translateY(-7px);}
-  to {transform: translateY(7px);}
+.results-summary {
+  display: flex;
+  padding: 15px;
+  margin: 0 0 10px 0;
+  border-radius: 3px;
+  background: #fff;
+  .metter {
+    margin-right: 10px;
+  }
 }
 </style>
