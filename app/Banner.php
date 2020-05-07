@@ -9,4 +9,8 @@ class Banner extends Model
   protected $fillable = ['name', 'image', 'url', 'iframe', 'is_active', 'enabled', 'duration'];
   protected $hidden = ['created_at'];
   
+  protected $casts = [
+      'enabled' => 'Boolean',
+      'is_active' => 'Boolean'
+  ];
 }
