@@ -1,6 +1,6 @@
 // Variables
 @import 'variables';
-// @import 'material-icons';
+@import 'material-icons';
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
@@ -140,4 +140,7 @@ h1 {
   border-radius: 5px;
   padding: 15px;
   background: linear-gradient(blue, red);
+}
+.slick-list.draggable {
+  padding: 5px 0 !important;
 }

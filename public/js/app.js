@@ -2316,6 +2316,7 @@ var _this = undefined;
     storeSurvey: function storeSurvey() {
       var _this2 = this;
 
+      if (!this.$refs.surveyNameForm.reportValidity()) return;
       this.saving = true;
       var data = {
         name: this.name
@@ -2490,6 +2491,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['surveys', 'siteconfig'],
   data: function data() {
@@ -2511,6 +2513,12 @@ __webpack_require__.r(__webpack_exports__);
         slidesToScroll: 1,
         arrows: false,
         responsive: [{
+          breakpoint: 1028,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        }, {
           breakpoint: 867,
           settings: {
             slidesToShow: 2,
@@ -3128,9 +3136,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -7854,7 +7859,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#landing[data-v-15bf0008] {\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: space-between;\n  min-height: 100vh;\n  color: #1e1e1e;\n}\n#landing h1[data-v-15bf0008] {\n  font-size: 5.14em;\n  position: relative;\n}\n#landing h1[data-v-15bf0008]:before {\n  display: block;\n  font-size: 14px;\n  font-weight: 400;\n  content: \"Welcome to\";\n  width: 100%;\n}\n#landing p[data-v-15bf0008] {\n  font-weight: 400;\n}\n#landing .footer[data-v-15bf0008] {\n  padding: 50px 0;\n  height: 25vh;\n}\n#landing .card[data-v-15bf0008] {\n  color: #434343;\n  border-radius: 5px;\n  background: none;\n  overflow: hidden;\n}\n#landing .card-body[data-v-15bf0008] {\n  padding: 20px 20px 0;\n}\n@media (min-width: 991px) {\n.header[data-v-15bf0008] {\n    height: 25vh;\n}\n}\n.content[data-v-15bf0008] {\n  padding: 50px 0;\n}\n.auth-bar[data-v-15bf0008] {\n  text-align: center;\n  height: 130px;\n  padding: 50px;\n  margin-bottom: 20px;\n}\n.btn-auth[data-v-15bf0008] {\n  color: #fff;\n  font-weight: 500;\n  min-width: 150px;\n  padding: 5px 25px;\n  margin: 0 10px 10px;\n  border-radius: 5px;\n  background: #1e1e1e;\n}\n.copyright[data-v-15bf0008] {\n  font-weight: 400;\n  margin-bottom: 20px;\n}\n.copyright h4[data-v-15bf0008] {\n  margin-bottom: 10px;\n}\n.socials[data-v-15bf0008] {\n  display: flex;\n  justify-content: flex-end;\n  list-style-type: none;\n  margin-bottom: 20px;\n}\n.socials li[data-v-15bf0008] {\n  margin-right: 10px;\n}\n.socials li .fab[data-v-15bf0008] {\n  box-shadow: none;\n}\n.socials li span.fab[data-v-15bf0008] {\n  font-size: 1.75em;\n  color: #1e1e1e;\n}", ""]);
+exports.push([module.i, "#landing[data-v-15bf0008] {\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: space-between;\n  min-height: 100vh;\n  color: #1e1e1e;\n}\n#landing h1[data-v-15bf0008] {\n  font-size: 5.14em;\n  position: relative;\n}\n#landing h1[data-v-15bf0008]:before {\n  display: block;\n  font-size: 14px;\n  font-weight: 400;\n  content: \"Welcome to\";\n  width: 100%;\n}\n#landing p[data-v-15bf0008] {\n  font-weight: 400;\n}\n#landing .footer[data-v-15bf0008] {\n  padding: 50px 0;\n  height: 25vh;\n}\n#landing .card[data-v-15bf0008] {\n  color: #434343;\n  border-radius: 5px;\n  background: none;\n  overflow: hidden;\n}\n#landing .card-body[data-v-15bf0008] {\n  padding: 20px 20px 0;\n}\n.slick-list.draggable[data-v-15bf0008] {\n  padding: 5px 0 !important;\n}\n@media (min-width: 991px) {\n.header[data-v-15bf0008] {\n    height: 25vh;\n}\n}\n.content[data-v-15bf0008] {\n  padding: 50px 0;\n}\n.auth-bar[data-v-15bf0008] {\n  text-align: center;\n  height: 130px;\n  padding: 50px;\n  margin-bottom: 20px;\n}\n.btn-auth[data-v-15bf0008] {\n  color: #fff;\n  font-weight: 500;\n  min-width: 150px;\n  padding: 5px 25px;\n  margin: 0 10px 10px;\n  border-radius: 5px;\n  background: #1e1e1e;\n}\n.copyright[data-v-15bf0008] {\n  font-weight: 400;\n  margin-bottom: 20px;\n}\n.copyright h4[data-v-15bf0008] {\n  margin-bottom: 10px;\n}\n.socials[data-v-15bf0008] {\n  display: flex;\n  justify-content: flex-end;\n  list-style-type: none;\n  margin-bottom: 20px;\n}\n.socials li[data-v-15bf0008] {\n  margin-right: 10px;\n}\n.socials li .fab[data-v-15bf0008] {\n  box-shadow: none;\n}\n.socials li span.fab[data-v-15bf0008] {\n  font-size: 1.75em;\n  color: #1e1e1e;\n}", ""]);
 
 // exports
 
@@ -40303,7 +40308,7 @@ var render = function() {
   return _c("div", { attrs: { id: "surveys-form" } }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-5" }, [
-        _c("form", [
+        _c("form", { ref: "surveyNameForm" }, [
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "name" } }, [_vm._v("Survey name")]),
             _vm._v(" "),
@@ -40321,9 +40326,9 @@ var render = function() {
                 class: { "is-invalid": _vm.errors.name },
                 attrs: {
                   type: "text",
-                  required: "",
                   minlength: "3",
-                  disabled: _vm.saving
+                  disabled: _vm.saving,
+                  required: ""
                 },
                 domProps: { value: _vm.name },
                 on: {
@@ -40742,10 +40747,19 @@ var render = function() {
           _c("div", { staticClass: "col-md-5 text-left" }, [
             _c("h1", [_vm._v(_vm._s(_vm.headline))]),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.description))])
+            _c("p", [_vm._v(_vm._s(_vm.description))]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary btn-lg",
+                attrs: { href: "/surveys" }
+              },
+              [_vm._v("See all Surveys")]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-xl-7" }, [
+          _c("div", { staticClass: "col-md-7" }, [
             _c(
               "div",
               { staticClass: "polls-container" },
@@ -41865,66 +41879,64 @@ var render = function() {
           _c("div", { staticClass: "col-md-6" }, [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-body" }, [
-                _c("form", { attrs: { action: "" } }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "landing-headline" } }, [
-                      _vm._v("Headline")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "landing-headline" } }, [
+                    _vm._v("Headline")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.headline,
+                        expression: "headline"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", required: "" },
+                    domProps: { value: _vm.headline },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.headline = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "landing-headline" } }, [
+                    _vm._v("Description")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "textarea",
+                    {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.headline,
-                          expression: "headline"
+                          value: _vm.description,
+                          expression: "description"
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", required: "" },
-                      domProps: { value: _vm.headline },
+                      attrs: { rows: "3", required: "" },
+                      domProps: { value: _vm.description },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.headline = $event.target.value
+                          _vm.description = $event.target.value
                         }
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "landing-headline" } }, [
-                      _vm._v("Description")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "textarea",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.description,
-                            expression: "description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { rows: "3", required: "" },
-                        domProps: { value: _vm.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.description = $event.target.value
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.description))]
-                    )
-                  ])
+                    },
+                    [_vm._v(_vm._s(_vm.description))]
+                  )
                 ])
               ])
             ])

@@ -65,6 +65,10 @@
       <div class="card mb-3">
         @include('admin.banners.table')
       </div>
+      
+      <div class="text-right">
+        <a href="/admin/banners" class="btn btn-primary">Create new banner</a>
+      </div>
     </div>
     
   </div>

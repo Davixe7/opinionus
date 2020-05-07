@@ -31,17 +31,14 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <form action="">
-                <div class="form-group">
-                  <label for="landing-headline">Headline</label>
-                  <input type="text" class="form-control" v-model="headline" required>
-                </div>
-                <div class="form-group">
-                  <label for="landing-headline">Description</label>
-                  <textarea rows="3" class="form-control" v-model="description" required>{{ description }}</textarea>
-                </div>
-                
-              </form>
+              <div class="form-group">
+                <label for="landing-headline">Headline</label>
+                <input type="text" class="form-control" v-model="headline" required>
+              </div>
+              <div class="form-group">
+                <label for="landing-headline">Description</label>
+                <textarea rows="3" class="form-control" v-model="description" required>{{ description }}</textarea>
+              </div>
             </div>
           </div>
         </div>

@@ -51,7 +51,8 @@ class BannerController extends Controller
         'image'     => $this->upload( $request, 'image'),
         'url'       => $request->url,
         'iframe'    => $request->iframe,
-        'duration'  => $request->duration
+        'duration'  => $request->duration,
+        'is_active' => Banner::count() ? 0 : 1
       ]);
       
       if( $request->expectsJson() ){

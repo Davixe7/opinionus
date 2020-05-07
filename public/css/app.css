@@ -1,3 +1,35 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/MaterialIcons-Regular.eot?e79bfd88537def476913f3ed52f4f4b3);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(/fonts/MaterialIcons-Regular.woff2?d7e60f9d1433a45ed71817f6d23abeca) format("woff2"), url(/fonts/MaterialIcons-Regular.woff?012cf6a10129e2275d79d6adac7f3b02) format("woff"), url(/fonts/MaterialIcons-Regular.ttf?a37b0c01c0baf1888ca812cc0508f6e2) format("truetype");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
 .preloader {
   -webkit-animation: rotate 0.7s infinite linear;
           animation: rotate 0.7s infinite linear;
@@ -170,5 +202,9 @@ h1 {
   border-radius: 5px;
   padding: 15px;
   background: linear-gradient(blue, red);
+}
+
+.slick-list.draggable {
+  padding: 5px 0 !important;
 }
 

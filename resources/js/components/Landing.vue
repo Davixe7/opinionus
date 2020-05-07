@@ -7,8 +7,9 @@
           <div class="col-md-5 text-left">
             <h1>{{ headline }}</h1>
             <p>{{ description }}</p>
+            <a href="/surveys" class="btn btn-primary btn-lg">See all Surveys</a>
           </div>
-          <div class="col-xl-7">
+          <div class="col-md-7">
             <div class="polls-container">
               <div v-for="survey in surveys" class="poll-content px-2">
                 <div class="card card-body">
@@ -77,7 +78,15 @@ export default {
         slidesToShow: 4,
         slidesToScroll: 1,
         arrows: false,
-        responsive:[{
+        responsive:[
+        {
+          breakpoint: 1028,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        },
+        {
           breakpoint: 867,
           settings: {
             slidesToShow: 2,
@@ -106,7 +115,6 @@ export default {
     min-height: 100vh;
     color: #1e1e1e;
     // background: linear-gradient(45deg, #ffae00, #f0c103);
-    
     h1 {
       font-size: 5.14em;
       position: relative;
@@ -135,6 +143,10 @@ export default {
     .card-body {
       padding: 20px 20px 0;
     }
+  }
+  
+  .slick-list.draggable {
+    padding: 5px 0 !important;
   }
   
   @media(min-width: 991px){

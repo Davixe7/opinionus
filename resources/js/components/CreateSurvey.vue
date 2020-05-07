@@ -2,11 +2,11 @@
   <div id="surveys-form">
     <div class="row">
       <div class="col-md-5">
-        <form>
+        <form ref="surveyNameForm">
           <div class="form-group">
             <label for="name">Survey name</label>
             <div class="input-group">
-              <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" required minlength="3" :disabled="saving">
+              <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" minlength="3" :disabled="saving" required>
               <span class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</span>
               <div class="input-group-append">
                 <button @click="updateSurvey" v-if="surveyId" type="button" class="btn btn-danger btn-sender" :disabled="saving">
@@ -129,6 +129,7 @@ export default {
       this.newChoice = {name:'', link_text: '', link_url: ''}
     },
     storeSurvey(){
+      if( !this.$refs.surveyNameForm.reportValidity() ) return
       this.saving = true
       let data = {name: this.name}
       axios.post('/admin/surveys', data).then(response => {
