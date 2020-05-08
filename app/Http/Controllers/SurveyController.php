@@ -32,8 +32,22 @@ class SurveyController extends Controller
     
     public function results(Request $request)
     {
-      $survey = Survey::where('slug', $request->slug)->firstOrFail();
-      return view('surveys.results', ['survey'=>$survey->load('choices'), 'banner'=>Banner::where('is_active', 1)->first()]);
+      $survey = Survey::where('slug', $request->slug)->with('choices')->firstOrFail();
+      $adminBanner = Banner::where('user_id', null)->where('is_active', 1)->first();
+      $userBanner  = Banner::where('user_id', $survey->user_id)->where('is_active', 1)->first();
+      if( $userBanner && $userBanner->isExpired() ){
+        $userBanner->update(['is_active'=>0]);
+        if( $nextBanner = Banner::nextEnabled( $userBanner )->first() ){
+          $nextBanner->update(['is_active'=>1]);
+          $userBanner = $nextBanner;
+        }
+        else {
+          $userBanner = Banner::where('user_id', $survey->user_id)->where('enabled', 1)->first();
+          $userBanner->update(['is_active'=>1]);
+        }
+      }
+      
+      return view('surveys.results', ['survey'=>$survey, 'admin_banner'=>$adminBanner, 'user_banner'=>$userBanner]);
     }
 
     /**

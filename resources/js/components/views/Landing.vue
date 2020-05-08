@@ -1,7 +1,16 @@
 <template>
   <div id="landing">
     <div class="container-fluid">
-      <div class="header"></div>
+      <div class="header">
+        <ul class="auth-nav">
+          <li>
+            <a href="/register">Signup now!</a>
+          </li>
+          <li>
+            <a href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
       <div class="content">
         <div class="row">
           <div class="col-md-5 text-left">
@@ -144,7 +153,23 @@ export default {
       padding: 20px 20px 0;
     }
   }
-  
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  .auth-nav {
+    display: inline-flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 0 auto;
+    li {
+      margin-left: 20px;
+    }
+    li a {
+      font-size: 1.25em;
+      font-weight: 500;
+    }
+  }
   .slick-list.draggable {
     padding: 5px 0 !important;
   }

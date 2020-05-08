@@ -41,14 +41,14 @@
               </div>
               
               <div class="actions">
-                <form id="form-{{$survey->id}}" action="{{route('admin.surveys.destroy', ['survey'=>$survey->id])}}" method="POST">
+                <form id="form-{{$survey->id}}" action="{{route('dashboard.surveys.destroy', ['survey'=>$survey->id])}}" method="POST">
                   @csrf
                   @method('DELETE')
                 </form>
                 <button 
                     onclick=" confirm('Are you sure you want to delete the survey?') ? document.querySelector('#form-{{$survey->id}}').submit() : '' " 
                     class="btn btn-link">Delete</button>
-                <a href="/admin/surveys/{{ $survey->id }}/edit" class="btn btn-link">Edit</a>
+                <a href="/dashboard/surveys/{{ $survey->id }}/edit" class="btn btn-link">Edit</a>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@
   </div>
   
   
-  <a href="{{ route('admin.surveys.create') }}" class="btn btn-danger fab-fixed fab">
+  <a href="{{ route('dashboard.surveys.create') }}" class="btn btn-danger fab-fixed fab">
     <i class="material-icons">add</i>
   </a>
 @endsection

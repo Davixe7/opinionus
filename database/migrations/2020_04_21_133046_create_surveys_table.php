@@ -18,6 +18,8 @@ class CreateSurveysTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

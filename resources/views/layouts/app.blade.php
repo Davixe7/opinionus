@@ -54,13 +54,40 @@
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          
-          @if( Auth::check())
+          @if( Auth::guard('web')->check() )
           <li class="nav-item">
-            <a href="{{ route('home') }}" class="nav-link">Dashboard</a>
+            <a href="{{ route('dashboard.index') }}" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
             <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('dashboard.surveys.index') }}" class="nav-link">Manage surveys</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('dashboard.banners.index') }}" class="nav-link">Manage Banners</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" v-pre>
+              Welcome, {{Auth::user()->name}} <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+          </li>
+          @elseif( Auth::guard('admin')->check() )
+          <li class="nav-item">
+            <a href="/home" class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.users.index') }}" class="nav-link">Manage Users</a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.surveys.index') }}" class="nav-link">Manage surveys</a>
@@ -70,7 +97,7 @@
           </li>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" v-pre>
-              Welcome, Admin <span class="caret"></span>
+              Welcome, {{Auth::user()->name}} <span class="caret"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#"

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Banner;
 use Illuminate\Http\Request;
@@ -18,13 +18,13 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-      $banners = Banner::byUser( $request->user_id )->get();
+      $banners = auth()->user()->banners;
       if( request()->expectsJson() ){
         return BannerResource::collection( $banners );
       }
-      return view('admin.banners.index', ['banners'=>$banners]);
+      return view('dashboard.banners.index', ['banners'=>$banners]);
     }
 
     /**
@@ -34,8 +34,8 @@ class BannerController extends Controller
      */
     public function create()
     {
-      $banners = Banner::all();
-      return view('admin.banners.create', ['banners'=>$banners]);
+      $banners = auth()->user()->banners;
+      return view('dashboard.banners.create', ['banners'=>$banners]);
     }
 
     /**
@@ -50,9 +50,10 @@ class BannerController extends Controller
         'name'      => $request->name,
         'image'     => $this->upload( $request, 'image'),
         'url'       => $request->url,
-        'iframe'    => $request->iframe,
         'duration'  => $request->duration,
-        'is_active' => Banner::count() ? 0 : 1
+        'is_active' => auth()->user()->banners()->count() ? 0 : 1,
+        
+        'user_id'  => auth()->id()
       ]);
       
       if( $request->expectsJson() ){
@@ -60,7 +61,7 @@ class BannerController extends Controller
       }
       
       $request->session()->flash('message', 'Banner Ad Created Successfully!');
-      return redirect()->route('admin.banners.index');
+      return redirect()->route('dashboard.banners.index');
     }
 
     /**
@@ -74,7 +75,7 @@ class BannerController extends Controller
       if( request()->expectsJson() ){
         return new BannerResource( $banner );
       }
-      return view('admin.banners.create', $banner);
+      return view('dashboard.banners.create', $banner);
     }
 
     /**
@@ -85,8 +86,8 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-      $banners = Banner::all();
-      return view('admin.banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
+      $banners = auth()->user()->banners;
+      return view('dashboard.banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
     }
 
     /**
@@ -105,7 +106,6 @@ class BannerController extends Controller
         'image'     => $updated_file    ?: $banner->image,
         'url'       => $request->url    ?: $banner->url,
         'duration'  => $request->duration ?: $banner->duration,
-        'iframe'    => $request->has('iframe')  ? $request->iframe : $banner->iframe,
         'enabled'   => $request->has('enabled') ? $request->enabled : $banner->enabled
       ]);
       
@@ -113,7 +113,7 @@ class BannerController extends Controller
         return response()->json( ['data'=>$banner] );
       }
       $request->session()->flash('message', 'Banner Ad Updated Successfully!');
-      return redirect()->route('admin.banners.index');
+      return redirect()->route('dashboard.banners.index');
     }
 
     /**
@@ -128,8 +128,8 @@ class BannerController extends Controller
       if( $request->expectsJson() ){
         return response()->json(['data'=>"Banner {$banner->id} deleted successfully"]);
       }
-      $banners = Banner::all();
+      $banners = auth()->user()->banners;
       $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
-      return redirect()->route('admin.banners.index');
+      return redirect()->route('dashboard.banners.index');
     }
 }

@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth:web,admin');
     }
 
     /**
@@ -23,7 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $siteconfig = Storage::get('/frontend-config.json');
-      return view('home', ['siteconfig'=>$siteconfig]);
+      if( auth('admin')->check() ){
+        $siteconfig = Storage::get('/frontend-config.json');
+        return view('home', ['siteconfig'=>$siteconfig]);
+      }
+      abort(403, 'Youre not a root user or system administrator');
+    }
+    
+    public function dashboard()
+    {
+      return view('dashboard');
     }
 }

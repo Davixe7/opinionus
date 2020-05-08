@@ -16,13 +16,13 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Responses
      */
-    public function index()
+    public function index(Request $request)
     {
-      $surveys = Survey::with('choices')->get();
+      $surveys = Survey::byUser( $request->user_id )->get();
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }
-      return view('admin.surveys.index', ['surveys'=>$surveys]);
+      return view('dashboard.surveys.index', ['surveys'=>$surveys]);
     }
     
     /**
@@ -44,8 +44,9 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
       $survey = Survey::create([
-        'name' => $request->name,
-        'slug' => Str::slug($request->name)
+        'name'    => $request->name,
+        'slug'    => Str::slug($request->name),
+        'user_id' => $request->user_id
       ]);
       return new SurveyResource( $survey );
     }

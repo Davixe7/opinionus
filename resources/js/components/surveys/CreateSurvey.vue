@@ -132,7 +132,7 @@ export default {
       if( !this.$refs.surveyNameForm.reportValidity() ) return
       this.saving = true
       let data = {name: this.name}
-      axios.post('/admin/surveys', data).then(response => {
+      axios.post('/dashboard/surveys', data).then(response => {
         this.surveyId = response.data.data.id
         this.slug = response.data.data.slug
         this.name    = response.data.data.name
@@ -143,7 +143,7 @@ export default {
     updateSurvey(){
       this.saving = true
       let data = {name: this.name, '_method':'PUT'}
-      axios.post(`/admin/surveys/${this.surveyId}`, data).then(response => {
+      axios.post(`/dashboard/surveys/${this.surveyId}`, data).then(response => {
         this.name  = response.data.data.name
         this.saving = false
         this.$toasted.show('Survey updated successfully')
@@ -151,29 +151,11 @@ export default {
     },
     deleteSurvey(){
       if( confirm('Are you sure you want to delete the survey?') ){
-        axios.post(`/admin/surveys/${this.surveyId}`, {_method:'DELETE'}).then(response=>{
+        axios.post(`/dashboard/surveys/${this.surveyId}`, {_method:'DELETE'}).then(response=>{
           this.surveyId = null
           this.$toasted.show('Survey deleted successfully')
         })
       }
-    },
-    storeChoicesList(survey){
-      this.saving = true
-      let data = new FormData()
-      let toStore = []
-      data.append('surveyId', survey)
-      this.choices.forEach((item, i) => {
-        data.append('choices[]', JSON.stringify(item))
-        data.append(`images_${i}`, item.newImage)
-        toStore.push(item.id)
-      })
-      
-      this.choices = this.choices.filter(c=>{ toStore.indexOf( c.id ) == -1 })
-      
-      axios.post('/choices/storeList', data).then(response=>{
-        this.saving = false
-        this.choices = response.data.data
-      })
     }
   },
   mounted(){

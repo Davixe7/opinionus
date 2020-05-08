@@ -21,22 +21,31 @@ Route::get('/', function(){
   ]);
 });
 
-Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
-  Route::post('choices/storeList', 'Admin\ChoiceController@storeList');
-  Route::get('choices/deleteAll', 'Admin\ChoiceController@deleteAll')->name('choices.deleteAll');
-  Route::get('surveys/deleteAll', 'Admin\SurveyController@deleteAll')->name('surveys.deleteAll');
+Route::get('/home', 'HomeController@index');
+
+// USERS
+Route::name('dashboard.')->prefix('dashboard')->middleware('auth:web,admin')->group(function(){
+  Route::get('/', 'HomeController@dashboard')->name('index');
+  Route::resource('surveys', 'Dashboard\SurveyController');
+  Route::resource('choices', 'Dashboard\ChoiceController');
+  Route::resource('banners', 'Dashboard\BannerController');
+});
+
+// ROOT USER
+Route::name('admin.')->prefix('admin')->middleware('auth:admin')->group(function(){
   Route::resource('surveys', 'Admin\SurveyController');
-  Route::resource('choices', 'Admin\ChoiceController');
   Route::resource('banners', 'Admin\BannerController');
+  Route::resource('users', 'Admin\UserController');
   Route::post('updateLogo', 'Admin\DashboardController@updateLogo')->name('updateLogo');
   Route::post('siteconfig', 'Admin\FrontendController@store');
 });
 
+// PUBLIC ROUTES
 Route::get('/surveys', 'SurveyController@index')->name('surveys.index');
 Route::get('/surveys/{slug}/results', 'SurveyController@results')->name('surveys.results');
 Route::get('/surveys/{slug}/vote', 'SurveyController@vote')->name('surveys.vote');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::post('/votes', 'VoteController@store')->name('votes.store');
+
+Route::get('/admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.loginform');
+Route::post('/admin/login', 'Admin\Auth\LoginController@login')->name('admin.login');
+Auth::routes();

@@ -17,21 +17,31 @@
       :choices="{{ json_encode( $survey->choices ) }}"
       :survey="{{ json_encode( $survey ) }}">
     </results>
-    @if( $banner && $banner->iframe )
-      <div class="d-block d-sm-none">{!! $banner->iframe !!}</div>
+    @if( $user_banner && $user_banner->image )
+    <a class="d-block d-sm-none" href="{{ $user_banner->url }}">
+      <img src="{{ str_replace('public', '/storage', $user_banner->image) }}" style="max-width: 100%;">
+    </a>
+    @endif
+    @if( $admin_banner && $admin_banner->iframe )
+      <div class="d-block d-sm-none">{!! $admin_banner->iframe !!}</div>
     @endif
   </div>
   <div class="col-md-4 offset-md-2">
-    @if( $banner && $banner->image )
-      <a href="{{ $banner->url }}">
-        <img src="{{ str_replace('public', '/storage', $banner->image) }}" style="max-width: 100%;">
+    @if( $admin_banner && $admin_banner->image )
+      <a href="{{ $admin_banner->url }}">
+        <img src="{{ str_replace('public', '/storage', $admin_banner->image) }}" style="max-width: 100%;">
       </a>
       <div class="text-center d-block d-sm-none">
         <i class="material-icons bounce">keyboard_arrow_down</i>
       </div>
     @endif
-    @if( $banner && $banner->iframe )
-      <div class="d-none d-sm-block">{!! $banner->iframe !!}</div>
+    @if( $user_banner && $user_banner->image )
+    <a class="d-none d-sm-block" href="{{ $user_banner->url }}">
+      <img src="{{ str_replace('public', '/storage', $user_banner->image) }}" style="max-width: 100%;">
+    </a>
+    @endif
+    @if( $admin_banner && $admin_banner->iframe )
+      <div class="d-none d-sm-block">{!! $admin_banner->iframe !!}</div>
     @endif
   </div>
 </div>

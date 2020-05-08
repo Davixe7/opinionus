@@ -19,7 +19,7 @@ export default {
       this.saving = true
       console.log( Number( this.status ) );
       let data = {enabled: Number(this.status), _method:'PUT'}
-      axios.post(`/admin/banners/${this.banner.id}`, data).then(response=>{
+      axios.post(`/dashboard/banners/${this.banner.id}`, data).then(response=>{
         console.log(response.data.data);
         this.$toasted.show('Updated successfully')
         this.saving = false

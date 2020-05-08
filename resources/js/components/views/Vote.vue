@@ -7,7 +7,7 @@
       </thanks>
       
       <div v-else>
-        <confirm-modal :choice="selection" :survey="survey" :staging="staging" @undoSelection="staging=false" :voting="voting" @confirmed="vote"/>
+        <ConfirmModal :choice="selection" :survey="survey" :staging="staging" @undoSelection="staging=false" :voting="voting" @confirmed="vote"/>
         <div class="row choices-wrapper">
           <div v-for="choice in choices" :key="choice.id" class="col-sm-6 col-md-4 col-lg-4 choice-content">
             <choice-content :choice="choice" :selected="selection == choice" @selected="selectChoice"/>
