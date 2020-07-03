@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <h1>Update Banner Ad</h1>
+  <h1>Create Banner Ad</h1>
   
   @if( session()->has('message') )
     <div class="alert alert-success align-items-center d-sm-none d-flex">
@@ -13,37 +13,32 @@
     <div class="col-md-4">
       <div class="card mb-3">
         <div class="card-body">
-          @if( !empty($banner->image) )
-            <div style="overflow: hidden;">
-              <img src="{{ Storage::url($banner->image) }}" alt="" style="max-width: 100%;">
-            </div>
-          @endif
-          <form action="{{ route('admin.banners.update', ['banner'=>$banner->id]) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('admin.admin-banners.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name" value="{{ $banner->name }}">
+              <input type="text" class="form-control" name="name" required>
             </div>
             <div class="form-group">
               <label for="image">Image</label>
-              <input type="file" class="form-control" name="image">
+              <input type="file" class="form-control" name="image" required>
             </div>
             <div class="form-group">
               <label for="url">URL</label>
-              <input type="url" class="form-control" name="url" required value="{{ $banner->url }}">
+              <input type="url" class="form-control" name="url" required>
             </div>
-            <label>Duration</label>
-            <div class="form-row">
-              <div class="form-group col-7">
-                <time-picker :selector="'#timepicker2'" :duration="{{ $banner->duration }}"/>
-              </div>
-              <div class="col d-flex align-items-center justify-content-end">
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
+            <div class="form-group">
+              <label for="iframe">iFrame</label>
+              <textarea name="iframe" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group form-row">
+              <label class="col" for="duration">Duration</label>
+              <time-picker class="col" :selector="'#timepicker2'"/>
             </div>
             
             <input type="hidden" name="duration" id="timepicker2" required>
+            
+            <button type="submit" class="btn btn-primary">Save Banner</button>
           </form>
         </div>
       </div>
@@ -61,11 +56,6 @@
       <div class="card mb-3">
         @include('admin.banners.table')
       </div>
-      
-      <div class="text-right">
-        <a href="/admin/banners" class="btn btn-primary">Create new banner</a>
-      </div>
     </div>
-    
   </div>
 @endsection

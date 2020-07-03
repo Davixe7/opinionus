@@ -2874,6 +2874,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
   data: function data() {
@@ -8028,7 +8029,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".table-row, .table-head {\n  display: table-row;\n}\n.table-row > div, .table-head > div {\n  display: table-cell;\n}", ""]);
+exports.push([module.i, ".table-row, .table-head {\n  display: table-row;\n}\n.table-row > div, .table-head > div {\n  display: table-cell;\n}\n.table-row > div {\n  padding: 0 7px 5px 0;\n}", ""]);
 
 // exports
 
@@ -8047,7 +8048,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".users-table[data-v-09ac6610] {\n  display: table;\n}\n.thead[data-v-09ac6610] {\n  display: table-row;\n}\n.thead > div[data-v-09ac6610] {\n  display: table-cell;\n}\n.tbody[data-v-09ac6610] {\n  display: table-row-group;\n}", ""]);
+exports.push([module.i, ".users-table[data-v-09ac6610] {\n  display: table;\n}\n.thead[data-v-09ac6610] {\n  display: table-row;\n  padding-bottom: 10px;\n}\n.thead > div[data-v-09ac6610] {\n  text-transform: uppercase;\n  padding-bottom: 10px;\n  display: table-cell;\n  font-size: 0.9em;\n  font-weight: 600;\n  color: gray;\n}\n.tbody[data-v-09ac6610] {\n  display: table-row-group;\n}", ""]);
 
 // exports
 
@@ -41674,6 +41675,7 @@ var render = function() {
               {
                 staticClass: "btn btn-sm btn-link",
                 attrs: {
+                  target: "_blank",
                   href: "/admin/surveys/?user_id=" + _vm.user.id,
                   title: "user polls"
                 }
@@ -41688,6 +41690,7 @@ var render = function() {
               {
                 staticClass: "btn btn-sm btn-link",
                 attrs: {
+                  target: "_blank",
                   href: "/admin/banners/?user_id=" + _vm.user.id,
                   title: "user banners"
                 }
@@ -41797,6 +41800,8 @@ var staticRenderFns = [
       _c("div", [_vm._v("name")]),
       _vm._v(" "),
       _c("div", [_vm._v("email")]),
+      _vm._v(" "),
+      _c("div", [_vm._v("password")]),
       _vm._v(" "),
       _c("div", [_vm._v("action")])
     ])

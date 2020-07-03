@@ -16,9 +16,13 @@ class Banner extends Model
   
   public function scopeByUser($query, $user){
     if( !$user ){
-      return $query;
+      return $query->where('user_id', '!=', null);
     }
     return $query->where('user_id', $user);
+  }
+  
+  public function scopeActiveOrEnabled($query){
+    return $query->where('is_active','=',1)->orWhere('enabled', 1)->orderByDesc('is_active')->limit(1);
   }
   
   public function getExpireDateAttribute(){
@@ -35,6 +39,18 @@ class Banner extends Model
       return null;
     }
     return $query->where('user_id', $banner->user_id)->where('enabled', 1)->where('id', '>', $banner->id);
+  }
+  
+  public static function rotateIfExpired( $banner ){
+    if( $banner && $banner->isExpired() ){
+      $nextBanner = self::nextEnabled( $banner )->first();
+      $nextBanner = ($nextBanner && $nextBanner->id) ? $nextBanner : self::where('user_id', $banner->user_id)->where('enabled', 1)->first();
+    
+      $banner->update(['is_active'=>0]);
+      $nextBanner->update(['is_active'=>1]);
+      return $nextBanner;
+    }
+    return $banner;
   }
   
 }

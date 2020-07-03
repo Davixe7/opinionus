@@ -27,10 +27,6 @@
               <label for="url">URL</label>
               <input type="url" class="form-control" name="url" required>
             </div>
-            <div class="form-group">
-              <label for="iframe">iFrame</label>
-              <textarea name="iframe" class="form-control" rows="4"></textarea>
-            </div>
             <div class="form-group form-row">
               <label class="col" for="duration">Duration</label>
               <time-picker class="col" :selector="'#timepicker2'"/>

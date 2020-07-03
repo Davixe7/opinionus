@@ -18,7 +18,7 @@
               <img src="{{ Storage::url($banner->image) }}" alt="" style="max-width: 100%;">
             </div>
           @endif
-          <form action="{{ route('admin.banners.update', ['banner'=>$banner->id]) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('admin.admin-banners.update', ['banner'=>$banner->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -32,6 +32,10 @@
             <div class="form-group">
               <label for="url">URL</label>
               <input type="url" class="form-control" name="url" required value="{{ $banner->url }}">
+            </div>
+            <div class="form-group">
+              <label for="iframe">iFrame</label>
+              <textarea name="iframe" class="form-control" rows="4">{{ $banner->iframe }}</textarea>
             </div>
             <label>Duration</label>
             <div class="form-row">

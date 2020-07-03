@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
   <h1>Surveys</h1>
+  @if( isset($user) && $user->id )
+    <p>User: {{ $user->name }}</p>
+  @endif
   <div class="row">
     @if( session()->has('message') )
       <div class="col-md-12">

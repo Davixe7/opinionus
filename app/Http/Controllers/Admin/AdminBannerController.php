@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Admin;
 
 use App\Banner;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use App\Http\Resources\Banner as BannerResource;
 use App\Traits\Uploads;
 use App\Http\Controllers\Controller;
 
-class BannerController extends Controller
+class AdminBannerController extends Controller
 {
     
     use Uploads;
@@ -18,13 +18,13 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $banners = auth()->user()->banners;
+      $banners = Banner::where('user_id', null)->get();
       if( request()->expectsJson() ){
         return BannerResource::collection( $banners );
       }
-      return view('dashboard.banners.index', ['banners'=>$banners]);
+      return view('admin.admin-banners.index', ['banners'=>$banners]);
     }
 
     /**
@@ -34,8 +34,8 @@ class BannerController extends Controller
      */
     public function create()
     {
-      $banners = auth()->user()->banners;
-      return view('dashboard.banners.create', ['banners'=>$banners]);
+      $banners = Banner::all();
+      return view('admin.admin-banners.create', ['banners'=>$banners]);
     }
 
     /**
@@ -50,10 +50,9 @@ class BannerController extends Controller
         'name'      => $request->name,
         'image'     => $this->upload( $request, 'image'),
         'url'       => $request->url,
-        'duration'  => $request->duration ?: 60,
-        'is_active' => auth()->user()->banners()->count() ? 0 : 1,
-        
-        'user_id'  => auth()->id()
+        'iframe'    => $request->iframe,
+        'duration'  => $request->duration,
+        'is_active' => Banner::count() ? 0 : 1
       ]);
       
       if( $request->expectsJson() ){
@@ -61,7 +60,7 @@ class BannerController extends Controller
       }
       
       $request->session()->flash('message', 'Banner Ad Created Successfully!');
-      return redirect()->route('dashboard.banners.index');
+      return redirect()->route('admin.admin-banners.index');
     }
 
     /**
@@ -75,7 +74,7 @@ class BannerController extends Controller
       if( request()->expectsJson() ){
         return new BannerResource( $banner );
       }
-      return view('dashboard.banners.create', $banner);
+      return view('admin.banners.create', $banner);
     }
 
     /**
@@ -86,8 +85,8 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-      $banners = auth()->user()->banners;
-      return view('dashboard.banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
+      $banners = Banner::all();
+      return view('admin.admin-banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
     }
 
     /**
@@ -106,6 +105,7 @@ class BannerController extends Controller
         'image'     => $updated_file    ?: $banner->image,
         'url'       => $request->url    ?: $banner->url,
         'duration'  => $request->duration ?: $banner->duration,
+        'iframe'    => $request->has('iframe')  ? $request->iframe : $banner->iframe,
         'enabled'   => $request->has('enabled') ? $request->enabled : $banner->enabled
       ]);
       
@@ -113,7 +113,7 @@ class BannerController extends Controller
         return response()->json( ['data'=>$banner] );
       }
       $request->session()->flash('message', 'Banner Ad Updated Successfully!');
-      return redirect()->route('dashboard.banners.index');
+      return redirect()->route('admin.admin-banners.index');
     }
 
     /**
@@ -128,8 +128,8 @@ class BannerController extends Controller
       if( $request->expectsJson() ){
         return response()->json(['data'=>"Banner {$banner->id} deleted successfully"]);
       }
-      $banners = auth()->user()->banners;
+      $banners = Banner::all();
       $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
-      return redirect()->route('dashboard.banners.index');
+      return redirect()->route('admin.admin-banners.index');
     }
 }

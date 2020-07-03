@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Survey;
+use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\Survey as SurveyResource;
@@ -18,11 +19,16 @@ class SurveyController extends Controller
      */
     public function index(Request $request)
     {
+      $user = null;
+      if( $request->user_id ){
+        $user = User::findOrFail($request->user_id);
+      }
+      
       $surveys = Survey::byUser( $request->user_id )->get();
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }
-      return view('dashboard.surveys.index', ['surveys'=>$surveys]);
+      return view('dashboard.surveys.index', ['surveys'=>$surveys, 'user'=>$user]);
     }
     
     /**

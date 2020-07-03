@@ -21,7 +21,7 @@ class CreateChoicesTable extends Migration
             $table->string('link_text')->nullable();
             $table->string('link_url')->nullable();
             $table->unsignedBigInteger('survey_id');
-            $table->foreign('survey_id')->references('id')->on('surveys');
+            $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('cascade');
         });
     }
 

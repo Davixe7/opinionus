@@ -95,9 +95,15 @@
           <li class="nav-item">
             <a href="{{ route('admin.banners.index') }}" class="nav-link">Manage Banners</a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.admin-banners.index') }}" class="nav-link">Manage Admin Banners</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.reports.index') }}" class="nav-link">Reports</a>
+          </li>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" v-pre>
-              Welcome, {{Auth::user()->name}} <span class="caret"></span>
+              Welcome, {{Auth::guard('admin')->user()->name}} <span class="caret"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#"

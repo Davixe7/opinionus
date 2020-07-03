@@ -4,6 +4,7 @@
       <div>id</div>
       <div>name</div>
       <div>email</div>
+      <div>password</div>
       <div>action</div>
     </div>
     <div class="tbody">
@@ -46,8 +47,14 @@ export default {
   }
   .thead {
     display: table-row;
+    padding-bottom: 10px;
     > div {
+      text-transform: uppercase;
+      padding-bottom: 10px;
       display: table-cell;
+      font-size: .9em;
+      font-weight: 600;
+      color: gray;
     }
   }
   .tbody {
