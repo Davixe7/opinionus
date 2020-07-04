@@ -36,7 +36,7 @@
               <time-picker class="col" :selector="'#timepicker2'"/>
             </div>
             
-            <input type="hidden" name="duration" id="timepicker2" required>
+            <input type="hidden" name="duration" id="timepicker2" value="60" required>
             
             <button type="submit" class="btn btn-primary">Save Banner</button>
           </form>
