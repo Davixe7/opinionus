@@ -1,7 +1,27 @@
 <template>
   <div id="landing">
     <div class="container-fluid">
-      <div class="header"></div>
+      <div class="header">
+        <div class="landing-navbar">
+          <div class="navbar-brand">
+            <a href="#"><img src="/logo.png" alt="" style="width: 150px;"></a>
+          </div>
+          <ul class="navbar-nav">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/surveys">Surveys</a>
+            </li>
+            <li>
+              <a href="#">Create a survey</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="content">
         <div class="row">
           <div class="col-md-5 text-left">

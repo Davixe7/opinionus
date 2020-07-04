@@ -24,8 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      // app()->bind('path.public', function(){
-      //   return env('PUBLIC_PATH');
-      // });
+      $default = public_path();
+      app()->bind('path.public', function() use ($default) {
+        return env('PUBLIC_PATH', $default);
+      });
     }
 }

@@ -2492,6 +2492,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['surveys', 'siteconfig'],
   data: function data() {
@@ -40740,7 +40760,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "landing" } }, [
     _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "header" }),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
         _c("div", { staticClass: "row" }, [
@@ -40802,7 +40822,39 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _c("div", { staticClass: "landing-navbar" }, [
+        _c("div", { staticClass: "navbar-brand" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticStyle: { width: "150px" },
+              attrs: { src: "/logo.png", alt: "" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "navbar-nav" }, [
+          _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("Home")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/surveys" } }, [_vm._v("Surveys")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Create a survey")])
+          ]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/login" } }, [_vm._v("Login")])])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
