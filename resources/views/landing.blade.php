@@ -36,7 +36,7 @@
       padding-left: 0;
     }
     .navbar .navbar-nav .nav-item .nav-link {
-      font-weight: 500;
+      font-weight: 600;
       padding: 5px 20px;
     }
     .navbar-catchphrase {
