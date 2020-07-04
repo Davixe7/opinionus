@@ -174,7 +174,7 @@
               <a href="{{ route('surveys.index') }}" class="nav-link">Help</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('surveys.index') }}" class="nav-link">Login</a>
+              <a href="{{ route('login') }}" class="nav-link">Login</a>
             </li>
             @endif
           </ul>
