@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     $schedule->call(function(){
       $bannersCount  = Banner::whereEnabled(1)->count();
       if( $bannersCount > 1 ){
-        $activeBanner = Banner::whereEnabled(1)->whereActive(1)->first();
+        $activeBanner = Banner::whereEnabled(1)->where('is_active', 1)->first();
         if( !$activeBanner ){
           Banner::whereEnabled(1)->first()->update('is_active', 1);
         }
