@@ -33,8 +33,8 @@ class Kernel extends ConsoleKernel
           Banner::whereEnabled(1)->first()->update('is_active', 1);
         }
         elseif( $activeBanner->hasExpired ){
-          $activeBanner->update('is_active', 0);
-          $activeBanner->getNextEnabledSibling()->update('is_active', 1);
+          $activeBanner->update(['is_active', 0]);
+          $activeBanner->getNextEnabledSibling()->update(['is_active', 1]);
         }
       }
     })->everyMinute();
