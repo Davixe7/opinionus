@@ -21,7 +21,7 @@ class Banner extends Model
   public function getHasExpiredAttribute(){
     $now = new \DateTime();
     $now = $now->getTimestamp();
-    return ($now - $expireDateTime->getTimestamp()) > 0;
+    return ($now - $this->expiredDateTime->getTimestamp()) > 0;
   }
   
   public function getNextEnabledSibling(){
