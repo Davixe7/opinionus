@@ -30,11 +30,14 @@ class Kernel extends ConsoleKernel
       if( $bannersCount > 1 ){
         $activeBanner = Banner::whereEnabled(1)->where('is_active', 1)->first();
         if( !$activeBanner ){
+          echo 'No active banner';
           Banner::whereEnabled(1)->first()->update('is_active', 1);
         }
         elseif( $activeBanner->hasExpired ){
-          $activeBanner->update(['is_active', 0]);
-          $activeBanner->getNextEnabledSibling()->update(['is_active', 1]);
+          echo 'Rotating';
+          $activeBanner->update(['is_active'=>0]);
+          $next = $activeBanner->getNextEnabledSibling();
+          $next->update(['is_active'=>1]);
         }
       }
     })->everyMinute();
