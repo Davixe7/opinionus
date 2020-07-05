@@ -13,4 +13,18 @@ class Banner extends Model
       'enabled' => 'Boolean',
       'is_active' => 'Boolean'
   ];
+  
+  public function getExpiredDateTimeAttribute(){
+    return $this->updated_at->toDate()->add( new \DateInterval('PT' . $this->duration . 'S');
+  }
+  
+  public function getHasExpiredAttribute(){
+    $now = new \DateTime();
+    $now = $now->getTimestamp();
+    return ($now - $expireDateTime->getTimestamp()) > 0;
+  }
+  
+  public function getNextEnabledSibling(){
+    return self::whereEnabled(1)->where('id', '>', $this->id)->first() ?: self::whereEnabled(1)->first();
+  }
 }
