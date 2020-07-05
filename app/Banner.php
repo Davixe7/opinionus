@@ -15,7 +15,7 @@ class Banner extends Model
   ];
   
   public function getExpiredDateTimeAttribute(){
-    return $this->updated_at->toDate()->add( new \DateInterval('PT' . $this->duration . 'S');
+    return $this->updated_at->toDate()->add( new \DateInterval('PT' . $this->duration . 'S'));
   }
   
   public function getHasExpiredAttribute(){

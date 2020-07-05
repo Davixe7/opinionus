@@ -8,7 +8,7 @@ class Survey extends Model
 {
   protected $fillable = ['name', 'slug'];
   protected $hidden = ['created_at', 'updated_at'];
-  protected $appends = ['votes_count'];
+  protected $appends = ['votes_count', 'f_created_at'];
   
   public function choices(){
     return $this->hasMany('App\Choice');
@@ -28,6 +28,10 @@ class Survey extends Model
       $s->slug = Str::slug( $s->name);
       $s-save(); 
     });
+  }
+  
+  public function getFCreatedAtAttribute(){
+    return \Carbon\Carbon::parse( $this->created_at )->format('F d Y');
   }
   
 }

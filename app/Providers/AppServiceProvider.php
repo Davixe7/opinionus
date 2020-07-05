@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      $siteconfig = json_decode(\Storage::get('/frontend-config.json'));
+      view()->share('siteconfig', $siteconfig);
+      
       $default = public_path();
       app()->bind('path.public', function() use ($default) {
         return env('PUBLIC_PATH', $default);

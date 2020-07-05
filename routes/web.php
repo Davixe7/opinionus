@@ -14,12 +14,17 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', function(){
-  $siteconfig = Storage::get('/frontend-config.json');
   return view('landing', [
-    'surveys' => App\Survey::with('choices')->limit(10)->get(),
-    'siteconfig' => $siteconfig
+    'surveys' => App\Survey::with('choices')->limit(10)->get()
   ]);
-});
+})->name('landing');
+
+Route::get('/search', function(){
+  return view('search', [
+    'surveys' => App\Survey::with('choices')->limit(10)->get(),
+    'page_title' => 'Search'
+  ]);
+})->name('search');
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
   Route::post('choices/storeList', 'Admin\ChoiceController@storeList');

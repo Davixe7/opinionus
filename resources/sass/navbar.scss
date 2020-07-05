@@ -1,0 +1,68 @@
+.surveys-navbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  margin: -10px -20px 15px -20px;
+}
+.surveys-navbar-brand {
+  display: inline-block;
+  margin-left: 15px;
+}
+.surveys-navbar-brand img {
+  width: 143px;
+}
+.surveys-navbar .btn-navbar {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: #fff;
+}
+.surveys-navbar .navbar-title {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0060EF;
+  margin-left: 15px;
+}
+.surveys-navbar .btn-navbar i.material-icons {
+  color: #828282;
+}
+
+.navbar-nav-tile {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  top: 0;
+  left: 0;
+  background: #0060EF;
+  height: 100%;
+  width: 100%;
+  padding: 0 65px 40px;
+  &.active {
+    display: block;
+  }
+}
+.navbar-nav-tile .header {
+  padding: 70px 0;
+}
+.navbar-nav-tile .btn {
+  width: 40px;
+  height: 40px;
+  opacity: .5;
+  padding: 0;
+}
+.surveys-navbar-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.surveys-navbar-nav li a {
+  color: #D4D4D4;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12.5px 0;
+  display: block;
+}

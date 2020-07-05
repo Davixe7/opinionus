@@ -1,4 +1,11 @@
 require('./bootstrap');
+$(document).ready(function(){
+  $('.navbar-nav-toggler').click(function(){
+    let target = $(this).data('target')
+    $(target).addClass('active')
+  })
+})
+
 import Vue from 'vue'
 import Toasted from 'vue-toasted'
 Vue.use(Toasted, {
