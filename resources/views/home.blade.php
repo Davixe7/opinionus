@@ -11,18 +11,18 @@
           <div class="row">
             
             <div class="col-md-6">
-              <div class="card">
+              <div class="card mb-2">
                 <div class="card-body">
-                  <a href="/admin/surveys"><i class="material-icons">post_add</i>
+                  <a class="d-flex align-items-center" href="/admin/surveys"><i class="material-icons">post_add</i>
                     <span>Manage surveys</span></a>
                 </div>
               </div>
             </div>
             
             <div class="col-md-6">
-              <div class="card">
+              <div class="card mb-2">
                 <div class="card-body">
-                  <a href="/admin/banners"><i class="material-icons">photo_filter</i>
+                  <a class="d-flex align-items-center" href="/admin/banners"><i class="material-icons">photo_filter</i>
                     <span>Manage banners</span></a>
                 </div>
               </div>
@@ -43,7 +43,7 @@
         </div>
       </div>
       
-      <siteconfig :siteconfig="{{ $siteconfig }}"/>
+      <siteconfig :siteconfig="{{ json_encode($siteconfig) }}"/>
       
     </div>
   </div>
