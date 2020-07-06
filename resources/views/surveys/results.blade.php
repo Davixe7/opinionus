@@ -27,7 +27,7 @@
         <img src="{{ str_replace('public', '/storage', $banner->image) }}" style="max-width: 100%;">
       </a>
       <div class="text-center d-block d-sm-none">
-        <i class="material-icons bounce">keyboard_arrow_down</i>
+        <i class="material-icons soft-bounce">keyboard_arrow_down</i>
       </div>
     @endif
     @if( $banner && $banner->iframe )
@@ -39,11 +39,11 @@
 
 @section('footer')
 <style>
-  .bounce {
-    animation: bounce .5s infinite alternate linear;
+  .soft-bounce {
+    animation: softbounce .5s infinite alternate linear;
     font-size: 2.5em;
   }
-  @keyframes bounce {
+  @keyframes softbounce {
     from {transform: translateY(-7px);}
     to {transform: translateY(7px);}
   }
