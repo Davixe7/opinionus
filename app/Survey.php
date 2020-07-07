@@ -34,4 +34,13 @@ class Survey extends Model
     return \Carbon\Carbon::parse( $this->created_at )->format('F d Y');
   }
   
+  public function scopeEnabled($query){
+    return $query->has('choices', '>=', 2);
+  }
+  
+  public function scopeByName($query, $name){
+    if( !$name ){ return $query; }
+    return $query->where('name', 'LIKE', '%' . $name . '%');
+  }
+  
 }

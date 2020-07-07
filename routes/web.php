@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', function(){
-  return view('landing', [
-    'surveys' => App\Survey::with('choices')->limit(10)->get()
-  ]);
+  $surveys = App\Survey::with('choices')->limit(10)->get();
+  return view('landing', compact('surveys'));
 })->name('landing');
 
 Route::get('/search', function(){
@@ -25,6 +24,8 @@ Route::get('/search', function(){
     'page_title' => 'Search'
   ]);
 })->name('search');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
   Route::post('choices/storeList', 'Admin\ChoiceController@storeList');
@@ -40,8 +41,5 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
 Route::get('/surveys', 'SurveyController@index')->name('surveys.index');
 Route::get('/surveys/{slug}/results', 'SurveyController@results')->name('surveys.results');
 Route::get('/surveys/{slug}/vote', 'SurveyController@vote')->name('surveys.vote');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::post('/votes', 'VoteController@store')->name('votes.store');
+Auth::routes();

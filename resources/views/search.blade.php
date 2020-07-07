@@ -18,17 +18,20 @@
       padding: 50px 0;
       height: 25vh;
     }
-    
     .surveys-searchform {
       position: relative;
       display: flex;
       align-items: center;
       margin-bottom: 20px;
     }
-    .surveys-searchform .search-icon {
+    .surveys-searchform .btn-search{
       position: absolute;
       right: 10px;
       bottom: 5px;
+      border: none;
+      background: #fff;
+      cursor: pointer;
+      user-select: none;
     }
     .search-input-wrap {
       flex: 1 1 auto;
@@ -53,20 +56,22 @@
 <body>
   <div id="app">
     <div class="header">
-      @include('partials.navbar', ['page_title'=>$page_title])
+      @include('partials.navbar', ['page_title'=>'Search'])
     </div>
     <div class="row">
       <div class="col-md-12">
+        <form id="search-form" action="{{ route('surveys.index') }}" method="GET">
         <div class="surveys-searchform">
           <div class="search-input-wrap">
-            <input type="search" placeholder="Type your keyboard">
-            <span class="search-icon"><i class="material-icons">search</i></span>
+            <input type="search" placeholder="Type your keyboard" name="name">
+            <span class="btn-search" onclick="document.querySelector('#search-form').submit()"><i class="material-icons">search</i></span>
           </div>
-          <button class="btn bg-white btn-filters"><i class="material-icons">tune</i></button>
+          <button type="submit" class="btn bg-white btn-filters"><i class="material-icons">tune</i></button>
         </div>
+        </form>
         
         <div class="material-list-wrapper">
-          <span class="component-title">28 results</span>
+          <span class="component-title">{{ count($surveys) ?: 0 }} results</span>
           <div class="material-list-underline"></div>
           <ul class="material-list">
             <li class="active"><a href="#">Results</a></li>
@@ -83,7 +88,7 @@
                   {{ $survey->votes_count }}
                 </div>
                 <div class="poll-prefooter">
-                  <span>5 June 2020</span>
+                  <span>{{ $survey->f_created_at }}</span>
                   <span>21 Days Left</span>
                 </div>
               </div>

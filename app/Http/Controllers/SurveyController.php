@@ -15,13 +15,13 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $surveys = Survey::has('choices', '>=', 2)->with('choices')->get();
+      $surveys = Survey::enabled()->with('choices')->byName( $request->name )->get();
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }
-      return view('surveys.index', ['surveys'=>$surveys]);
+      return view('search', ['surveys'=>$surveys]);
     }
     
     public function vote(Request $request)
