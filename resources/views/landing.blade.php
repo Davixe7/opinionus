@@ -68,7 +68,7 @@
                   </div>
                   <div class="poll-prefooter">
                     <span>{{ $survey->f_created_at }}</span>
-                    <span>21 Days Left</span>
+                    <span>{{ $survey->days_left }} Days Left</span>
                   </div>
                   <div class="poll-actions">
                     <a href="/surveys/{{$survey->slug}}/results" class="btn btn-secondary">See results</a>

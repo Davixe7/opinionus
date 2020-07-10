@@ -18,10 +18,11 @@ class SurveyController extends Controller
      */
     public function index(Request $request)
     {
+      $surveys = SurveyResource::collection( Survey::all() );
       if( request()->expectsJson() ){
-        return SurveyResource::collection( $surveys );
+        return response()->json(['data'=>$surveys]);
       }
-      return view('search', ['surveys'=>$surveys]);
+      return view('surveys.index', ['surveys'=>$surveys]);
     }
     
     public function search(SearchSurvey $request){

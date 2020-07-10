@@ -107,7 +107,7 @@
     <div class="header">
       @include('partials.navbar', ['page_title'=>'Search'])
     </div>
-    <div class="row">
+    <div class="row mb-4">
       <div class="col-md-12">
         <form id="search-form" action="{{ route('search') }}" method="GET">
         <div class="surveys-searchform">
@@ -171,7 +171,7 @@
                   </div>
                   <div class="poll-prefooter">
                     <span>{{ $survey->f_created_at }}</span>
-                    <span>21 Days Left</span>
+                    <span>{{ $survey->days_left }} Days Left</span>
                   </div>
                 </div>
               </div>

@@ -18,11 +18,11 @@
   <div id="app">
     @include('partials.navbar')
     <main>
-      <div class="container-fluid">
+      <div class="container-fluid mb-3">
         @yield('content')
       </div>
     </main>
-    <footer>
+    <footer class="px-3">
       @include('partials.footer-navbar')
       @yield('footer')
     </footer>
