@@ -122,10 +122,8 @@
         <div id="search-form-filter" class="@if( !$errors->any() ) d-none @endif">
           <span class="title">Apply filter to search:</span>
           <div class="form-check mb-4">
-            <input class="form-check-input" type="checkbox" value="1" id="show-outdated-input">
-            <label class="form-check-label" for="show-outdated-input">
-              Show Outdated Surveys
-            </label>
+            <input class="form-check-input" type="checkbox" value="1" id="show-outdated-input" name="show_expired">
+            <label class="form-check-label" for="show-outdated-input">Show Outdated Surveys</label>
           </div>
           <span class="title">Filter By Date</span>
           <div class="date-filter">
