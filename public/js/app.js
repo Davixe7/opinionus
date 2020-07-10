@@ -2618,7 +2618,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['choices', 'survey', 'userchoice'],
   name: 'results',
@@ -40975,9 +40974,11 @@ var render = function() {
             _c("td", [
               _c("div", { staticClass: "img-wrap" }, [
                 _c("img", {
-                  staticStyle: { width: "70px", height: "70px" },
                   attrs: {
-                    src: choice.image.replace("public", "/storage"),
+                    src: choice.image.replace(
+                      "public/images",
+                      "/storage/thumbnails/70"
+                    ),
                     alt: ""
                   }
                 })

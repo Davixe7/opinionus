@@ -9,8 +9,7 @@
       <tr v-for="choice in choices" :key="choice.id">
         <td>
           <div class="img-wrap">
-            <!-- <img :src="choice.image.replace('public/images', '/storage/thumbnails/40')" alt=""> -->
-            <img :src="choice.image.replace('public', '/storage')" alt="" style="width: 70px; height: 70px;">
+            <img :src="choice.image.replace('public/images', '/storage/thumbnails/70')" alt="">
           </div>
         </td>
         <td>

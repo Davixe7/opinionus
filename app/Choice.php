@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Image;
+use Illuminate\Support\Facades\Storage;
 
 class Choice extends Model
 {
@@ -25,20 +26,21 @@ class Choice extends Model
   
   public static function regenerateThumbnails(){
     $choices = self::all();
-
+    $count = 0;
     foreach( $choices as $choice ){
+      echo( $count++ );
       $image = $choice->image;
       $filename = str_replace('public/images', '', $image);
       $path = storage_path( "app/{$image}" );
       
-      $thumbnail_small = Image::make( $path )->fit(40,40);
-      $thumbnail_small->save(storage_path("app/public/thumbnails/40/{$filename}"));
-      
-      $thumbnail_medium = Image::make( $path )->fit(300,300);
-      $thumbnail_medium->save(storage_path("app/public/thumbnails/300/{$filename}"));
-      
-      $thumbnail_large = Image::make( $path )->fit(500,500);
-      $thumbnail_large->save(storage_path("app/public/thumbnails/500/{$filename}"));
+      $sizes = ['300', '500', '40', '70'];
+      foreach( $sizes as $size ){
+        if( !Storage::exists( $folder = "public/thumbnails/$size" ) ){
+          Storage::makeDirectory($folder);
+        }
+        $thumbnail = Image::make( $path )->fit($size);
+        $thumbnail->save( storage_path( "app/" . $folder . "/" . $filename ));
+      }
     }
   }
 }

@@ -7,6 +7,7 @@ use App\Banner;
 use Illuminate\Http\Request;
 use App\Http\Resources\Survey as SurveyResource;
 use App\Http\Resources\Choice as ChoiceResource;
+use App\Http\Requests\SearchSurvey;
 
 class SurveyController extends Controller
 {
@@ -17,10 +18,14 @@ class SurveyController extends Controller
      */
     public function index(Request $request)
     {
-      $surveys = Survey::enabled()->with('choices')->byName( $request->name )->get();
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }
+      return view('search', ['surveys'=>$surveys]);
+    }
+    
+    public function search(SearchSurvey $request){
+      $surveys = Survey::enabled()->with('choices')->byName( $request->name )->dateRange($request->date_from, $request->date_to)->get();
       return view('search', ['surveys'=>$surveys]);
     }
     

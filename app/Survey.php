@@ -43,4 +43,11 @@ class Survey extends Model
     return $query->where('name', 'LIKE', '%' . $name . '%');
   }
   
+  public function scopeDateRange($query, $from, $to){
+    if( !$from || !$to ){
+      return $query;
+    }
+    return $query->where('');
+  }
+  
 }

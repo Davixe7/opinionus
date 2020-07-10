@@ -51,8 +51,12 @@
 .navbar-nav-tile .btn {
   width: 40px;
   height: 40px;
-  opacity: .5;
   padding: 0;
+  border-color: #000;
+  opacity: .4;
+  i.material-icons {
+    color: #000;
+  }
 }
 .surveys-navbar-nav {
   list-style-type: none;
