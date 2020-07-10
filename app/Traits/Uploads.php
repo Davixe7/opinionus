@@ -16,15 +16,15 @@ trait Uploads
       $newFileName = $nameWithoutExtension . "_" . time() . $extension;
       
       $original = $file->storeAs('public/' . $fileGroupName, $newFileName);
+      $path = storage_path( "app/{$original}" );
       
       $sizes = ['300', '500', '40', '70'];
       foreach( $sizes as $size ){
-        $path = storage_path("app/public/thumbnails/$size");
-        if( !Storage::exists( $path ) ){
-          Storage::makeDirectory($path, $mode = 0777, true, true);
+        if( !Storage::exists( $folder = "public/thumbnails/$size" ) ){
+          Storage::makeDirectory($folder);
         }
-        $thumbnail = Image::make( storage_path( "app/" . $original ) )->fit($size);
-        $thumbnail->save(storage_path("$path/{$newFileName}"));
+        $thumbnail = Image::make( $path )->fit($size);
+        $thumbnail->save( storage_path( "app/" . $folder . "/" . $newFileName ));
       }
       
       return $original;

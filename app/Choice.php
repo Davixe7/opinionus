@@ -28,7 +28,6 @@ class Choice extends Model
     $choices = self::all();
     $count = 0;
     foreach( $choices as $choice ){
-      echo( $count++ );
       $image = $choice->image;
       $filename = str_replace('public/images', '', $image);
       $path = storage_path( "app/{$image}" );

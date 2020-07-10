@@ -2263,6 +2263,8 @@ var _this = undefined;
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CreateSurvey',
   props: {
@@ -2287,7 +2289,8 @@ var _this = undefined;
     return {
       surveyId: null,
       slug: null,
-      name: 'New survey #' + String(Math.random(0, 99)).substring(2, 4),
+      expires_at: null,
+      name: 'New survey ' + String(Math.random(0, 99)).substring(2, 4),
       defaultChoice: {
         name: 'Choice 0' + String(Math.random(0, 99)).substring(2, 4),
         link_text: 'Click me!',
@@ -2320,7 +2323,8 @@ var _this = undefined;
       if (!this.$refs.surveyNameForm.reportValidity()) return;
       this.saving = true;
       var data = {
-        name: this.name
+        name: this.name,
+        expires_at: this.expires_at
       };
       axios.post('/admin/surveys', data).then(function (response) {
         _this2.surveyId = response.data.data.id;
@@ -2338,6 +2342,7 @@ var _this = undefined;
       this.saving = true;
       var data = {
         name: this.name,
+        expires_at: this.expires_at,
         '_method': 'PUT'
       };
       axios.post("/admin/surveys/".concat(this.surveyId), data).then(function (response) {
@@ -2387,6 +2392,7 @@ var _this = undefined;
       this.name = this.survey.name;
       this.choices = this.survey.choices;
       this.slug = this.survey.slug;
+      this.expires_at = this.survey.expires_at;
     }
   }
 });
@@ -40410,103 +40416,129 @@ var render = function() {
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "name" } }, [_vm._v("Survey name")]),
             _vm._v(" "),
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name"
-                  }
-                ],
-                staticClass: "form-control",
-                class: { "is-invalid": _vm.errors.name },
-                attrs: {
-                  type: "text",
-                  minlength: "3",
-                  disabled: _vm.saving,
-                  required: ""
-                },
-                domProps: { value: _vm.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.name = $event.target.value
-                  }
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.name,
+                  expression: "name"
                 }
-              }),
-              _vm._v(" "),
-              _vm.errors.name
-                ? _c("span", { staticClass: "invalid-feedback" }, [
-                    _vm._v(_vm._s(_vm.errors.name[0]))
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-append" }, [
-                _vm.surveyId
-                  ? _c(
-                      "button",
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errors.name },
+              attrs: {
+                type: "text",
+                minlength: "3",
+                disabled: _vm.saving,
+                required: ""
+              },
+              domProps: { value: _vm.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.name = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.name
+              ? _c("span", { staticClass: "invalid-feedback" }, [
+                  _vm._v(_vm._s(_vm.errors.name[0]))
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "expires_at" } }, [
+              _vm._v("Expires At")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.expires_at,
+                  expression: "expires_at"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "date", required: "" },
+              domProps: { value: _vm.expires_at },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.expires_at = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group text-right" }, [
+            !_vm.surveyId
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-sender",
+                    attrs: { type: "button" },
+                    on: { click: _vm.storeSurvey }
+                  },
+                  [
+                    _c(
+                      "i",
                       {
-                        staticClass: "btn btn-danger btn-sender",
-                        attrs: { type: "button", disabled: _vm.saving },
-                        on: { click: _vm.updateSurvey }
-                      },
-                      [
-                        _c(
-                          "i",
+                        directives: [
                           {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.saving,
-                                expression: "saving"
-                              }
-                            ],
-                            staticClass: "material-icons small preloader"
-                          },
-                          [_vm._v("sync")]
-                        ),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Update")])
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.surveyId
-                  ? _c(
-                      "button",
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.saving,
+                            expression: "saving"
+                          }
+                        ],
+                        staticClass: "material-icons preloader"
+                      },
+                      [_vm._v("sync")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Save")])
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.surveyId
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-sender",
+                    attrs: { type: "button", disabled: _vm.saving },
+                    on: { click: _vm.updateSurvey }
+                  },
+                  [
+                    _c(
+                      "i",
                       {
-                        staticClass: "btn btn-danger btn-sender",
-                        attrs: { type: "button" },
-                        on: { click: _vm.storeSurvey }
-                      },
-                      [
-                        _c(
-                          "i",
+                        directives: [
                           {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.saving,
-                                expression: "saving"
-                              }
-                            ],
-                            staticClass: "material-icons preloader"
-                          },
-                          [_vm._v("sync")]
-                        ),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Save")])
-                      ]
-                    )
-                  : _vm._e()
-              ])
-            ])
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.saving,
+                            expression: "saving"
+                          }
+                        ],
+                        staticClass: "material-icons small preloader"
+                      },
+                      [_vm._v("sync")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Update")])
+                  ]
+                )
+              : _vm._e()
           ])
         ])
       ]),
@@ -41052,7 +41084,9 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("td", { staticClass: "text-right" }, [
-            _vm._v("\n        15 Days Left\n      ")
+            _vm._v(
+              "\n        " + _vm._s(_vm.survey.days_left) + " Days Left\n      "
+            )
           ])
         ])
       ],

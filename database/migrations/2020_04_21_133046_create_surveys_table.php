@@ -18,6 +18,7 @@ class CreateSurveysTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->date('expires_at');
         });
     }
 

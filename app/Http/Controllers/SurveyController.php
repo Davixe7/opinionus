@@ -25,7 +25,7 @@ class SurveyController extends Controller
     }
     
     public function search(SearchSurvey $request){
-      $surveys = Survey::enabled()->with('choices')->byName( $request->name )->dateRange($request->date_from, $request->date_to)->get();
+      $surveys = Survey::enabled()->open()->with('choices')->byName( $request->name )->dateRange($request->date_from, $request->date_to)->get();
       return view('search', ['surveys'=>$surveys]);
     }
     

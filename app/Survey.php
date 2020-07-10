@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Survey extends Model
 {
-  protected $fillable = ['name', 'slug'];
+  protected $fillable = ['name', 'slug', 'expires_at'];
   protected $hidden = ['created_at', 'updated_at'];
-  protected $appends = ['votes_count', 'f_created_at'];
+  protected $appends = ['votes_count', 'f_created_at', 'days_left'];
   
   public function choices(){
     return $this->hasMany('App\Choice');
@@ -34,6 +34,10 @@ class Survey extends Model
     return \Carbon\Carbon::parse( $this->created_at )->format('F d Y');
   }
   
+  public function getDaysLeftAttribute(){
+    return \Carbon\Carbon::parse( now() )->diffInDays( $this->expires_at, false);
+  }
+  
   public function scopeEnabled($query){
     return $query->has('choices', '>=', 2);
   }
@@ -47,7 +51,11 @@ class Survey extends Model
     if( !$from || !$to ){
       return $query;
     }
-    return $query->where('');
+    return $query;
+  }
+  
+  public function scopeOpen($query){
+    return $query->where('expires_at', '>', now());
   }
   
 }

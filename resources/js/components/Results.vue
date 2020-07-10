@@ -36,7 +36,7 @@
           {{ survey.f_created_at }} Created
         </td>
         <td class="text-right">
-          15 Days Left
+          {{ survey.days_left }} Days Left
         </td>
       </tr>
     </table>

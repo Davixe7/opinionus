@@ -5,20 +5,22 @@
         <form ref="surveyNameForm">
           <div class="form-group">
             <label for="name">Survey name</label>
-            <div class="input-group">
-              <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" minlength="3" :disabled="saving" required>
-              <span class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</span>
-              <div class="input-group-append">
-                <button @click="updateSurvey" v-if="surveyId" type="button" class="btn btn-danger btn-sender" :disabled="saving">
-                  <i v-show="saving" class="material-icons small preloader">sync</i>
-                  <span>Update</span>
-                </button>
-                <button @click="storeSurvey"  v-if="!(surveyId)" type="button" class="btn btn-danger btn-sender">
-                  <i v-show="saving" class="material-icons preloader">sync</i>
-                  <span>Save</span>
-                </button>
-              </div>
-            </div>
+            <input v-model="name" type="text" class="form-control" :class="{'is-invalid':errors.name}" minlength="3" :disabled="saving" required>
+            <span class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</span>
+          </div>
+          <div class="form-group">
+            <label for="expires_at">Expires At</label>
+            <input type="date" class="form-control" v-model="expires_at" required>
+          </div>
+          <div class="form-group text-right">
+            <button @click="storeSurvey"  v-if="!(surveyId)" type="button" class="btn btn-danger btn-sender">
+              <i v-show="saving" class="material-icons preloader">sync</i>
+              <span>Save</span>
+            </button>
+            <button @click="updateSurvey" v-if="surveyId" type="button" class="btn btn-danger btn-sender" :disabled="saving">
+              <i v-show="saving" class="material-icons small preloader">sync</i>
+              <span>Update</span>
+            </button>
           </div>
         </form>
       </div>
@@ -112,7 +114,8 @@ export default {
   data(){ return {
     surveyId: null,
     slug: null,
-    name: 'New survey #' + String( Math.random(0,99) ).substring(2,4),
+    expires_at: null,
+    name: 'New survey ' + String( Math.random(0,99) ).substring(2,4),
     defaultChoice:{ name: 'Choice 0' + String( Math.random(0,99) ).substring(2,4), link_text: 'Click me!', link_url: 'http://localhost:8080/', image: null },
     choices: [],
     
@@ -131,7 +134,7 @@ export default {
     storeSurvey(){
       if( !this.$refs.surveyNameForm.reportValidity() ) return
       this.saving = true
-      let data = {name: this.name}
+      let data = {name: this.name, expires_at: this.expires_at}
       axios.post('/admin/surveys', data).then(response => {
         this.surveyId = response.data.data.id
         this.slug = response.data.data.slug
@@ -142,7 +145,7 @@ export default {
     },
     updateSurvey(){
       this.saving = true
-      let data = {name: this.name, '_method':'PUT'}
+      let data = {name: this.name, expires_at: this.expires_at, '_method':'PUT'}
       axios.post(`/admin/surveys/${this.surveyId}`, data).then(response => {
         this.name  = response.data.data.name
         this.saving = false
@@ -182,6 +185,7 @@ export default {
       this.name     = this.survey.name
       this.choices  = this.survey.choices
       this.slug     = this.survey.slug
+      this.expires_at  = this.survey.expires_at
     }
   }
 }

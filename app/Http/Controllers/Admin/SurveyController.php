@@ -44,8 +44,9 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
       $survey = Survey::create([
-        'name' => $request->name,
-        'slug' => Str::slug($request->name)
+        'name'       => $request->name,
+        'expires_at' => $request->expires_at,
+        'slug'       => Str::slug($request->name)
       ]);
       return new SurveyResource( $survey );
     }
@@ -88,8 +89,9 @@ class SurveyController extends Controller
     public function update(Request $request, Survey $survey)
     {
       $survey->update([
-        'name' => $request->name,
-        'slug' => Str::slug($request->name)
+        'name'       => $request->name,
+        'expires_at' => $request->expires_at,
+        'slug'       => Str::slug($request->name)
       ]);
       return new SurveyResource( $survey );
     }
