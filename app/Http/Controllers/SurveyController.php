@@ -26,7 +26,7 @@ class SurveyController extends Controller
     }
     
     public function search(SearchSurvey $request){
-      $surveys = Survey::enabled()->withChoices();
+      $surveys = Survey::enabled()->with('choices');
       if( !$request->has('show_expired') ){ $surveys = $surveys->open(); }
       $surveys = $surveys->byName( $request->name )->dateRange($request->date_from, $request->date_to)->get();
       return view('search', ['surveys' => $surveys]);
