@@ -32,8 +32,16 @@ class SurveyController extends Controller
     
     public function results(Request $request)
     {
+      $userChoice = null;
+      if( $request->has('choice_id') ){
+        $userChoice = \App\Choice::findOrFail( $request->choice_id );
+      }
       $survey = Survey::where('slug', $request->slug)->firstOrFail();
-      return view('surveys.results', ['survey'=>$survey->load('choices'), 'banner'=>Banner::where('is_active', 1)->first()]);
+      return view('surveys.results', [
+        'survey'=>$survey->load('choices'),
+        'banner'=>Banner::where('is_active', 1)->first(),
+        'userChoice' => $userChoice
+      ]);
     }
 
     /**

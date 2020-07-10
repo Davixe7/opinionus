@@ -2,19 +2,30 @@
   <div id="vote">
     <sharer :message="survey.name" :link="link" :vertical="true"/>
     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-      <thanks v-if="voted" :slug="survey.slug">
-        <choice-content :choice="selection" :selected="true"/>
+      <thanks v-if="voted" :slug="survey.slug" :choice="selection">
+        <choice-content :choice="selection" :selected="true" :voted="true"/>
       </thanks>
       
       <div v-else>
-        <confirm-modal :choice="selection" :survey="survey" :staging="staging" @undoSelection="staging=false" :voting="voting" @confirmed="vote"/>
         <div class="row choices-wrapper">
-          <div v-for="choice in choices" :key="choice.id" class="col-sm-6 col-md-4 col-lg-4 choice-content">
-            <choice-content :choice="choice" :selected="selection == choice" @selected="selectChoice"/>
+          <div v-for="(choice,i) in choices" :key="choice.id" class="col-sm-6 col-md-4 col-lg-4 choice-content">
+            <choice-content :choice="choice" :selected="selection == choice" :number="i+1" @selected="selectChoice"/>
           </div>
         </div>
+        
+        <div class="action">
+          <a :href="`/surveys/${survey.slug}/results`" class="btn btn-outlined-default mr-3">Just Show Results</a>
+          <button
+            @click="vote"
+            class="btn btn-primary d-inline-flex align-items-center"
+            :class="{disabled: !(selection && selection.id)}">
+            <i v-if="voting" class="material-icons mr-3 preloader">sync</i>
+            <i v-else class="material-icons mr-3">check</i>
+            Confirm Your Vote
+          </button>
+        </div>
           
-        <div class="bottom-app-bar">
+        <!-- <div class="bottom-app-bar">
           <div class="status">
             <div class="form-section-title mb-0">Your Selection</div>
             <span>{{ selection.name || "No candidate selected"  }}</span>
@@ -25,7 +36,7 @@
             :class="{disabled: !(selection && selection.id)}">
             Confirm
           </button>
-        </div>
+        </div> -->
       </div>
     </transition>
   

@@ -15,7 +15,8 @@
   <div class="col-md-6">
     <results
       :choices="{{ json_encode( $survey->choices ) }}"
-      :survey="{{ json_encode( $survey ) }}">
+      :survey="{{ json_encode( $survey ) }}"
+      :userchoice="{{ json_encode( $userChoice ) }}">
     </results>
     @if( $banner && $banner->iframe )
       <div class="d-block d-sm-none">{!! $banner->iframe !!}</div>

@@ -9,15 +9,16 @@
       <img src="/logo.png" alt="">
     </a>
   @endif
-  @if( Route::currentRouteName() == 'landing')
-  <a href="{{ route('search') }}" class="btn btn-navbar ml-auto">
-    <i class="material-icons">search</i>
-  </a>
-  @else
-    <a href="{{ url()->previous() }}" class="btn btn-navbar ml-auto">
+  <div class="ml-auto">
+    @if( Route::currentRouteName() != 'landing' && url()->current() != url()->previous() )
+    <a href="{{ url()->previous() }}" class="btn btn-navbar">
       <i class="material-icons">keyboard_backspace</i>
     </a>
-  @endif
+    @endif
+    <a href="{{ route('search') }}" class="btn btn-navbar">
+      <i class="material-icons">search</i>
+    </a>
+  </div>
   
   <div id="navbar-nav-tile" class="navbar-nav-tile">
     <div class="header">

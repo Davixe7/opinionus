@@ -16,18 +16,17 @@
 </head>
 <body>
   <div id="app">
-    <!-- <div class="circle-bg" style="background: lightblue; width: 25vw; height: 25vw; border-radius: 50%;position: absolute; bottom: 10px; right: 200px; z-index: 100;"></div>
-    <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div> -->
     @include('partials.navbar')
-    <main style="position: relative; z-index: 200;">
+    <main>
       <div class="container-fluid">
         @yield('content')
       </div>
     </main>
+    <footer>
+      @include('partials.footer-navbar')
+      @yield('footer')
+    </footer>
   </div>
-  <footer>
-    @yield('footer')
-  </footer>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
 </body>

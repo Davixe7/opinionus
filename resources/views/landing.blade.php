@@ -83,7 +83,7 @@
       </div>
     </div>
     
-    @include('partials.footer-navbar')
+    <footer>@include('partials.footer-navbar')</footer>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.7.min.js"></script>

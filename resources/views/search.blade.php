@@ -81,18 +81,20 @@
         <div class="polls-container">
           @foreach($surveys as $survey)
           <div class="poll-content mb-2">
-            <div class="card card-body pb-0">
-              <div class="survey-content">
-                <div class="poll-name">{{ $survey->name }}</div>
-                <div class="poll-votes-count">
-                  {{ $survey->votes_count }}
-                </div>
-                <div class="poll-prefooter">
-                  <span>{{ $survey->f_created_at }}</span>
-                  <span>21 Days Left</span>
+            <a href="/surveys/{{ $survey->slug }}/vote">
+              <div class="card card-body pb-0">
+                <div class="survey-content">
+                  <div class="poll-name">{{ $survey->name }}</div>
+                  <div class="poll-votes-count">
+                    {{ $survey->votes_count }}
+                  </div>
+                  <div class="poll-prefooter">
+                    <span>{{ $survey->f_created_at }}</span>
+                    <span>21 Days Left</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           @endforeach
         </div>

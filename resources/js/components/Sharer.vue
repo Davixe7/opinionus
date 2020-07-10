@@ -62,10 +62,10 @@ export default {
   .sharer-bar li {
     margin-right: 10px;
     &.title {
-      text-transform: uppercase;
-      font-size: .85em;
+      font-size: 12px;
+      font-weight: 700;
       line-height: 30px;
-      font-weight: 500;
+      color: #B5B5B5;
     }
   }
   .sharer-bar li a {

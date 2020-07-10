@@ -1932,8 +1932,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['choice', 'selected'],
+  props: ['choice', 'selected', 'number', 'voted'],
   methods: {
     imageUrl: function imageUrl(image) {
       return image ? image.replace('public/images', '/storage/thumbnails/500') : '';
@@ -2603,13 +2604,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['choices', 'survey'],
+  props: ['choices', 'survey', 'userchoice'],
   name: 'results',
   data: function data() {
     return {
       url: window.location.href
     };
+  },
+  computed: {
+    topVoted: function topVoted() {
+      var top = null;
+      this.choices.forEach(function (c) {
+        if (!top) {
+          top = c;
+        } else if (c.votes_count > top.votes_count) {
+          top = c;
+        }
+      });
+      return top;
+    }
   },
   methods: {
     globalPercent: function globalPercent(value) {
@@ -2875,8 +2904,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['slug']
+  props: ['slug', 'choice']
 });
 
 /***/ }),
@@ -3076,6 +3106,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7803,7 +7844,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".choice-content img[data-v-1c9cd186] {\n  max-width: 100%;\n}\n.choice-content .footer[data-v-1c9cd186] {\n  padding-top: 15px;\n}\n.choice-content .name[data-v-1c9cd186] {\n  font-family: \"Roboto Condensed\";\n  font-size: 1.5em;\n  font-weight: 600;\n}\n.choice-content .fab[data-v-1c9cd186] {\n  box-shadow: none;\n  border: 1px solid #efefef;\n}\n.choice-content .fab.btn-success[data-v-1c9cd186] {\n  box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.25);\n  border: none;\n}", ""]);
+exports.push([module.i, ".choice-content[data-v-1c9cd186] {\n  cursor: pointer;\n}\n.choice-content .card-body[data-v-1c9cd186] {\n  padding: 18px 27px 10px;\n}\n.choice-content .name[data-v-1c9cd186] {\n  font-size: 16px;\n  font-weight: 700;\n  color: #000;\n  margin: 0 0 10px;\n}\n.choice-content .action-wrap[data-v-1c9cd186] {\n  border: 3px solid #F3F3F3;\n  border-radius: 10px;\n  padding: 7px;\n  position: relative;\n  margin-bottom: 10px;\n}\n.choice-content img[data-v-1c9cd186] {\n  max-width: 100%;\n  border-radius: 5px;\n}\n.action-wrap .check-status[data-v-1c9cd186] {\n  display: none;\n  flex-flow: column nowrap;\n  justify-content: center;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  padding: 20px 30px 20px;\n}\n.checked-icon-wrap[data-v-1c9cd186] {\n  border: 2px solid #0060ef;\n  border-radius: 50%;\n  padding: 5px;\n  display: inline-block;\n}\n.checked-icon[data-v-1c9cd186] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 4px solid #009d34;\n  background: #fff;\n  border-radius: 50%;\n  width: 45px;\n  height: 45px;\n  text-align: center;\n}\n.checked-icon i.material-icons[data-v-1c9cd186] {\n  color: #009d34;\n}\n.choice-checked-label[data-v-1c9cd186] {\n  color: #0060ef;\n  font-weight: 700;\n  font-size: 12px;\n  display: block;\n  text-align: center;\n}\n.status-text[data-v-1c9cd186] {\n  display: inline-flex;\n  align-items: center;\n  font-size: 10px;\n  font-weight: 300;\n  color: #B5B5B5;\n}\n.status-text .choice-number[data-v-1c9cd186] {\n  font-size: 18px;\n  font-weight: 700;\n  margin-right: 12px;\n  color: #D4D4D4;\n}\n.choice-content.selected .action-wrap .check-status[data-v-1c9cd186] {\n  display: inline-flex;\n}\n.choice-content.selected .status-text[data-v-1c9cd186], .choice-content.selected .status-text .choice-number[data-v-1c9cd186] {\n  color: #28A745;\n}", ""]);
 
 // exports
 
@@ -7898,7 +7939,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\n#results > .row[data-v-8ef50b4a] {\n  flex-direction: column-reverse;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n  height: 100vh;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-weight: 600;\n  color: gray;\n  font-size: 1.35em;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}\n.results-summary[data-v-8ef50b4a] {\n  display: flex;\n  padding: 15px;\n  margin: 0 0 10px 0;\n  border-radius: 3px;\n  background: #fff;\n}\n.results-summary .metter[data-v-8ef50b4a] {\n  margin-right: 10px;\n}", ""]);
+exports.push([module.i, "#results[data-v-8ef50b4a] {\n  padding-bottom: 40px;\n}\n#results > .row[data-v-8ef50b4a] {\n  flex-direction: column-reverse;\n}\n#results > .row .col-md-3[data-v-8ef50b4a] {\n  height: 100vh;\n}\n#results h1[data-v-8ef50b4a] {\n  font-size: 36px;\n  font-weight: 700;\n  color: #0060EF;\n  margin-bottom: 30px;\n}\n#results h3[data-v-8ef50b4a] {\n  font-size: 26px;\n  font-weight: 700;\n  color: #000;\n  margin-bottom: 10px;\n}\ntd[data-v-8ef50b4a]:first-child {\n  width: 80px;\n  padding-left: 0;\n}\ntd[data-v-8ef50b4a] {\n  border: none !important;\n}\ntr:last-child td[data-v-8ef50b4a] {\n  border-top: 1px solid #D4D4D4 !important;\n  vertical-align: bottom;\n}\n.user-choice-status[data-v-8ef50b4a] {\n  display: block;\n  font-size: 16px;\n  font-weight: 700;\n  color: #0060EF;\n  margin-bottom: 40px;\n}\n.user-choice-status[data-v-8ef50b4a]:before {\n  content: \"Your vote was:\";\n  display: block;\n  font-size: 12px;\n  font-weight: 500;\n  color: #828282;\n}\ntable.table-results td[data-v-8ef50b4a] {\n  border-bottom: 1px solid #efefef;\n}\n.img-wrap[data-v-8ef50b4a] {\n  border: 2px solid #D4D4D4;\n  border-radius: 10px;\n  padding: 3px;\n  display: inline-block;\n}\nimg[data-v-8ef50b4a] {\n  border-radius: 7px;\n}\n.choice-name[data-v-8ef50b4a] {\n  display: block;\n  font-size: 12px;\n  font-weight: 700;\n  color: #000;\n  margin-bottom: 10px;\n}\n.progress[data-v-8ef50b4a] {\n  min-width: 150px;\n  height: 1.5rem;\n  font-size: 1rem;\n  background: #cdcdcd !important;\n}\n.progress-bar[data-v-8ef50b4a] {\n  font-size: 12px;\n  font-weight: 600;\n}\n.choice-votes-count[data-v-8ef50b4a] {\n  font-size: 14px;\n  font-weight: 700;\n  color: #0060EF;\n}\n.choice-votes-count[data-v-8ef50b4a]:after {\n  content: \"Votes\";\n  font-size: 12px;\n  font-weight: 500;\n  color: #828282;\n  margin-left: 7px;\n  display: inline-block;\n}\n.metter[data-v-8ef50b4a] {\n  text-transform: uppercase;\n  font-size: 1rem;\n}\n.metter .supheading[data-v-8ef50b4a] {\n  display: block;\n  font-size: 0.8em;\n  font-weight: 400;\n  line-height: 1em;\n  margin-bottom: 0;\n}\n.metter .amount[data-v-8ef50b4a] {\n  font-weight: 600;\n  font-size: 1.5em;\n  display: block;\n  line-height: 1.25em;\n}\n.results-summary[data-v-8ef50b4a] {\n  display: flex;\n  padding: 15px;\n  margin: 0 0 10px 0;\n  border-radius: 3px;\n  background: #fff;\n}\n.results-summary .metter[data-v-8ef50b4a] {\n  margin-right: 10px;\n}", ""]);
 
 // exports
 
@@ -7917,7 +7958,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".sharer-bar[data-v-10eae91e] {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n}\n.sharer-bar.vertical[data-v-10eae91e] {\n  flex-flow: column nowrap;\n  position: fixed;\n  left: 0;\n  top: 200px;\n  z-index: 1000;\n  background: #fff;\n  padding: 10px;\n  border-radius: 3px;\n  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.14);\n}\n.sharer-bar.vertical li[data-v-10eae91e] {\n  margin: 0 0 10px 0;\n}\n.sharer-bar.vertical li[data-v-10eae91e]:last-child {\n  margin-bottom: 0;\n}\n.sharer-bar li[data-v-10eae91e] {\n  margin-right: 10px;\n}\n.sharer-bar li.title[data-v-10eae91e] {\n  text-transform: uppercase;\n  font-size: 0.85em;\n  line-height: 30px;\n  font-weight: 500;\n}\n.sharer-bar li a[data-v-10eae91e] {\n  display: block;\n}\n.sharer-bar li a[data-v-10eae91e]:hover, .sharer-bar li a[data-v-10eae91e]:active {\n  text-decoration: none;\n}\n.sharer-bar li a svg[data-v-10eae91e] {\n  width: 30px;\n  height: 30px;\n}", ""]);
+exports.push([module.i, ".sharer-bar[data-v-10eae91e] {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n}\n.sharer-bar.vertical[data-v-10eae91e] {\n  flex-flow: column nowrap;\n  position: fixed;\n  left: 0;\n  top: 200px;\n  z-index: 1000;\n  background: #fff;\n  padding: 10px;\n  border-radius: 3px;\n  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.14);\n}\n.sharer-bar.vertical li[data-v-10eae91e] {\n  margin: 0 0 10px 0;\n}\n.sharer-bar.vertical li[data-v-10eae91e]:last-child {\n  margin-bottom: 0;\n}\n.sharer-bar li[data-v-10eae91e] {\n  margin-right: 10px;\n}\n.sharer-bar li.title[data-v-10eae91e] {\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 30px;\n  color: #B5B5B5;\n}\n.sharer-bar li a[data-v-10eae91e] {\n  display: block;\n}\n.sharer-bar li a[data-v-10eae91e]:hover, .sharer-bar li a[data-v-10eae91e]:active {\n  text-decoration: none;\n}\n.sharer-bar li a svg[data-v-10eae91e] {\n  width: 30px;\n  height: 30px;\n}", ""]);
 
 // exports
 
@@ -7955,7 +7996,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#thankyou[data-v-3be69874] {\n  font-size: 14px;\n  text-align: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  padding: 0;\n  overflow: auto;\n  background: #fff;\n}\n.main[data-v-3be69874] {\n  position: relative;\n  z-index: 200;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n.header[data-v-3be69874], .actions[data-v-3be69874] {\n  display: flex;\n  align-items: center;\n  align-content: flex-start;\n  height: 20vh;\n}\n.supheading[data-v-3be69874] {\n  font-weight: 400;\n  font-size: 1.1428em;\n}\nh2[data-v-3be69874] {\n  font-weight: 500;\n  font-size: 1.7142em;\n  white-space: nowrap;\n}\n@media (min-width: 768px) {\n#thankyou .main[data-v-3be69874] {\n    max-width: 70%;\n}\n}\n@media (min-width: 991px) {\n#thankyou .main[data-v-3be69874] {\n    max-width: 55%;\n}\n}\n@media (min-width: 1200px) {\n#thankyou .main[data-v-3be69874] {\n    max-width: 30%;\n}\n.actions[data-v-3be69874] {\n    flex-direction: row-reverse;\n}\n.circle[data-v-3be69874] {\n    width: 33vw;\n    height: 33vw;\n}\n}\n.circle[data-v-3be69874] {\n  z-index: 100;\n  position: absolute;\n  border-radius: 50%;\n  background: #00b9eb;\n  border: 25px solid #7fdff9;\n  bottom: 100px;\n  right: 10px;\n  width: 70vw;\n  height: 70vw;\n}\n.circle.small[data-v-3be69874] {\n  width: 30vw;\n  height: 30vw;\n  border-width: 10px;\n}", ""]);
+exports.push([module.i, "#thankyou[data-v-3be69874] {\n  min-height: 100vh;\n  padding: 0;\n}\nh1[data-v-3be69874] {\n  font-size: 36px;\n  font-weight: 700;\n  color: #000;\n  margin-bottom: 10px;\n}\n.status-text[data-v-3be69874] {\n  display: block;\n  font-size: 16px;\n  color: #828282;\n  margin-bottom: 20px;\n}\n.status-text .choice-name[data-v-3be69874] {\n  font-weight: 600;\n  color: #0060EF;\n  white-space: nowrap;\n}\n.voted[data-v-3be69874] {\n  display: block;\n  font-size: 36px;\n  font-weight: 700;\n  color: #009D34;\n  text-transform: uppercase;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.action .btn[data-v-3be69874] {\n  flex: 1 1 auto;\n}", ""]);
 
 // exports
 
@@ -39863,43 +39904,81 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "choice-content" }, [
-    _c("div", { staticClass: "card mb-3" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("img", { attrs: { src: _vm.imageUrl(_vm.choice.image), alt: "" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "row footer" }, [
-          _c("div", { staticClass: "col-7 text-left" }, [
-            _c("div", { staticClass: "name" }, [
-              _vm._v(_vm._s(_vm.choice.name))
-            ]),
+  return _c(
+    "div",
+    {
+      staticClass: "choice-content",
+      class: { selected: _vm.selected },
+      on: {
+        click: function($event) {
+          return _vm.$emit("selected", _vm.choice)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "card mb-3" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.choice.name))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "action-wrap" }, [
+            _c("img", {
+              attrs: { src: _vm.imageUrl(_vm.choice.image), alt: "" }
+            }),
             _vm._v(" "),
-            _c("a", { attrs: { href: _vm.choice.link_url } }, [
-              _vm._v(_vm._s(_vm.choice.link_text))
+            _c("div", { staticClass: "check-status" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("span", { staticClass: "choice-checked-label" }, [
+                _vm._v(_vm._s(_vm.voted ? "Voted" : "Selected"))
+              ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col text-right" }, [
+          _c("span", { staticClass: "status-text" }, [
+            _c("span", { staticClass: "choice-number" }, [
+              _vm._v(_vm._s(_vm.number < 10 ? "0" + _vm.number : _vm.number))
+            ]),
+            _vm._v(" "),
             _c(
-              "button",
+              "span",
               {
-                staticClass: "fab btn-vote",
-                class: { "btn-success": _vm.selected },
-                on: {
-                  click: function($event) {
-                    return _vm.$emit("selected", _vm.choice)
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.voted,
+                    expression: "!voted"
                   }
-                }
+                ]
               },
-              [_c("i", { staticClass: "material-icons" }, [_vm._v("check")])]
+              [
+                _vm._v(
+                  "\n          " +
+                    _vm._s(
+                      _vm.selected ? "Selected" : "Tap to select this choice"
+                    ) +
+                    "\n        "
+                )
+              ]
             )
           ])
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "checked-icon-wrap" }, [
+      _c("span", { staticClass: "checked-icon" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("check")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -40877,76 +40956,119 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "results" } }, [
-    _c("h1", [_vm._v("Survey results")]),
+    _c("h1", [_vm._v("Survey Results")]),
+    _vm._v(" "),
+    _c("h3", [_vm._v(_vm._s(_vm.survey.name))]),
+    _vm._v(" "),
+    _vm.userchoice
+      ? _c("div", { staticClass: "user-choice-status" }, [
+          _vm._v("\n    " + _vm._s(_vm.userchoice.name) + "\n  ")
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "table",
       { staticClass: "table table-results mb-3" },
-      _vm._l(_vm.choices, function(choice) {
-        return _c("tr", { key: choice.id }, [
-          _c("td", [
-            _c("span", { staticClass: "choice-name" }, [
-              _vm._v(_vm._s(choice.name))
+      [
+        _vm._l(_vm.choices, function(choice) {
+          return _c("tr", { key: choice.id }, [
+            _c("td", [
+              _c("div", { staticClass: "img-wrap" }, [
+                _c("img", {
+                  staticStyle: { width: "70px", height: "70px" },
+                  attrs: {
+                    src: choice.image.replace("public", "/storage"),
+                    alt: ""
+                  }
+                })
+              ])
             ]),
             _vm._v(" "),
-            _c("a", { attrs: { href: choice.link_url } }, [
-              _vm._v(_vm._s(choice.link_text))
+            _c("td", [
+              _c("span", { staticClass: "choice-name" }, [
+                _vm._v(_vm._s(choice.name))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "progress" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "progress-bar",
+                    class: { "bg-success": _vm.topVoted.id == choice.id },
+                    style: {
+                      width: _vm.globalPercent(choice.votes_count) + "%"
+                    },
+                    attrs: { "aria-valuemin": "0", "aria-valuemax": "100" }
+                  },
+                  [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.globalPercent(choice.votes_count) + "%") +
+                        "\n          "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "choice-votes-count" }, [
+                _vm._v(_vm._s(choice.votes_count))
+              ])
             ])
-          ]),
+          ])
+        }),
+        _vm._v(" "),
+        _c("tr", [
+          _c(
+            "td",
+            {
+              staticStyle: {
+                "font-size": "11px",
+                "font-weight": "500",
+                color: "#828282"
+              }
+            },
+            [_vm._v("Total Votes:")]
+          ),
           _vm._v(" "),
           _c("td", [
-            _c("div", { staticClass: "progress" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "progress-bar",
-                  style: { width: _vm.globalPercent(choice.votes_count) + "%" },
-                  attrs: { "aria-valuemin": "0", "aria-valuemax": "100" }
-                },
-                [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.globalPercent(choice.votes_count) + "%") +
-                      "\n          "
-                  )
-                ]
+            _c("span", { staticClass: "choice-votes-count" }, [
+              _vm._v(
+                "\n          " + _vm._s(_vm.survey.votes_count) + "\n        "
               )
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              "\n        " +
+                _vm._s(_vm.survey.f_created_at) +
+                " Created\n      "
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-right" }, [
+            _vm._v("\n        15 Days Left\n      ")
+          ])
         ])
-      }),
-      0
+      ],
+      2
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "results-summary" }, [
-      _c("div", { staticClass: "metter" }, [
-        _c("div", { staticClass: "supheading" }, [_vm._v("opts")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "amount" }, [
-          _vm._v(_vm._s(_vm.choices.length))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "metter" }, [
-        _c("div", { staticClass: "supheading" }, [_vm._v("votes")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "amount" }, [
-          _vm._v(_vm._s(_vm.survey.votes_count))
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "ml-auto" },
-        [
-          _c("sharer", {
-            staticClass: "ml-auto",
-            attrs: { message: _vm.survey.name, link: _vm.url }
-          })
-        ],
-        1
-      )
-    ])
+    _c(
+      "div",
+      { staticClass: "results-summary" },
+      [
+        _c("sharer", {
+          staticClass: "ml-auto",
+          attrs: { message: _vm.survey.name, link: _vm.url }
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -41296,69 +41418,92 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "thankyou" } }, [
-    _c("div", { staticClass: "circle" }),
-    _vm._v(" "),
-    _c("div", {
-      staticClass: "circle small",
-      staticStyle: { top: "50px", left: "50px" }
-    }),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "main" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._t("default"),
-        _vm._v(" "),
-        _c("div", { staticClass: "actions row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-danger w-100 bg-pink mb-2 order-sm-2",
-                attrs: { href: "/surveys/" + _vm.slug + "/results" }
-              },
-              [_vm._v("Go to results page")]
-            )
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-5" },
+        [
+          _c("h1", { staticClass: "d-sm-none" }, [_vm._v("Thank You!")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "status-text d-sm-none" }, [
+            _vm._v("\n        Your vote was submit successfully For: "),
+            _c("span", { staticClass: "choice-name" }, [
+              _vm._v(_vm._s(_vm.choice.name))
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
-        ])
-      ],
-      2
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "header" }, [
-      _c("div", { staticClass: "w-100" }, [
-        _c("span", { staticClass: "supheading" }, [_vm._v("Thank you!")]),
+          _vm._t("default"),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-sm-none" }, [
+            _c("div", { staticClass: "voted" }, [_vm._v("VOTED")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "action" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-outlined-default mr-3",
+                  attrs: { href: "/surveys" }
+                },
+                [_vm._v("Take another")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-outlined-default",
+                  attrs: {
+                    href:
+                      "/surveys/" +
+                      _vm.slug +
+                      "/results/?choice_id=" +
+                      _vm.choice.id
+                  }
+                },
+                [_vm._v("Show The Results")]
+              )
+            ])
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-7 d-none d-sm-block" }, [
+        _c("h1", [_vm._v("Thank You!")]),
         _vm._v(" "),
-        _c("h2", [_vm._v("Your vote was submit succesfully")])
+        _c("span", { staticClass: "status-text" }, [
+          _vm._v("\n        Your vote was submit successfully For: "),
+          _c("span", { staticClass: "choice-name" }, [
+            _vm._v(_vm._s(_vm.choice.name))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "voted text-left" }, [_vm._v("VOTED")]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-outlined-default mr-3",
+            attrs: { href: "/surveys" }
+          },
+          [_vm._v("Take another")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-outlined-default",
+            attrs: {
+              href:
+                "/surveys/" + _vm.slug + "/results/?choice_id=" + _vm.choice.id
+            }
+          },
+          [_vm._v("Show The Results")]
+        )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-danger w-100 bg-pink mb-2 order-sm-1",
-          attrs: { href: "/surveys" }
-        },
-        [_vm._v("Vote in another poll")]
-      )
-    ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41720,90 +41865,80 @@ var render = function() {
           _vm.voted
             ? _c(
                 "thanks",
-                { attrs: { slug: _vm.survey.slug } },
+                { attrs: { slug: _vm.survey.slug, choice: _vm.selection } },
                 [
                   _c("choice-content", {
-                    attrs: { choice: _vm.selection, selected: true }
+                    attrs: {
+                      choice: _vm.selection,
+                      selected: true,
+                      voted: true
+                    }
                   })
                 ],
                 1
               )
-            : _c(
-                "div",
-                [
-                  _c("confirm-modal", {
-                    attrs: {
-                      choice: _vm.selection,
-                      survey: _vm.survey,
-                      staging: _vm.staging,
-                      voting: _vm.voting
-                    },
-                    on: {
-                      undoSelection: function($event) {
-                        _vm.staging = false
+            : _c("div", [
+                _c(
+                  "div",
+                  { staticClass: "row choices-wrapper" },
+                  _vm._l(_vm.choices, function(choice, i) {
+                    return _c(
+                      "div",
+                      {
+                        key: choice.id,
+                        staticClass: "col-sm-6 col-md-4 col-lg-4 choice-content"
                       },
-                      confirmed: _vm.vote
-                    }
+                      [
+                        _c("choice-content", {
+                          attrs: {
+                            choice: choice,
+                            selected: _vm.selection == choice,
+                            number: i + 1
+                          },
+                          on: { selected: _vm.selectChoice }
+                        })
+                      ],
+                      1
+                    )
                   }),
-                  _vm._v(" "),
+                  0
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "action" }, [
                   _c(
-                    "div",
-                    { staticClass: "row choices-wrapper" },
-                    _vm._l(_vm.choices, function(choice) {
-                      return _c(
-                        "div",
-                        {
-                          key: choice.id,
-                          staticClass:
-                            "col-sm-6 col-md-4 col-lg-4 choice-content"
-                        },
-                        [
-                          _c("choice-content", {
-                            attrs: {
-                              choice: choice,
-                              selected: _vm.selection == choice
-                            },
-                            on: { selected: _vm.selectChoice }
-                          })
-                        ],
-                        1
-                      )
-                    }),
-                    0
+                    "a",
+                    {
+                      staticClass: "btn btn-outlined-default mr-3",
+                      attrs: {
+                        href: "/surveys/" + _vm.survey.slug + "/results"
+                      }
+                    },
+                    [_vm._v("Just Show Results")]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "bottom-app-bar" }, [
-                    _c("div", { staticClass: "status" }, [
-                      _c("div", { staticClass: "form-section-title mb-0" }, [
-                        _vm._v("Your Selection")
-                      ]),
-                      _vm._v(" "),
-                      _c("span", [
-                        _vm._v(
-                          _vm._s(_vm.selection.name || "No candidate selected")
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "ml-auto btn btn-primary btn-submit",
-                        class: {
-                          disabled: !(_vm.selection && _vm.selection.id)
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.selection.id ? (_vm.staging = true) : null
-                          }
-                        }
-                      },
-                      [_vm._v("\n            Confirm\n          ")]
-                    )
-                  ])
-                ],
-                1
-              )
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn btn-primary d-inline-flex align-items-center",
+                      class: { disabled: !(_vm.selection && _vm.selection.id) },
+                      on: { click: _vm.vote }
+                    },
+                    [
+                      _vm.voting
+                        ? _c(
+                            "i",
+                            { staticClass: "material-icons mr-3 preloader" },
+                            [_vm._v("sync")]
+                          )
+                        : _c("i", { staticClass: "material-icons mr-3" }, [
+                            _vm._v("check")
+                          ]),
+                      _vm._v("\n            Confirm Your Vote\n          ")
+                    ]
+                  )
+                ])
+              ])
         ],
         1
       )
@@ -55848,8 +55983,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\xampp\htdocs\polly\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\xampp\htdocs\polly\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\xampp\htdocs\surveys\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\xampp\htdocs\surveys\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
