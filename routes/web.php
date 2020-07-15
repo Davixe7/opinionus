@@ -31,6 +31,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth')->group(function(){
   Route::resource('banners', 'Admin\BannerController');
   Route::post('updateLogo', 'Admin\DashboardController@updateLogo')->name('updateLogo');
   Route::post('siteconfig', 'Admin\FrontendController@store');
+  Route::put('update-credentials', 'Admin\UserController@update');
 });
 
 Route::get('/surveys', 'SurveyController@index')->name('surveys.index');

@@ -8,7 +8,7 @@
     <table class="table table-results mb-3">
       <tr v-for="choice in choices" :key="choice.id">
         <td>
-          <div class="img-wrap">
+          <div class="img-wrap" :class="{active: userchoice.id == choice.id}">
             <img :src="choice.image.replace('public/images', '/storage/thumbnails/70')" alt="">
           </div>
         </td>
@@ -119,6 +119,9 @@ tr:last-child td {
   font-weight: 700;
   color: #0060EF;
   margin-bottom: 40px;
+  border: 2px solid #0060EF;
+  padding: 5px;
+  border-radius: 5px;
   &:before {
     content: 'Your vote was:';
     display: block;
@@ -135,6 +138,9 @@ table.table-results td {
   border-radius: 10px;
   padding: 3px;
   display: inline-block;
+}
+.img-wrap.active {
+  border-color: #0060EF;
 }
 img {
   border-radius: 7px;

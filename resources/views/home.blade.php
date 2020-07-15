@@ -43,6 +43,20 @@
         </div>
       </div>
       
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header d-flex align-items-center">
+              <i class="material-icons mr-3">lock</i>
+              Account credentials
+            </div>
+            <div class="card-body">
+              <update-credentials :email="'{{ Auth::user()->email }}'"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <siteconfig :siteconfig="{{ json_encode($siteconfig) }}"/>
       
     </div>
