@@ -10,7 +10,7 @@ export default {
   props: ['banner'],
   data(){
     return {
-      saving: false,
+      saving: false, 
       status: 0
     }
   },

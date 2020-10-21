@@ -17,9 +17,9 @@
       :choices="{{ json_encode( $survey->choices ) }}"
       :survey="{{ json_encode( $survey ) }}">
     </results>
-    @if( $user_banner && $user_banner->image )
-    <a class="d-block d-sm-none" href="{{ $user_banner->url }}">
-      <img src="{{ str_replace('public', '/storage', $user_banner->image) }}" style="max-width: 100%;">
+    @if( $banner && $banner->image )
+    <a class="d-block d-sm-none" href="{{ $banner->url }}">
+      <img src="{{ str_replace('public', '/storage', $banner->image) }}" style="max-width: 100%;">
     </a>
     @endif
     @if( $admin_banner && $admin_banner->iframe )
@@ -35,9 +35,9 @@
         <i class="material-icons bounce">keyboard_arrow_down</i>
       </div>
     @endif
-    @if( $user_banner && $user_banner->image )
-    <a class="d-none d-sm-block" href="{{ $user_banner->url }}">
-      <img src="{{ str_replace('public', '/storage', $user_banner->image) }}" style="max-width: 100%;">
+    @if( $banner && $banner->image )
+    <a class="d-none d-sm-block" href="{{ $banner->url }}">
+      <img src="{{ str_replace('public', '/storage', $banner->image) }}" style="max-width: 100%;">
     </a>
     @endif
     @if( $admin_banner && $admin_banner->iframe )

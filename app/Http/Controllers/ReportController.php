@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-  
+
   public function create(Request $request){
     $survey = Survey::findOrFail( $request->survey_id );
     return view('reports.create', ['survey'=>$survey]);
   }
-  
+
   /**
   * Store a newly created resource in storage.
   *
@@ -28,9 +28,9 @@ class ReportController extends Controller
       'subject'      => $request->subject,
       'description'  => $request->description
     ]);
-    
+
     $request->session()->flash('message', "Reported the poll {$survey->name} successfully");
     return redirect()->route('reports.create', ['survey_id'=>$survey->id]);
   }
-  
+
 }

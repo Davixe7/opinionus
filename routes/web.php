@@ -14,13 +14,6 @@ use App\Banner;
 |
 */
 
-Route::get('/rotar', function(){
-  $banner = Banner::rotateIfExpired( Banner::byUser(1)->activeOrEnabled()->first() );
-  return response()->json([
-    'data' => $banner
-  ]);
-});
-
 Route::get('/', function(){
   $siteconfig = Storage::get('/frontend-config.json');
   return view('landing', [
@@ -47,6 +40,7 @@ Route::name('admin.')->prefix('admin')->middleware('auth:admin')->group(function
   Route::resource('users', 'Admin\UserController');
   Route::post('updateLogo', 'Admin\DashboardController@updateLogo')->name('updateLogo');
   Route::post('siteconfig', 'Admin\FrontendController@store');
+  Route::delete('reports/{survey}/ignore','Admin\ReportController@ignore')->name('reports.ignore');
   Route::resource('reports', 'Admin\ReportController');
 });
 

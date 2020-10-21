@@ -23,20 +23,31 @@ class SurveyController extends Controller
       }
       return view('surveys.index', ['surveys'=>$surveys]);
     }
-    
+
     public function vote(Request $request)
     {
       $survey = Survey::where('slug', $request->slug)->firstOrFail();
       return view('surveys.vote', ['survey'=>$survey->load('choices')]);
     }
-    
+
     public function results(Request $request)
     {
       $survey = Survey::where('slug', $request->slug)->with('choices')->firstOrFail();
-      $adminBanner = Banner::where('user_id', null)->where('is_active', 1)->first();
-      $userBanner  = Banner::rotateIfExpired( Banner::byUser($survey->user_id)->activeOrEnabled()->first() );
-      
-      return view('surveys.results', ['survey'=>$survey, 'admin_banner'=>$adminBanner, 'user_banner'=>$userBanner]);
+
+      if( !$banner = $survey->user->banners()->active()->first() ){
+        $banner = Banner::restartRound( $survey->user->banners()->enabled()->get() );
+      }
+
+      if( !$admin_banner = Banner::where('user_id', null)->active()->first() ){
+        $admin_banner = Banner::restartRound( Banner::where('user_id', null)->enabled()->get() );
+      }
+
+      $admin_banner = Banner::where('user_id', null)->active()->first();
+      return view('surveys.results', [
+        'survey' => $survey,
+        'admin_banner' => $admin_banner,
+        'banner' => $banner
+      ]);
     }
 
     /**

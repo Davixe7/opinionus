@@ -9,16 +9,22 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-  
-    public function index(){
-      return view('reports.index', ['reports'=>Report::all() ]);
+
+    public function index(Request $request){
+      $reports = Survey::whereHas('reports')->with('reports')->get();
+      return view('reports.index', ['surveys'=>$reports]);
     }
-  
+
+    public function ignore(Survey $survey){
+      $r = $survey->reports()->delete();
+      return redirect()->route('admin.reports.index');
+    }
+
     public function create(Request $request){
       $survey = Survey::findOrFail( $request->survey_id );
       return view('reports.create', ['survey'=>$survey]);
     }
-    
+
 
     public function store(Request $request, Survey $survey)
     {
@@ -28,7 +34,7 @@ class ReportController extends Controller
         'subject'      => $request->subject,
         'description'  => $request->description
       ]);
-      
+
       $request->session()->flash('message', "Reported the poll {$survey->name} successfully");
       return redirect()->route('admin.reports.create', ['survey_id'=>$survey->id]);
     }
@@ -47,7 +53,7 @@ class ReportController extends Controller
         'description'  => $request->description ?: $report->description,
         'status'       => $request->status ?: $report->status
       ]);
-      
+
       return response()->json(['data'=> $report ]);
     }
 

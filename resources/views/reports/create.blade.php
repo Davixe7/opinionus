@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  
+
   @if( session()->has('message') )
     <div class="alert alert-success align-items-center d-flex">
       {{ session('message') }}
       <i class="ml-auto material-icons">check</i>
     </div>
   @endif
-  
+
   <div class="row">
     <div class="col-md-6">
       <h1>Report survey</h1>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
           <label for="">Description</label>
-          <textarea name="description" id="description" rows="7" class="form-control"></textarea>
+          <textarea name="description" id="description" rows="7" class="form-control" required></textarea>
         </div>
         <input type="hidden" name="survey_id" value="{{ $survey->id }}">
         <div class="form-group text-right">

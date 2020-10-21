@@ -10,9 +10,9 @@ use App\Http\Controllers\Controller;
 
 class BannerController extends Controller
 {
-    
+
     use Uploads;
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -51,15 +51,14 @@ class BannerController extends Controller
         'image'     => $this->upload( $request, 'image'),
         'url'       => $request->url,
         'duration'  => $request->duration ?: 60,
-        'is_active' => auth()->user()->banners()->count() ? 0 : 1,
-        
+
         'user_id'  => auth()->id()
       ]);
-      
+
       if( $request->expectsJson() ){
         return new BannerResource( $banner );
       }
-      
+
       $request->session()->flash('message', 'Banner Ad Created Successfully!');
       return redirect()->route('dashboard.banners.index');
     }
@@ -100,7 +99,7 @@ class BannerController extends Controller
     public function update(Request $request, Banner $banner)
     {
       $updated_file = $this->upload( $request, 'image');
-      
+
       $banner->update([
         'name'      => $request->name   ?: $banner->name,
         'image'     => $updated_file    ?: $banner->image,
@@ -108,7 +107,7 @@ class BannerController extends Controller
         'duration'  => $request->duration ?: $banner->duration,
         'enabled'   => $request->has('enabled') ? $request->enabled : $banner->enabled
       ]);
-      
+
       if( $request->expectsJson() ){
         return response()->json( ['data'=>$banner] );
       }

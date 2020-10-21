@@ -36,8 +36,8 @@
     <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div>
     <nav class="navbar navbar-expand-lg navbar-light mb-4">
       <a class="navbar-brand" href="{{ url('/') }}">
-        @if( Storage::exists('/public/brand-logo.png') )
-          <img src="/storage/brand-logo.png" alt="site logo">
+        @if( Storage::exists('/public/brand-logo.jpeg') )
+          <img src="/storage/brand-logo.jpeg" alt="site logo">
         @endif
         @if( $config = json_decode( Storage::get('/frontend-config.json' ) ) )
           <div class="d-inline-block" style="vertical-align: middle; padding-left: 10px;">
@@ -51,7 +51,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           @if( Auth::guard('web')->check() )
@@ -84,19 +84,13 @@
             <a href="/home" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
+            <a href="{{ route('admin.users.index') }}" class="nav-link">Users</a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.users.index') }}" class="nav-link">Manage Users</a>
+            <a href="{{ route('admin.surveys.index') }}" class="nav-link">Surveys</a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.surveys.index') }}" class="nav-link">Manage surveys</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.banners.index') }}" class="nav-link">Manage Banners</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.admin-banners.index') }}" class="nav-link">Manage Admin Banners</a>
+            <a href="{{ route('admin.admin-banners.index') }}" class="nav-link">Admin Banners</a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.reports.index') }}" class="nav-link">Reports</a>
