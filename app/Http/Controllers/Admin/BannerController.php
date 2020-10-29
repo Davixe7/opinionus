@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Banner;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\Banner as BannerResource;
 use App\Traits\Uploads;
@@ -10,21 +11,21 @@ use App\Http\Controllers\Controller;
 
 class BannerController extends Controller
 {
-    
+
     use Uploads;
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
-      $banners = Banner::byUser( $request->user_id )->get();
-      if( request()->expectsJson() ){
+      $banners = $user->banners;
+      if( $request->expectsJson() ){
         return BannerResource::collection( $banners );
       }
-      return view('admin.banners.index', ['banners'=>$banners]);
+      return view('admin.banners', ['banners'=>$banners, 'user'=>$user]);
     }
 
     /**
@@ -54,11 +55,11 @@ class BannerController extends Controller
         'duration'  => $request->duration,
         'is_active' => Banner::count() ? 0 : 1
       ]);
-      
+
       if( $request->expectsJson() ){
         return new BannerResource( $banner );
       }
-      
+
       $request->session()->flash('message', 'Banner Ad Created Successfully!');
       return redirect()->route('admin.banners.index');
     }
@@ -99,7 +100,7 @@ class BannerController extends Controller
     public function update(Request $request, Banner $banner)
     {
       $updated_file = $this->upload( $request, 'image');
-      
+
       $banner->update([
         'name'      => $request->name   ?: $banner->name,
         'image'     => $updated_file    ?: $banner->image,
@@ -108,7 +109,7 @@ class BannerController extends Controller
         'iframe'    => $request->has('iframe')  ? $request->iframe : $banner->iframe,
         'enabled'   => $request->has('enabled') ? $request->enabled : $banner->enabled
       ]);
-      
+
       if( $request->expectsJson() ){
         return response()->json( ['data'=>$banner] );
       }

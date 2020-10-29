@@ -35,6 +35,7 @@ Route::name('dashboard.')->prefix('dashboard')->middleware('auth:web,admin')->gr
 // ROOT USER
 Route::name('admin.')->prefix('admin')->middleware('auth:admin')->group(function(){
   Route::resource('surveys', 'Admin\SurveyController');
+  Route::get('users/{user}/banners', 'Admin\BannerController@index');
   Route::resource('banners', 'Admin\BannerController');
   Route::resource('admin-banners', 'Admin\AdminBannerController')->parameters(['admin-banners' => 'banner']);
   Route::resource('users', 'Admin\UserController');

@@ -12,7 +12,7 @@ class ReportController extends Controller
 
     public function index(Request $request){
       $reports = Survey::whereHas('reports')->with('reports')->get();
-      return view('reports.index', ['surveys'=>$reports]);
+      return view('admin.reports', ['surveys'=>$reports]);
     }
 
     public function ignore(Survey $survey){

@@ -59,9 +59,6 @@
             <a href="{{ route('dashboard.index') }}" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('surveys.index') }}" class="nav-link">Surveys</a>
-          </li>
-          <li class="nav-item">
             <a href="{{ route('dashboard.surveys.index') }}" class="nav-link">Manage surveys</a>
           </li>
           <li class="nav-item">
@@ -85,9 +82,6 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.users.index') }}" class="nav-link">Users</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.surveys.index') }}" class="nav-link">Surveys</a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.admin-banners.index') }}" class="nav-link">Admin Banners</a>

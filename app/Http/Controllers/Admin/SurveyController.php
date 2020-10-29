@@ -23,14 +23,14 @@ class SurveyController extends Controller
       if( $request->user_id ){
         $user = User::findOrFail($request->user_id);
       }
-      
+
       $surveys = Survey::byUser( $request->user_id )->get();
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }
-      return view('dashboard.surveys.index', ['surveys'=>$surveys, 'user'=>$user]);
+      return view('admin.surveys', ['surveys'=>$surveys, 'user'=>$user]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -117,7 +117,7 @@ class SurveyController extends Controller
       $request->session()->flash('message', "Survey $survey->id deleted successfully");
       return redirect()->route('surveys.index');
     }
-    
+
     public function deleteAll(Request $request){
       Survey::all()->each(function($c){ $c->choices()->delete(); $c->delete(); });
       if( $request->expectsJson() ){

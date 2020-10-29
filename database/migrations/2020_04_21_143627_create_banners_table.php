@@ -23,6 +23,7 @@ class CreateBannersTable extends Migration
           $table->unsignedInteger('duration')->default(60);
           $table->boolean('enabled')->default(0);
           $table->dateTime('expires_at')->nullable();
+          $table->enum('type', ['dashboard','results'])->default('results');
           $table->unsignedBigInteger('user_id')->nullable();
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
