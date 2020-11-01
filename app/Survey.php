@@ -8,7 +8,7 @@ class Survey extends Model
 {
   protected $fillable = ['name', 'slug', 'user_id', 'expires_at'];
   protected $hidden = ['created_at', 'updated_at'];
-  protected $appends = ['votes_count'];
+  protected $appends = ['votes_count','social_media_links'];
 
   public function choices(){
     return $this->hasMany('App\Choice');
@@ -66,5 +66,22 @@ class Survey extends Model
       return 30;
     }
     return \Carbon\Carbon::parse($this->expires_at)->diffForHumans();
+  }
+
+  public function getSocialMediaLinksAttribute(){
+    $vote_url    = urlencode( route('surveys.vote', ['slug'=>$this->slug]) );
+    $results_url = urlencode( route('surveys.results', ['slug'=>$this->slug]) );
+    $fb_base_url      = "http://www.facebook.com/sharer.php?u=";
+    $twitter_base_url = "https://twitter.com/intent/tweet?text=$this->name";
+    return [
+      'facebook' => [
+        'vote' => $fb_base_url . $vote_url,
+        'results' => $fb_base_url . $results_url
+      ],
+      'twitter' => [
+        'vote'    => $twitter_base_url . ' &url=' . $vote_url ,
+        'results' => $twitter_base_url . ' &url=' . $results_url
+      ],
+    ];
   }
 }

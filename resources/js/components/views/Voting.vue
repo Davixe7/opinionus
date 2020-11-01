@@ -1,10 +1,5 @@
 <template>
   <div id="voting">
-    <div class="sharer">
-      <div class="title">Share</div>
-      <a href="#"><i class="op-icon facebook"></i></a>
-      <a href="#"><i class="op-icon twitter"></i></a>
-    </div>
     <article>
       <div style="display: flex; flex-flow: row nowrap; align-items: center; justify-content: space-between;">
         <h1>{{ survey.name }}</h1>
@@ -45,7 +40,7 @@ export default {
     choices: []
   }},
   computed:{
-    resultsURL(){ return '/surveys/'+this.survey.slug+'/results'; }
+    resultsURL(){ return '/surveys/'+this.survey.slug+'/results' }
   },
   methods:{
     submitVote(){
@@ -57,25 +52,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .sharer {
-    text-align: center;
-    border-radius: 0 10px 10px 0;
-    background: #fff;
-    padding: 10px;
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    z-index: 1000;
-    .title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #B5B5B5;
-      margin-bottom: 18px;
-    }
-    a {
-      display: block;
-      margin-bottom: 18px;
-    }
-  }
 </style>
