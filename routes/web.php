@@ -15,12 +15,23 @@ use App\Banner;
 */
 
 Route::get('/', function(){
-  $siteconfig = Storage::get('/frontend-config.json');
-  return view('landing', [
-    'surveys' => App\Survey::with('choices')->limit(10)->get(),
-    'siteconfig' => $siteconfig
+  $surveys = App\Survey::limit(10)->get();
+  $frontend_config = json_decode( Storage::get('frontend-config.json') );
+  return view('newhome', [
+    'surveys'=>$surveys,
+    'frontend_config'=>$frontend_config,
   ]);
-});
+})->name('home');
+
+Route::get('/search', 'SurveyController@index')->name('search');
+
+// Route::get('/', function(){
+//   $siteconfig = Storage::get('/frontend-config.json');
+//   return view('landing', [
+//     'surveys' => App\Survey::with('choices')->limit(10)->get(),
+//     'siteconfig' => $siteconfig
+//   ]);
+// });
 
 Route::get('/home', 'HomeController@index');
 

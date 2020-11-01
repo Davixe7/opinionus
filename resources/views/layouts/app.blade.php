@@ -19,7 +19,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <title>
-    @if( $config = json_decode( Storage::get('/frontend-config.json' ) ) )
+    @if( $config = json_decode( Storage::get('frontend-config.json' ) ) )
       {{ $config->brandname }}
     @else
       {{ config('app.name', 'Laravel') }}
@@ -27,25 +27,24 @@
   </title>
   <script src="{{ mix('js/app.js') }}" defer></script>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   @yield('head')
 </head>
 <body>
   <div id="app">
-    <div class="circle-bg" style="background: lightblue; width: 25vw; height: 25vw; border-radius: 50%;position: absolute; bottom: 10px; right: 200px; z-index: 100;"></div>
-    <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div>
+    <!-- <div class="circle-bg" style="background: lightblue; width: 25vw; height: 25vw; border-radius: 50%;position: absolute; bottom: 10px; right: 200px; z-index: 100;"></div>
+    <div class="circle-bg" style="background: lightblue; width: 5vw; height: 5vw; border-radius: 50%;position: absolute; top: 90px; left: 230px; z-index: 100;"></div> -->
     <nav class="navbar navbar-expand-lg navbar-light mb-4">
       <a class="navbar-brand" href="{{ url('/') }}">
-        @if( Storage::exists('/public/brand-logo.jpeg') )
-          <img src="/storage/brand-logo.jpeg" alt="site logo">
-        @endif
-        @if( $config = json_decode( Storage::get('/frontend-config.json' ) ) )
+        @if( Storage::exists('public/brand-logo.png') )
+          <img src="/storage/brand-logo.png" alt="site logo" style="max-width: 120px;">
+        @elseif( $config = json_decode( Storage::get('frontend-config.json' ) ) )
           <div class="d-inline-block" style="vertical-align: middle; padding-left: 10px;">
             <span>{{ $config->brandname }}</span>
             <span class="navbar-catchphrase">{{ $config->catchphrase }}</span>
           </div>
         @else
-          PollyPolls
+          OpinionUS
         @endif
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -119,7 +118,6 @@
     @yield('footer')
   </footer>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,600,700&display=swap" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
 </body>
 </html>

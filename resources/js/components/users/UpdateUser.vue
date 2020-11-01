@@ -29,7 +29,7 @@
         <a v-if="user.id" target="_blank" :href="`/admin/surveys/?user_id=${user.id}`" class="btn btn-sm btn-link" title="user polls">
           <span><i class="material-icons">poll</i></span>
         </a>
-        <a v-if="user.id" target="_blank" :href="`/admin/banners/?user_id=${user.id}`" class="btn btn-sm btn-link" title="user banners">
+        <a v-if="user.id" target="_blank" :href="`/admin/users/${user.id}/banners`" class="btn btn-sm btn-link" title="user banners">
           <span><i class="material-icons">view_carousel</i></span>
         </a>
       </div>
@@ -101,5 +101,11 @@
   }
   .table-row > div {
     padding: 0 7px 5px 0;
+  }
+  .table-row {
+    vertical-align: middle;
+    div {
+      vertical-align: middle;
+    }
   }
 </style>

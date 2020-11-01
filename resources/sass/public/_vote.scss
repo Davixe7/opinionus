@@ -1,0 +1,115 @@
+h1 {
+  margin: 0 0 35px 0;
+}
+.vote-choice {
+  margin-bottom: 36px;
+  transition: all .5s;
+  cursor: pointer;
+  .card {
+    padding: 18px 27px;
+  }
+  .name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .picture-wrap {
+    padding: 7px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 3px solid #F3F3F3;
+    border-radius: 15px;
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+    }
+    &.active {
+      border-color: blue;
+    }
+  }
+  .choice-number {
+    font-size: 18px;
+    font-weight: 700;
+    color: #D4D4D4;
+    padding: 0 10px;
+    &:after {
+      content: 'Tap to select this choice';
+      font-size: 10px;
+      font-weight: 400;
+      color: #B5B5B5;
+      padding-left: 10px;
+    }
+  }
+}
+
+.vote-page-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 68px;
+  .btn {
+    padding: 20px;
+    flex: 1 1 auto;
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
+}
+
+.vote-choice:hover {
+  .card {
+    box-shadow: 0 2px 20px 3px rgba(0,0,0,.2);
+  }
+  .picture-wrap {
+    border-color: #0060EF33;
+  }
+}
+
+.selection-mark {
+  display: none;
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0060EF;
+  .circle {
+    border-radius: 50%;
+    border: 2px solid #0060EF;
+    padding: 5px;
+    img {
+      background: #fff;
+      border-radius: 50%;
+    }
+  }
+}
+.vote-choice.selected {
+  .card {
+    box-shadow: 0 2px 20px 3px rgba(0,0,0,.2);
+  }
+  .picture-wrap {
+    border-color: #0060EF;
+  }
+  .selection-mark {
+    display: block;
+  }
+  .choice-number {
+    color: #009D34;
+    &:after {
+      content: 'Selected';
+      color: #009D34;
+    }
+  }
+}
+
+@media(min-width: 576px){
+  .vote-choices {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .vote-choice {
+    flex: 1 1 50%;
+  }
+}

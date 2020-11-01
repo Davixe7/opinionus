@@ -21,15 +21,13 @@
         @csrf
         <div class="form-group">
           <label for="">Select subject</label>
-          <select name="subject" id="" class="form-control">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
+          <select name="subject" id="" class="form-control" readonly>
+            <option value="a">Inappropiate content</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
           <label for="">Description</label>
-          <textarea name="description" id="description" rows="7" class="form-control" required></textarea>
+          <textarea name="description" id="description" rows="7" class="form-control">Inappropiate content</textarea>
         </div>
         <input type="hidden" name="survey_id" value="{{ $survey->id }}">
         <div class="form-group text-right">

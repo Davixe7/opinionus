@@ -1,0 +1,12 @@
+.card.search-result {
+  padding: 0 15px 5px;
+  margin-bottom: 8px;
+  transition: box-shadow .4s;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 5px 1px rgba(0,0,0,.2);
+  }
+  .card-title {
+    padding: 15px 0;
+  }
+}

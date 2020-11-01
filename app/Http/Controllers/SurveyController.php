@@ -15,24 +15,32 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $surveys = Survey::has('choices', '>=', 2)->with('choices')->get();
+      $results = Survey::has('choices', '>=', 2)->with('choices')->byName($request->name)->get();
+
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );
       }
-      return view('surveys.index', ['surveys'=>$surveys]);
+      return view('search', ['results'=>$results]);
     }
 
     public function vote(Request $request)
     {
       $survey = Survey::where('slug', $request->slug)->firstOrFail();
-      return view('surveys.vote', ['survey'=>$survey->load('choices')]);
+      return view('vote', ['survey'=>$survey->load('choices')]);
     }
 
     public function results(Request $request)
     {
       $survey = Survey::where('slug', $request->slug)->with('choices')->firstOrFail();
+      $choice = $survey->choices->find( $request->choice_id );
+
+      if( $choice ){
+        $survey->choices = $survey->choices->filter(function($c)use($choice){
+          return $c->id != $choice->id;
+        });
+      }
 
       if( !$banner = $survey->user->banners()->active()->first() ){
         $banner = Banner::restartRound( $survey->user->banners()->enabled()->get() );
@@ -42,8 +50,8 @@ class SurveyController extends Controller
         $admin_banner = Banner::restartRound( Banner::where('user_id', null)->enabled()->get() );
       }
 
-      $admin_banner = Banner::where('user_id', null)->active()->first();
-      return view('surveys.results', [
+      return view('results', [
+        'choice' => $choice,
         'survey' => $survey,
         'admin_banner' => $admin_banner,
         'banner' => $banner

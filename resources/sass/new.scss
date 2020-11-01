@@ -1,0 +1,49 @@
+@import 'icons';
+@import './public/buttons';
+@import './public/forms';
+@import './public/cards';
+@import './public/menu';
+@import './public/home';
+@import './public/home-surveys';
+@import './public/search';
+@import './public/vote';
+@import './public/results';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  background: #f3f3f3;
+}
+h1 {
+  font-weight: 700;
+}
+.container {
+  padding: 20px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #D4D4D4;
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: #000;
+    border-bottom: 4px solid #0060EF;
+    margin-bottom: -2px;
+  }
+  .detail {
+    font-size: 12px;
+    color: #828282;
+    margin-left: auto;
+  }
+}
+.text-primary {
+  color: #0060EF;
+}
+hr {
+  border: none;
+  border-top: 1px solid #D4D4D4;
+}

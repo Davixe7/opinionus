@@ -1,0 +1,36 @@
+#absolute-menu {
+  z-index: -1000;
+  opacity: 0;
+  transition: opacity .4s;
+  background: #0060EF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 70px;
+  overflow: scroll;
+
+  .btn-close {
+    border-color: #004CBE;
+    margin-bottom: 100px;
+  }
+}
+#absolute-menu.active {
+  z-index: 1000;
+  opacity: 1;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  li {
+    margin-bottom: 25px;
+    a {
+      font-size: 16px;
+      font-weight: 500;
+      color: #D4D4D4;
+      text-decoration: none;
+    }
+  }
+}

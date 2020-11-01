@@ -22,8 +22,9 @@ class VoteController extends Controller
         'choice_id'  => $choice->id,
         'ip_address' => $request->ip()
       ]);
-      
-      return response()->json(['data'=>'Vote added succesfully']);
+
+      // return response()->json(['data'=>'Vote added succesfully']);
+      return view('voted', ['choice'=>$choice, 'slug'=>$choice->survey->slug]);
     }
 
     /**

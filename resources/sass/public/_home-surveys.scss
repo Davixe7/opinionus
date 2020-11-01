@@ -1,0 +1,47 @@
+.home-surveys {
+  margin-bottom: 48px;
+}
+.home-survey {
+  margin-bottom: 20px;
+}
+.choices {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.choice-thumbnail {
+  width: 68px;
+  height: 68px;
+  margin-right: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.votes-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0060EF;
+  margin: 0 5px 5px 0;
+  &:after {
+    content: 'Votes';
+    font-size: 12px;
+    font-weight: 400;
+    color: #828282;
+  }
+}
+.dates {
+  display: flex;
+  font-size: 10px;
+  font-weight: 300;
+  color: #B5B5B5;
+  margin-bottom: 20px;
+}
+.dates > div:last-child {
+  margin-left: auto;
+  &:after {
+    content: ' left';
+  }
+}
