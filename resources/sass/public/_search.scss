@@ -9,4 +9,55 @@
   .card-title {
     padding: 15px 0;
   }
+  &.expired {
+    .dates > div:last-child:after { content: ''; }
+    .dates > div:last-child:before { content: 'Expired '; }
+  }
+}
+.search-form {
+  display: flex;
+  flex-flow: column nowrap;
+  .actions {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    .input-group {
+      flex: 1 1 auto;
+    }
+  }
+}
+.search-filters-form {
+  display: none;
+  width: -moz-available;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 1px rgba(0,0,0,.2);
+  background: #fff;
+  &.active {
+    display: block;
+  }
+  h5 {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 0 15px;
+  }
+  label {
+    font-size: 12px;
+    color: #828282;
+    display: block;
+    input {
+      height: auto !important;
+      vertical-align: middle;
+    }
+    input[type=date] {
+      padding: 7px;
+      border: 1px solid #D4D4D4;
+    }
+  }
+}
+.search-empty-state {
+  border-radius: 10px;
+  border: 2px solid #D4D4D4;
+  text-align: center;
+  margin: 10px auto;
 }

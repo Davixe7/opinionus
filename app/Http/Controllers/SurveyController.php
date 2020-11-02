@@ -17,7 +17,15 @@ class SurveyController extends Controller
      */
     public function index(Request $request)
     {
-      $results = Survey::has('choices', '>=', 2)->with('choices')->byName($request->name)->get();
+      $request->validate([
+        'date_from' => 'nullable|date',
+        'date_to'   => 'nullable|date'
+      ]);
+
+      $results = Survey::has('choices', '>=', 2)->with('choices')
+                                                ->where('created_at', '>=', $request->date_from ?: '2020-01-01')
+                                                ->where('created_at', '<=', $request->date_to   ?: \Carbon\Carbon::now())
+                                                ->byName($request->name)->get();
 
       if( request()->expectsJson() ){
         return SurveyResource::collection( $surveys );

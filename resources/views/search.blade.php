@@ -21,20 +21,7 @@
 
     <main>
       <div class="container">
-        <form action="{{ route('search') }}" method="GET">
-        <div class="search-form">
-          <div class="input-group">
-            <input type="search" placeholder="Type your keyboard" name="name">
-            <button class="btn" type="submit">
-              <i class="op-icon search"></i>
-            </button>
-          </div>
-          <button class="btn" type="button">
-            <i class="op-icon tweak"></i>
-          </button>
-          </form>
-        </div>
-
+        @include('partials.searchform')
         <div class="section-title">
           <div class="title">Results</div>
           <div class="detail">{{ $results->count() }} Results</div>
@@ -42,7 +29,7 @@
 
         <div class="search-results">
           @foreach( $results as $result )
-          <div class="card search-result"
+          <div class="card search-result @if($result->is_expired) expired @endif"
               onclick="window.location.href = '{{ route('surveys.vote', ['slug'=>$result->slug]) }}'">
             <div class="card-title">{{ $result->name }}</div>
             <div class="votes-count">

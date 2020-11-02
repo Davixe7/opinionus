@@ -1,4 +1,4 @@
-<div class="sharer @if($horizontal) horizontal @endif">
+<div class="sharer @if($horizontal ?? false) horizontal @endif">
   <div class="title">Share</div>
   <a href="{{ $survey['social_media_links']['facebook'][$mode] }}"
     target="_blank">

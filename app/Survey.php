@@ -8,7 +8,7 @@ class Survey extends Model
 {
   protected $fillable = ['name', 'slug', 'user_id', 'expires_at'];
   protected $hidden = ['created_at', 'updated_at'];
-  protected $appends = ['votes_count','social_media_links'];
+  protected $appends = ['votes_count','social_media_links', 'is_expired'];
 
   public function choices(){
     return $this->hasMany('App\Choice');
@@ -20,10 +20,6 @@ class Survey extends Model
 
   public function user(){
     return $this->belongsTo('App\User');
-  }
-
-  public function getVotesCountAttribute(){
-    return $this->votes()->count();
   }
 
   public function regenerateSlugs(){
@@ -57,13 +53,17 @@ class Survey extends Model
     return $this->reports()->count();
   }
 
+  public function getVotesCountAttribute(){
+    return $this->votes()->count();
+  }
+
   public function getCreatedDateAttribute(){
     return $this->created_at->format('M d Y');
   }
 
-  function getDaysLeftAttribute(){
+  public function getDaysLeftAttribute(){
     if( !$this->expires_at ){
-      return 30;
+      return "30 days";
     }
     return \Carbon\Carbon::parse($this->expires_at)->diffForHumans();
   }
@@ -83,5 +83,10 @@ class Survey extends Model
         'results' => $twitter_base_url . ' &url=' . $results_url
       ],
     ];
+  }
+
+  public function getIsExpiredAttribute(){
+    if( !$this->expires_at ){ return false; }
+    if( $this->expires_at < \Carbon\Carbon::now() ){ return true; }
   }
 }
