@@ -8,10 +8,15 @@ class Banner extends Model
 {
   protected $fillable = ['name', 'image', 'url', 'iframe', 'expires_at', 'enabled', 'duration', 'user_id'];
   protected $hidden = ['created_at'];
+  protected $appends = ['picture_url'];
 
   protected $casts = [
       'enabled' => 'Boolean'
   ];
+
+  public function getPictureUrlAttribute(){
+    return $this->image ? str_replace('public', '/storage', $this->image) : '';
+  }
 
   public static function restartRound($banners){
     $expires_at = \Carbon\Carbon::now();

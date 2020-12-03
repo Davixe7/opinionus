@@ -56,23 +56,23 @@
                       @csrf
                       @method('DELETE')
                     </form>
-                    <div class="btn-group">
+                    <div class="">
                       <a href="#"
                         onclick="confirm('Are you sure you want to remove all reports?') ? document.querySelector('#ignore-form-{{$survey->id}}').submit() : '' "
-                        class="btn btn-secondary btn-link" title="ignore">
+                        class="btn btn-link" title="ignore">
                         Ignore
                       </a>
                       <a
                         href="#"
                         onclick="confirm('Are you sure you want to delete the survey?') ? document.querySelector('#form-{{$survey->id}}').submit() : '' "
-                        class="btn btn-secondary btn-link"
+                        class="btn btn-link"
                         title="delete">
                         Delete survey
                       </a>
                       <a
                         href="#"
                         onclick=" confirm('Are you sure you want to delete the user and all his data?') ? document.querySelector('#delete-user-form-{{$survey->id}}').submit() : '' "
-                        class="btn btn-secondary btn-link"
+                        class="btn btn-link"
                         title="delete">
                         Delete user
                       </a>

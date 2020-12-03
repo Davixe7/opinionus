@@ -42,11 +42,11 @@ class SurveyController extends Controller
     public function results(Request $request)
     {
       $survey = Survey::where('slug', $request->slug)->with('choices')->firstOrFail();
-      $choice = $survey->choices->find( $request->choice_id );
+      $user_choice = $survey->choices->find( $request->choice_id );
 
-      if( $choice ){
-        $survey->choices = $survey->choices->filter(function($c)use($choice){
-          return $c->id != $choice->id;
+      if( $user_choice ){
+        $survey->choices = $survey->choices->filter(function($c)use($user_choice){
+          return $c->id != $user_choice->id;
         });
       }
 
@@ -59,7 +59,7 @@ class SurveyController extends Controller
       }
 
       return view('results', [
-        'choice' => $choice,
+        'choice' => $user_choice,
         'survey' => $survey,
         'admin_banner' => $admin_banner,
         'banner' => $banner

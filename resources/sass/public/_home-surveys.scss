@@ -1,8 +1,14 @@
 .home-surveys {
   margin-bottom: 48px;
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: auto;
+  justify-content: space-between;
 }
 .home-survey {
+  flex: 0 0 60%;
   margin-bottom: 20px;
+  margin-right: 10px;
 }
 .choices {
   display: flex;

@@ -13,7 +13,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   padding: 0;
   margin: 0;
-  background: #f3f3f3;
+  background: url('/circle.png') no-repeat, url('/circle_blue.png') no-repeat 150% 75%;
+  background-color: #f3f3f3;
 }
 h1 {
   font-weight: 700;
@@ -46,4 +47,22 @@ h1 {
 hr {
   border: none;
   border-top: 1px solid #D4D4D4;
+}
+
+.expired {
+  .dates > div:last-child:after { content: ''; }
+  .dates > div:last-child:before { content: 'Expired '; }
+}
+.row {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.col-md-6 {
+  flex: 1 1 50%;
+}
+@media(min-width: 680px){
+  .row {
+    flex-flow: row nowrap;
+  }
 }

@@ -2,7 +2,7 @@
 @import 'variables';
 @import 'material-icons';
 // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 
 .preloader {
   animation: rotate .7s infinite linear;

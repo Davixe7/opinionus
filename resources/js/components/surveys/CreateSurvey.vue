@@ -31,7 +31,7 @@
                   <i class="material-icons">arrow_back</i>&nbsp;
                   <span>Go back</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${slug}/vote`" class="btn btn-link" title="vote">
+                <a v-if="choices.length >= 2" :href="`/surveys/${slug}/vote`" class="btn btn-link" target="_blank" title="vote">
                   <i class="material-icons">how_to_vote</i>&nbsp;
                   <span>Vote</span>
                 </a>
@@ -49,7 +49,7 @@
         </transition>
       </div>
     </div>
-    
+
     <div class="row py-3" style="overflow: hidden;">
       <!-- Create Choice Form -->
       <div class="col-md-3 create-choice-form" :class="{'slideout-enter-active':!creatingChoice}">
@@ -62,10 +62,10 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col col-choices-container">
         <span class="form-section-title">Choices</span>
-        
+
         <div class="choices-container-wrap" :class="{'choices-empty-state': !choices.length}">
           <span v-show="!choices.length" class="message">{{ surveyId ? 'No choices added yet' : 'Create a new survey to start adding choices' }}</span>
           <transition-group enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
@@ -79,16 +79,16 @@
           </div>
           </transition-group>
         </div>
-        
+
         <transition enter-active-class="animated zoomIn">
           <button v-if="surveyId" @click="creatingChoice=!creatingChoice" class="btn btn-danger fab fab-fixed">
             <i class="material-icons">add</i>
           </button>
         </transition>
-        
+
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -112,10 +112,10 @@ export default {
   data(){ return {
     surveyId: null,
     slug: null,
-    name: 'New survey #' + String( Math.random(0,99) ).substring(2,4),
+    name: '',
     defaultChoice:{ name: 'Choice 0' + String( Math.random(0,99) ).substring(2,4), link_text: 'Click me!', link_url: 'http://localhost:8080/', image: null },
     choices: [],
-    
+
     errors: {},
     saving: false,
     creatingChoice: false,

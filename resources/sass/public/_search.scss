@@ -9,10 +9,6 @@
   .card-title {
     padding: 15px 0;
   }
-  &.expired {
-    .dates > div:last-child:after { content: ''; }
-    .dates > div:last-child:before { content: 'Expired '; }
-  }
 }
 .search-form {
   display: flex;
@@ -55,9 +51,10 @@
     }
   }
 }
-.search-empty-state {
+.results-empty-state {
   border-radius: 10px;
   border: 2px solid #D4D4D4;
   text-align: center;
   margin: 10px auto;
+  padding: 10px;
 }

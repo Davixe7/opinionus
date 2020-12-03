@@ -28,6 +28,9 @@
         </div>
 
         <div class="search-results">
+          @if( !$results->count() )
+          <div class="results-empty-state">No matching results</div>
+          @else
           @foreach( $results as $result )
           <div class="card search-result @if($result->is_expired) expired @endif"
               onclick="window.location.href = '{{ route('surveys.vote', ['slug'=>$result->slug]) }}'">
@@ -41,6 +44,7 @@
             </div>
           </div>
           @endforeach
+          @endif
         </div>
 
         @include('partials.footer-navbar')

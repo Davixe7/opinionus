@@ -117,3 +117,21 @@
     margin-right: 12px;
   }
 }
+
+@media(min-width: 680px){
+  #results {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .results-main {
+    flex: 1 1 70%;
+    order: -1;
+    padding: 0 40px 0 0;
+  }
+  .banner {
+    margin: 0;
+  }
+  .admin-banner {
+    flex: 1 1 30%;
+  }
+}

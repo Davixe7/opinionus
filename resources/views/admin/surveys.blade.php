@@ -26,8 +26,16 @@
             <tr>
               <td>{{ $survey->created_at }}</td>
               <td>{{ $survey->name }}</td>
-              <td>{{ route('surveys.vote', ['slug'=>$survey->slug]) }}</td>
-              <td>{{ route('surveys.results', ['slug'=>$survey->slug]) }}</td>
+              <td>
+                <a href="{{ route('surveys.vote', ['slug'=>$survey->slug]) }}">
+                  {{ route('surveys.vote', ['slug'=>$survey->slug]) }}
+                </a>
+              </td>
+              <td>
+                <a href="{{ route('surveys.results', ['slug'=>$survey->slug]) }}">
+                  {{ route('surveys.results', ['slug'=>$survey->slug]) }}
+                </a>
+              </td>
               <td>{{ $survey->choices->count() }}</td>
               <td>{{ $survey->votes_count }}</td>
               <td>
