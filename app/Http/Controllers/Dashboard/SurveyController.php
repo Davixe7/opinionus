@@ -40,7 +40,7 @@ class SurveyController extends Controller
       }
       return view('surveys.create', ['survey'=>$survey]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +48,8 @@ class SurveyController extends Controller
      */
     public function create()
     {
-      return view('dashboard.surveys.create');
+      $banners = auth()->user()->banners;
+      return view('dashboard.surveys.create',['banners' => $banners]);
     }
 
     public function store(Request $request)
@@ -56,24 +57,29 @@ class SurveyController extends Controller
       $survey = Survey::create([
         'name' => $request->name,
         'slug' => Str::slug($request->name),
-        'user_id' => auth()->id()
+        'user_id' => auth()->id(),
+        'banner_id' => $request->banner_id,
       ]);
       return new SurveyResource( $survey );
     }
-    
+
     public function edit(Survey $survey)
     {
       $survey->choices = ChoiceResource::collection($survey->choices);
+      $banners = auth()->user()->banners;
+
       return view('dashboard.surveys.edit', [
-        'survey' =>$survey
+        'survey'  => $survey,
+        'banners' => $banners
       ]);
     }
-    
+
     public function update(Request $request, Survey $survey)
     {
       $survey->update([
         'name' => $request->name,
-        'slug' => Str::slug($request->name)
+        'slug' => Str::slug($request->name),
+        'banner_id' => $request->banner_id
       ]);
       return new SurveyResource( $survey );
     }

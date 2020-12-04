@@ -1,6 +1,9 @@
 require('./bootstrap');
 import Vue from 'vue'
 import Toasted from 'vue-toasted'
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css'
+
 Vue.use(Toasted, {
   position: 'top-right',
   type: 'default',
@@ -13,6 +16,8 @@ Vue.use(Toasted, {
     }
   },
 })
+
+Vue.component('v-select', vSelect)
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))

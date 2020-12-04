@@ -38,8 +38,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
-      $banners = auth()->user()->banners;
-      return view('admin.surveys.create', ['banners' => $banners]);
+      return view('admin.surveys.create');
     }
 
     /**

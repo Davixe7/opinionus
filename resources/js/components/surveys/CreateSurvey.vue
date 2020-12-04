@@ -20,6 +20,15 @@
               </div>
             </div>
           </div>
+          <div class="form-group">
+            <label for="expires_at">Featured Banner</label>
+            <v-select
+              v-model="banner"
+              :options="banners"
+              :placeholder="'featured banner'"
+              :label="'name'"
+            />
+          </div>
         </form>
       </div>
       <div class="col-md-7 right-survey-menu">
@@ -99,6 +108,10 @@ export default {
     'survey':{
       type: Object,
       default: () => Object()
+    },
+    'banners':{
+      type: Array,
+      default: []
     }
   },
   watch:{
@@ -115,6 +128,7 @@ export default {
     name: '',
     defaultChoice:{ name: 'Choice 0' + String( Math.random(0,99) ).substring(2,4), link_text: 'Click me!', link_url: 'http://localhost:8080/', image: null },
     choices: [],
+    banner: null,
 
     errors: {},
     saving: false,
@@ -131,7 +145,7 @@ export default {
     storeSurvey(){
       if( !this.$refs.surveyNameForm.reportValidity() ) return
       this.saving = true
-      let data = {name: this.name}
+      let data = {name: this.name, banner_id: this.banner ? this.banner.id : null}
       axios.post('/dashboard/surveys', data).then(response => {
         this.surveyId = response.data.data.id
         this.slug = response.data.data.slug
@@ -142,7 +156,7 @@ export default {
     },
     updateSurvey(){
       this.saving = true
-      let data = {name: this.name, '_method':'PUT'}
+      let data = {name: this.name, banner_id: this.banner ? this.banner.id : null, '_method':'PUT'}
       axios.post(`/dashboard/surveys/${this.surveyId}`, data).then(response => {
         this.name  = response.data.data.name
         this.saving = false
@@ -164,6 +178,9 @@ export default {
       this.name     = this.survey.name
       this.choices  = this.survey.choices
       this.slug     = this.survey.slug
+      if( this.survey.banner ){
+        this.banner = this.banners.find(b => b.id == this.survey.banner_id )
+      }
     }
   }
 }
