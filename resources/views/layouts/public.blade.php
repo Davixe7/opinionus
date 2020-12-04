@@ -8,7 +8,7 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <script src="{{ mix('js/app.js') }}" defer></script>
   <link href="{{ mix('css/new.css') }}" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   @yield('head')
 </head>
 <body>
@@ -25,12 +25,12 @@
     <footer>
       @include('partials.footer-navbar')
     </footer>
-    <script>
-      var fixed = document.getElementById('absolute-menu');
-        fixed.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-      }, false);
-    </script>
   </div>
+  <script>
+    var fixed = document.getElementById('absolute-menu');
+      fixed.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, false);
+  </script>
 </body>
 </html>
