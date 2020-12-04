@@ -38,7 +38,8 @@ class SurveyController extends Controller
      */
     public function create()
     {
-      return view('admin.surveys.create');
+      $banners = auth()->user()->banners;
+      return view('admin.surveys.create', ['banners' => $banners]);
     }
 
     /**
@@ -52,7 +53,8 @@ class SurveyController extends Controller
       $survey = Survey::create([
         'name'    => $request->name,
         'slug'    => Str::slug($request->name),
-        'user_id' => $request->user_id
+        'user_id' => $request->user_id,
+        'banner_id' => $request->banner_id,
       ]);
       return new SurveyResource( $survey );
     }
@@ -79,9 +81,11 @@ class SurveyController extends Controller
      */
     public function edit(Survey $survey)
     {
+      $banners = auth()->user()->banners;
       $survey->choices = ChoiceResource::collection($survey->choices);
       return view('admin.surveys.edit', [
-        'survey' =>$survey
+        'survey'  => $survey,
+        'banners' => $banners,
       ]);
     }
 
@@ -96,7 +100,8 @@ class SurveyController extends Controller
     {
       $survey->update([
         'name' => $request->name,
-        'slug' => Str::slug($request->name)
+        'slug' => Str::slug($request->name),
+        'banner_id' => $request->banner_id,
       ]);
       return new SurveyResource( $survey );
     }

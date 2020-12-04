@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Survey extends Model
 {
-  protected $fillable = ['name', 'slug', 'user_id', 'expires_at'];
+  protected $fillable = ['name', 'slug', 'user_id', 'expires_at', 'banner_id'];
   protected $hidden = ['created_at', 'updated_at'];
   protected $appends = ['votes_count','social_media_links', 'is_expired'];
 
@@ -20,6 +20,10 @@ class Survey extends Model
 
   public function user(){
     return $this->belongsTo('App\User');
+  }
+
+  public function banner(){
+    return $this->belongsTo('App\Banner');
   }
 
   public function regenerateSlugs(){
