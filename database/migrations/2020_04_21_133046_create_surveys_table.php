@@ -21,7 +21,7 @@ class CreateSurveysTable extends Migration
             $table->datetime('expires_at')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('banner_id')->nullable();
-            $table->foreign('banner_id')->references('id')->on('banners');
+            $table->foreign('banner_id')->references('id')->on('banners')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
