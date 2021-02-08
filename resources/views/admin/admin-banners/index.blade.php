@@ -28,6 +28,16 @@
               <input type="url" class="form-control" name="url" required>
             </div>
             <div class="form-group">
+              <div class="form-check form-check-inline" onclick="document.querySelector('#iframe-input').classList.remove('d-none')">
+                <input class="form-check-input" type="radio" name="type" id="type-radio1" value="results" checked>
+                <label class="form-check-label" for="type-radio1">Results</label>
+              </div>
+              <div class="form-check form-check-inline" onclick="document.querySelector('#iframe-input').classList.add('d-none')">
+                <input class="form-check-input" type="radio" name="type" id="type-radio2" value="dashboard">
+                <label class="form-check-label" for="type-radio2">Dashboard</label>
+              </div>
+            </div>
+            <div class="form-group" id="iframe-input">
               <label for="iframe">iFrame</label>
               <textarea name="iframe" class="form-control" rows="4"></textarea>
             </div>

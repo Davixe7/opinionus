@@ -22,7 +22,7 @@
                   : ''">
                 <i class="material-icons">delete</i>
               </a>
-              <a href="{{ route('admin.banners.edit', ['banner'=>$banner->id]) }}"><i class="material-icons">edit</i></a>
+              <a href="{{ route('admin.admin-banners.edit', ['banner'=>$banner->id]) }}"><i class="material-icons">edit</i></a>
             </div>
             <form id="form-{{$banner->id}}" action="{{ route('admin.banners.destroy', ['banner'=>$banner->id]) }}" method="POST">
               @csrf

@@ -50,6 +50,7 @@ class AdminBannerController extends Controller
         'name'      => $request->name,
         'image'     => $this->upload( $request, 'image'),
         'url'       => $request->url,
+        'type'      => $request->type,
         'iframe'    => $request->iframe,
         'duration'  => $request->duration,
         'is_active' => Banner::count() ? 0 : 1
@@ -85,7 +86,7 @@ class AdminBannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-      $banners = Banner::all();
+      $banners = Banner::where('user_id', null)->get();
       return view('admin.admin-banners.edit', ['banner'=>$banner, 'banners'=>$banners]);
     }
 
