@@ -1,6 +1,6 @@
 INSERT INTO `surveys` (`id`, `created_at`, `updated_at`, `name`, `slug`, `expires_at`, `user_id`, `banner_id`) VALUES
-(4, '2021-02-10 23:58:02', '2021-02-10 23:58:02', 'What do Kess Game Pieces Secretly Symbolize?', 'what-do-kess-game-pieces-secretly-symbolize', NULL, 1, NULL),
-(3, '2021-02-10 23:53:23', '2021-02-10 23:53:23', 'Should we have National Stroke Insurance? Vote!', 'should-we-have-national-stroke-insurance-vote', NULL, 1, NULL);
+(1, '2021-02-10 23:58:02', '2021-02-10 23:58:02', 'What do Kess Game Pieces Secretly Symbolize?', 'what-do-kess-game-pieces-secretly-symbolize', NULL, 1, NULL),
+(2, '2021-02-10 23:53:23', '2021-02-10 23:53:23', 'Should we have National Stroke Insurance? Vote!', 'should-we-have-national-stroke-insurance-vote', NULL, 1, NULL);
 
 INSERT INTO `choices` (`id`, `created_at`, `updated_at`, `name`, `image`, `link_text`, `link_url`, `survey_id`) VALUES
 (2, '2021-02-10 23:55:31', '2021-02-10 23:55:31', 'Yes I think it is time!', 'public/images/yes_1607289298_1612983331.jpg', 'Yes I think it is time!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/results?choice_id=9', 1),
