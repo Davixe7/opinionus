@@ -1002,3 +1002,171 @@
 #60 /home/smith/Escritorio/projects/opinionus/server.php(21): require_once('/home/smith/Esc...')
 #61 {main}
 "} 
+[2021-02-10 20:35:54] local.ERROR: file_get_contents(/home/smith/Escritorio/projects/opinionus/storage/app/ddbb.sql): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): file_get_contents(/home/smith/Escritorio/projects/opinionus/storage/app/ddbb.sql): failed to open stream: No such file or directory at /home/smith/Escritorio/projects/opinionus/database/seeds/DatabaseSeeder.php:34)
+[stacktrace]
+#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'file_get_conten...', '/home/smith/Esc...', 34, Array)
+#1 /home/smith/Escritorio/projects/opinionus/database/seeds/DatabaseSeeder.php(34): file_get_contents('/home/smith/Esc...')
+#2 [internal function]: DatabaseSeeder->run()
+#3 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#4 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#5 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#6 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#7 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#8 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(134): Illuminate\\Container\\Container->call(Array)
+#9 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(65): Illuminate\\Database\\Seeder->__invoke()
+#10 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(122): Illuminate\\Database\\Console\\Seeds\\SeedCommand->Illuminate\\Database\\Console\\Seeds\\{closure}()
+#11 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(66): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#12 [internal function]: Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#13 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#20 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#22 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:seed', Array, Object(Illuminate\\Console\\OutputStyle))
+#23 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(81): Illuminate\\Console\\Command->call('db:seed', Array)
+#24 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(56): Illuminate\\Database\\Console\\Migrations\\FreshCommand->runSeeder(NULL)
+#25 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#26 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#27 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#28 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#29 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#30 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#31 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#32 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#33 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#34 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 /home/smith/Escritorio/projects/opinionus/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 {main}
+"} 
+[2021-02-10 20:39:03] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`opinionus`.`choices`, CONSTRAINT `choices_survey_id_foreign` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`) ON DELETE CASCADE) (SQL: INSERT INTO `choices` (`id`, `created_at`, `updated_at`, `name`, `image`, `link_text`, `link_url`, `survey_id`) VALUES
+(2, '2021-02-10 23:55:31', '2021-02-10 23:55:31', 'Yes I think it is time!', 'public/images/yes_1607289298_1612983331.jpg', 'Yes I think it is time!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/results?choice_id=9', 3),
+(3, '2021-02-10 23:56:08', '2021-02-10 23:56:08', 'Your bankruptcy is your problem!', 'public/images/broke-4765739_640_1607382066_1612983368.jpg', 'Your bankruptcy is your problem!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/vote', 3),
+(4, '2021-02-10 23:56:31', '2021-02-10 23:56:31', 'I don\'t know and I don\'t care', 'public/images/confused-2681507_640_1607382134_1612983391.jpg', 'I don\'t know and I don\'t care', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/vote', 3),
+(5, '2021-02-10 23:58:28', '2021-02-10 23:58:28', 'Conservatives vs Liberals', 'public/images/elephant-2798628_640_1601853455_1612983507.jpg', 'Conservatives vs Liberals', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(6, '2021-02-10 23:58:51', '2021-02-10 23:58:51', 'The Union vs the Confederacy', 'public/images/war-3401481_640_1601853579_1612983531.jpg', 'The Union vs the Confederacy', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(7, '2021-02-10 23:59:11', '2021-02-10 23:59:11', 'Nato vs the Soviet Union?', 'public/images/checkpoint-charlie-1006111_640_1601853731_1612983551.jpg', 'Nato vs the Soviet Union?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(8, '2021-02-10 23:59:47', '2021-02-10 23:59:47', 'Vikings vs the Britons?', 'public/images/waters-3060940_640_1601853851_1612983587.jpg', 'Vikings vs the Britons?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(9, '2021-02-11 00:00:19', '2021-02-11 00:00:19', 'USA vs China?', 'public/images/dragon-872933_640_1601853982_1612983619.jpg', 'USA vs China?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(10, '2021-02-11 00:00:45', '2021-02-11 00:00:45', 'It is just You vs Me', 'public/images/hearts-5502657_640_1601854826_1612983645.png', 'It is just You vs Me', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4);
+
+INSERT INTO `surveys` (`id`, `created_at`, `updated_at`, `name`, `slug`, `expires_at`, `user_id`, `banner_id`) VALUES
+(4, '2021-02-10 23:58:02', '2021-02-10 23:58:02', 'What do Kess Game Pieces Secretly Symbolize?', 'what-do-kess-game-pieces-secretly-symbolize', NULL, 1, NULL),
+(3, '2021-02-10 23:53:23', '2021-02-10 23:53:23', 'Should we have National Stroke Insurance? Vote!', 'should-we-have-national-stroke-insurance-vote', NULL, 1, NULL);
+) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`opinionus`.`choices`, CONSTRAINT `choices_survey_id_foreign` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`) ON DELETE CASCADE) (SQL: INSERT INTO `choices` (`id`, `created_at`, `updated_at`, `name`, `image`, `link_text`, `link_url`, `survey_id`) VALUES
+(2, '2021-02-10 23:55:31', '2021-02-10 23:55:31', 'Yes I think it is time!', 'public/images/yes_1607289298_1612983331.jpg', 'Yes I think it is time!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/results?choice_id=9', 3),
+(3, '2021-02-10 23:56:08', '2021-02-10 23:56:08', 'Your bankruptcy is your problem!', 'public/images/broke-4765739_640_1607382066_1612983368.jpg', 'Your bankruptcy is your problem!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/vote', 3),
+(4, '2021-02-10 23:56:31', '2021-02-10 23:56:31', 'I don\\'t know and I don\\'t care', 'public/images/confused-2681507_640_1607382134_1612983391.jpg', 'I don\\'t know and I don\\'t care', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/vote', 3),
+(5, '2021-02-10 23:58:28', '2021-02-10 23:58:28', 'Conservatives vs Liberals', 'public/images/elephant-2798628_640_1601853455_1612983507.jpg', 'Conservatives vs Liberals', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(6, '2021-02-10 23:58:51', '2021-02-10 23:58:51', 'The Union vs the Confederacy', 'public/images/war-3401481_640_1601853579_1612983531.jpg', 'The Union vs the Confederacy', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(7, '2021-02-10 23:59:11', '2021-02-10 23:59:11', 'Nato vs the Soviet Union?', 'public/images/checkpoint-charlie-1006111_640_1601853731_1612983551.jpg', 'Nato vs the Soviet Union?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(8, '2021-02-10 23:59:47', '2021-02-10 23:59:47', 'Vikings vs the Britons?', 'public/images/waters-3060940_640_1601853851_1612983587.jpg', 'Vikings vs the Britons?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(9, '2021-02-11 00:00:19', '2021-02-11 00:00:19', 'USA vs China?', 'public/images/dragon-872933_640_1601853982_1612983619.jpg', 'USA vs China?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4),
+(10, '2021-02-11 00:00:45', '2021-02-11 00:00:45', 'It is just You vs Me', 'public/images/hearts-5502657_640_1601854826_1612983645.png', 'It is just You vs Me', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 4);
+
+INSERT INTO `surveys` (`id`, `created_at`, `updated_at`, `name`, `slug`, `expires_at`, `user_id`, `banner_id`) VALUES
+(4, '2021-02-10 23:58:02', '2021-02-10 23:58:02', 'What do Kess Game Pieces Secretly Symbolize?', 'what-do-kess-game-pieces-secretly-symbolize', NULL, 1, NULL),
+(3, '2021-02-10 23:53:23', '2021-02-10 23:53:23', 'Should we have National Stroke Insurance? Vote!', 'should-we-have-national-stroke-insurance-vote', NULL, 1, NULL);
+) at /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php:671)
+[stacktrace]
+#0 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('INSERT INTO `ch...', Array, Object(Closure))
+#1 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php(517): Illuminate\\Database\\Connection->run('INSERT INTO `ch...', Array, Object(Closure))
+#2 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(349): Illuminate\\Database\\Connection->unprepared('INSERT INTO `ch...')
+#3 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(261): Illuminate\\Database\\DatabaseManager->__call('unprepared', Array)
+#4 /home/smith/Escritorio/projects/opinionus/database/seeds/DatabaseSeeder.php(34): Illuminate\\Support\\Facades\\Facade::__callStatic('unprepared', Array)
+#5 [internal function]: DatabaseSeeder->run()
+#6 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#7 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(134): Illuminate\\Container\\Container->call(Array)
+#12 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(65): Illuminate\\Database\\Seeder->__invoke()
+#13 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(122): Illuminate\\Database\\Console\\Seeds\\SeedCommand->Illuminate\\Database\\Console\\Seeds\\{closure}()
+#14 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(66): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#15 [internal function]: Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#16 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#17 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#18 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#22 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#23 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#24 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#25 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:seed', Array, Object(Illuminate\\Console\\OutputStyle))
+#26 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(81): Illuminate\\Console\\Command->call('db:seed', Array)
+#27 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(56): Illuminate\\Database\\Console\\Migrations\\FreshCommand->runSeeder(NULL)
+#28 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#29 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#30 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#31 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#32 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#33 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#34 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#35 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#36 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 /home/smith/Escritorio/projects/opinionus/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`opinionus`.`choices`, CONSTRAINT `choices_survey_id_foreign` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`) ON DELETE CASCADE) at /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php:513)
+[stacktrace]
+#0 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php(513): PDO->exec('INSERT INTO `ch...')
+#1 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('INSERT INTO `ch...', Array)
+#2 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('INSERT INTO `ch...', Array, Object(Closure))
+#3 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Connection.php(517): Illuminate\\Database\\Connection->run('INSERT INTO `ch...', Array, Object(Closure))
+#4 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(349): Illuminate\\Database\\Connection->unprepared('INSERT INTO `ch...')
+#5 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(261): Illuminate\\Database\\DatabaseManager->__call('unprepared', Array)
+#6 /home/smith/Escritorio/projects/opinionus/database/seeds/DatabaseSeeder.php(34): Illuminate\\Support\\Facades\\Facade::__callStatic('unprepared', Array)
+#7 [internal function]: DatabaseSeeder->run()
+#8 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#9 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#11 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#12 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#13 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Seeder.php(134): Illuminate\\Container\\Container->call(Array)
+#14 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(65): Illuminate\\Database\\Seeder->__invoke()
+#15 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(122): Illuminate\\Database\\Console\\Seeds\\SeedCommand->Illuminate\\Database\\Console\\Seeds\\{closure}()
+#16 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(66): Illuminate\\Database\\Eloquent\\Model::unguarded(Object(Closure))
+#17 [internal function]: Illuminate\\Database\\Console\\Seeds\\SeedCommand->handle()
+#18 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#19 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#20 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#21 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#22 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#23 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#24 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#25 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#27 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:seed', Array, Object(Illuminate\\Console\\OutputStyle))
+#28 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(81): Illuminate\\Console\\Command->call('db:seed', Array)
+#29 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(56): Illuminate\\Database\\Console\\Migrations\\FreshCommand->runSeeder(NULL)
+#30 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#31 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#32 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#33 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#34 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#35 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#36 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#37 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#38 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#39 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 /home/smith/Escritorio/projects/opinionus/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 /home/smith/Escritorio/projects/opinionus/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 /home/smith/Escritorio/projects/opinionus/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#45 {main}
+"} 

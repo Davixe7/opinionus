@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
         'password' => bcrypt('123456')
       ]);
 
-        // $this->call(UserSeeder::class);
+      DB::unprepared( file_get_contents( storage_path('app/opinion.sql') ) );
     }
 }

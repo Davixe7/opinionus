@@ -1,0 +1,14 @@
+INSERT INTO `surveys` (`id`, `created_at`, `updated_at`, `name`, `slug`, `expires_at`, `user_id`, `banner_id`) VALUES
+(4, '2021-02-10 23:58:02', '2021-02-10 23:58:02', 'What do Kess Game Pieces Secretly Symbolize?', 'what-do-kess-game-pieces-secretly-symbolize', NULL, 1, NULL),
+(3, '2021-02-10 23:53:23', '2021-02-10 23:53:23', 'Should we have National Stroke Insurance? Vote!', 'should-we-have-national-stroke-insurance-vote', NULL, 1, NULL);
+
+INSERT INTO `choices` (`id`, `created_at`, `updated_at`, `name`, `image`, `link_text`, `link_url`, `survey_id`) VALUES
+(2, '2021-02-10 23:55:31', '2021-02-10 23:55:31', 'Yes I think it is time!', 'public/images/yes_1607289298_1612983331.jpg', 'Yes I think it is time!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/results?choice_id=9', 1),
+(3, '2021-02-10 23:56:08', '2021-02-10 23:56:08', 'Your bankruptcy is your problem!', 'public/images/broke-4765739_640_1607382066_1612983368.jpg', 'Your bankruptcy is your problem!', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/vote', 1),
+(4, '2021-02-10 23:56:31', '2021-02-10 23:56:31', 'I don\'t know and I don\'t care', 'public/images/confused-2681507_640_1607382134_1612983391.jpg', 'I don\'t know and I don\'t care', 'https://opinion.us.com/surveys/should-we-have-national-stroke-insurance-vote/vote', 1),
+(5, '2021-02-10 23:58:28', '2021-02-10 23:58:28', 'Conservatives vs Liberals', 'public/images/elephant-2798628_640_1601853455_1612983507.jpg', 'Conservatives vs Liberals', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 2),
+(6, '2021-02-10 23:58:51', '2021-02-10 23:58:51', 'The Union vs the Confederacy', 'public/images/war-3401481_640_1601853579_1612983531.jpg', 'The Union vs the Confederacy', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 2),
+(7, '2021-02-10 23:59:11', '2021-02-10 23:59:11', 'Nato vs the Soviet Union?', 'public/images/checkpoint-charlie-1006111_640_1601853731_1612983551.jpg', 'Nato vs the Soviet Union?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 2),
+(8, '2021-02-10 23:59:47', '2021-02-10 23:59:47', 'Vikings vs the Britons?', 'public/images/waters-3060940_640_1601853851_1612983587.jpg', 'Vikings vs the Britons?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 2),
+(9, '2021-02-11 00:00:19', '2021-02-11 00:00:19', 'USA vs China?', 'public/images/dragon-872933_640_1601853982_1612983619.jpg', 'USA vs China?', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 2),
+(10, '2021-02-11 00:00:45', '2021-02-11 00:00:45', 'It is just You vs Me', 'public/images/hearts-5502657_640_1601854826_1612983645.png', 'It is just You vs Me', 'https://opinion.us.com/surveys/what-do-kess-game-pieces-secretly-symbolize/vote', 2);
