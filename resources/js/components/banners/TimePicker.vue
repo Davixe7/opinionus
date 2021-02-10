@@ -46,6 +46,7 @@ export default {
       this.hours   = Math.floor(this.duration / 3600)
       this.minutes = Math.floor(this.duration / 60) % 60
       this.seconds = this.duration % 60
+      this.emitValue()
     }
   }
 }

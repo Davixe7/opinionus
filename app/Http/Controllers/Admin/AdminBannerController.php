@@ -21,7 +21,7 @@ class AdminBannerController extends Controller
     public function index(Request $request)
     {
       $banners = Banner::where('user_id', null)->get();
-      if( request()->expectsJson() ){
+      if( $request->expectsJson() ){
         return BannerResource::collection( $banners );
       }
       return view('admin.admin-banners.index', ['banners'=>$banners]);
@@ -129,7 +129,6 @@ class AdminBannerController extends Controller
       if( $request->expectsJson() ){
         return response()->json(['data'=>"Banner {$banner->id} deleted successfully"]);
       }
-      $banners = Banner::all();
       $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
       return redirect()->route('admin.admin-banners.index');
     }

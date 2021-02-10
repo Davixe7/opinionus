@@ -10949,7 +10949,7 @@ a.text-dark:focus {
 }
 
 #app {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   color: #1e1e1e;
   padding: 10px 20px;
@@ -11076,7 +11076,7 @@ h1 {
 }
 
 .toasted-primary {
-  font-family: "Roboto+Condensed" !important;
+  font-family: "Montserrat" !important;
 }
 
 .custom-banner {
@@ -11090,5 +11090,15 @@ h1 {
 
 .slick-list.draggable {
   padding: 5px 0 !important;
+}
+
+.dashboard-featured-info-wrap {
+  text-align: center;
+}
+
+.dashboard-featured-info-wrap img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 

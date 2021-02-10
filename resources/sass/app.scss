@@ -130,7 +130,7 @@ h1 {
   top: 15% !important;
 }
 .toasted-primary {
-  font-family: "Roboto+Condensed" !important;
+  font-family: "Montserrat" !important;
 }
 
 .custom-banner {
@@ -143,4 +143,13 @@ h1 {
 }
 .slick-list.draggable {
   padding: 5px 0 !important;
+}
+
+.dashboard-featured-info-wrap {
+  text-align: center;
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
 }

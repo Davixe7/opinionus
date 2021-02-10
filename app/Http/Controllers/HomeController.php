@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Banner;
 class HomeController extends Controller
 {
     /**
@@ -32,6 +33,12 @@ class HomeController extends Controller
     
     public function dashboard()
     {
-      return view('dashboard');
+      if( auth()->check() ){
+        $banner = Banner::whereType('dashboard')->active()->first();
+        if( !$banner && $banners = Banner::whereType('dashboard')->whereEnabled(1)->get() ){
+          $banner = Banner::restartRound( $banners );
+        }
+      }
+      return view('dashboard', ['banner' => $banner]);
     }
 }

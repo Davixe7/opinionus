@@ -4,6 +4,14 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
+      @if( $banner )
+      <div class="dashboard-featured-info-wrap">
+        <a href="{{ $banner->url }}">
+          <img src="{{ $banner->picture_url }}" alt="{{ strtolower($banner->name) }}">
+        </a>
+      </div>
+      @endif
+      
       <div class="card mb-3">
         <div class="card-header">Dashboard</div>
         <div class="card-body">

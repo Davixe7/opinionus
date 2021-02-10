@@ -31,6 +31,11 @@ class Banner extends Model
     $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     return $query->enabled()->where('expires_at', '>', $now);
   }
+  
+  public function scopeNotExpired($query){
+    $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+    return $query->where('expires_at', '>', $now);
+  }
 
   public function scopeByUser($query, $user){
     if( !$user ){
