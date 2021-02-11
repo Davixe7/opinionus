@@ -43,8 +43,8 @@ class Choice extends Model
       $filename = str_replace('public/images', '', $image);
       $path = storage_path( "app/{$image}" );
 
-      $thumbnail_small = Image::make( $path )->fit(40,40);
-      $thumbnail_small->save(storage_path("app/public/thumbnails/40/{$filename}"));
+      $thumbnail_small = Image::make( $path )->fit(70,70);
+      $thumbnail_small->save(storage_path("app/public/thumbnails/70/{$filename}"));
 
       $thumbnail_medium = Image::make( $path )->fit(300,300);
       $thumbnail_medium->save(storage_path("app/public/thumbnails/300/{$filename}"));
