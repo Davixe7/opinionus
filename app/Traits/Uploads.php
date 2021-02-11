@@ -22,7 +22,7 @@ trait Uploads
       $thumbnail_medium = Image::make( storage_path( "app/" . $original ) )->fit(500,500);
       $thumbnail_medium->save(storage_path("app/public/thumbnails/500/{$newFileName}"));
       
-      $thumbnail_medium = Image::make( storage_path( "app/" . $original ) )->fit(40,40);
+      $thumbnail_medium = Image::make( storage_path( "app/" . $original ) )->fit(70,70);
       $thumbnail_medium->save(storage_path("app/public/thumbnails/40/{$newFileName}"));
       
       return $original;
