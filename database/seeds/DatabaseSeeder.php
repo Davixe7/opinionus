@@ -15,19 +15,19 @@ class DatabaseSeeder extends Seeder
 
       App\Admin::create([
         'name'     => 'Admin',
-        'email'    => 'admin@app.com',
+        'email'    => 'admin@opinionus.com',
         'password' => bcrypt('123456')
       ]);
 
       App\User::create([
         'name'     => 'John Doe',
-        'email'    => 'johndoe@app.com',
+        'email'    => 'johndoe@opinionus.com',
         'password' => bcrypt('123456')
       ]);
 
       App\User::create([
         'name'     => 'Jane Doe',
-        'email'    => 'janedoe@polly.com',
+        'email'    => 'janedoe@opinionus.com',
         'password' => bcrypt('123456')
       ]);
 

@@ -47,7 +47,7 @@
                 <div class="choices">
                   @foreach( $survey->choices as $choice )
                     <div class="choice-thumbnail">
-                      <img src="{{ $choice->picture }}" alt="{{$choice->name}}">
+                      <img src="{{ str_replace('images', 'thumbnails/40', $choice->picture) }}" alt="{{$choice->name}}">
                     </div>
                   @endforeach
                 </div>
