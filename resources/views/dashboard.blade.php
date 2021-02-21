@@ -21,7 +21,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
-                  <a href="/dashboard/surveys"><i class="material-icons">post_add</i>
+                  <a href="{{ route('dashboard.surveys.index') }}"><i class="material-icons">post_add</i>
                     <span>Manage surveys</span></a>
                 </div>
               </div>
@@ -30,7 +30,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
-                  <a href="/dashboard/banners"><i class="material-icons">photo_filter</i>
+                  <a href="{{ route('dashboard.banners.index') }}"><i class="material-icons">photo_filter</i>
                     <span>Manage banners</span></a>
                 </div>
               </div>

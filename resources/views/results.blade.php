@@ -15,7 +15,7 @@
 <div id="results">
   @if( $admin_banner )
   <div class="banner admin-banner">
-    <img src="{{ $admin_banner->picture_url }}" alt="">
+    <img src="{{ asset($admin_banner->picture_url) }}" alt="">
   </div>
   @endif
 
@@ -35,7 +35,7 @@
       @if( $choice )
         <div class="survey-results-choice selected">
           <div class="picture-wrap">
-            <img src="{{ $choice->picture }}" alt="#">
+            <img src="{{ asset($choice->picture) }}" alt="#">
           </div>
           <div class="details">
             <div class="name">{{ $choice->name }}</div>
@@ -52,7 +52,7 @@
         <div class="survey-results-choice"
           class="@if($c->name == 'Cocacola') first @endif">
           <div class="picture-wrap">
-            <img src="{{ $c->picture }}" alt="#">
+            <img src="{{ asset($c->picture) }}" alt="#">
           </div>
           <div class="details">
             <div class="name">{{ $c->name }}</div>

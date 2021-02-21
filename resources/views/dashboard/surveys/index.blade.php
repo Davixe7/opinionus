@@ -28,7 +28,7 @@
                 <input
                   class="form-control form-control-disabled"
                   value="{{ route('surveys.results', ['slug'=>$survey->slug]) }}"
-                  onclick=" window.location.href=event.target.value "/>
+                  onclick=" window.location.href=event.target.value"/>
               </div>
               
               <div class="input-group mb-2">
@@ -51,7 +51,7 @@
                 <button 
                     onclick=" confirm('Are you sure you want to delete the survey?') ? document.querySelector('#form-{{$survey->id}}').submit() : '' " 
                     class="btn btn-link">Delete</button>
-                <a href="/dashboard/surveys/{{ $survey->id }}/edit" class="btn btn-link">Edit</a>
+                <a href="{{ route('dashboard.surveys.edit', ['survey'=>$survey->id]) }}" class="btn btn-link">Edit</a>
               </div>
             </div>
           </div>

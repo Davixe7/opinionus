@@ -13,8 +13,8 @@
       {{ config('app.name', 'Laravel') }}
     @endif
   </title>
-  <script src="{{ mix('js/app.js') }}" defer></script>
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   @yield('head')
 </head>
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-light mb-4">
       <a class="navbar-brand" href="{{ url('/') }}">
         @if( Storage::exists('public/brand-logo.png') )
-          <img src="/storage/brand-logo.png" alt="site logo" style="max-width: 120px;">
+          <img src="{{ asset('storage/brand-logo.png') }}" alt="site logo" style="max-width: 120px;">
         @elseif( $config = json_decode( Storage::get('frontend-config.json' ) ) )
           <div class="d-inline-block" style="vertical-align: middle; padding-left: 10px;">
             <span>{{ $config->brandname }}</span>
@@ -63,7 +63,7 @@
           </li>
           @elseif( Auth::guard('admin')->check() )
           <li class="nav-item">
-            <a href="/home" class="nav-link">Dashboard</a>
+            <a href="{{ url('home') }}" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.users.index') }}" class="nav-link">Users</a>

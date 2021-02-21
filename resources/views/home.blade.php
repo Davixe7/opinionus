@@ -13,7 +13,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
-                  <a href="/admin/surveys"><i class="material-icons">post_add</i>
+                  <a href="{{ route('admin.surveys.index') }}"><i class="material-icons">post_add</i>
                     <span>Manage surveys</span></a>
                 </div>
               </div>
@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
-                  <a href="/admin/banners"><i class="material-icons">photo_filter</i>
+                  <a href="{{ route('admin.banners.index') }}"><i class="material-icons">photo_filter</i>
                     <span>Manage banners</span></a>
                 </div>
               </div>

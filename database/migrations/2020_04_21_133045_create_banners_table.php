@@ -26,6 +26,8 @@ class CreateBannersTable extends Migration
           $table->enum('type', ['dashboard','results'])->default('results');
           $table->unsignedBigInteger('user_id')->nullable();
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+          $table->unsignedBigInteger('survey_id')->nullable();
+          $table->foreign('survey_id')->references('id')->on('surveys')->onDelete('SET NULL');
         });
     }
 

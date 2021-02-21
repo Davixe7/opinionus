@@ -9,7 +9,7 @@
     <li><a href="{{ route('search') }}">Search</a></li>
     <li><a href="#">Help</a></li>
 
-    <li style="margin-top: 60px;"><a href="/login">Login</a></li>
-    <li><a href="/register">Sign Up</a></li>
+    <li style="margin-top: 60px;"><a href="{{ route('login') }}">Login</a></li>
+    <li><a href="{{ route('register') }}">Sign Up</a></li>
   </ul>
 </div>

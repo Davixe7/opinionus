@@ -60,6 +60,8 @@ Route::name('admin.')->prefix('admin')->middleware('auth:admin')->group(function
 Route::get('/surveys', 'SurveyController@index')->name('surveys.index');
 Route::get('/surveys/{slug}/results', 'SurveyController@results')->name('surveys.results');
 Route::get('/surveys/{slug}/vote', 'SurveyController@vote')->name('surveys.vote');
+Route::post('/surveys/{slug}/vote', 'VoteController@store');
+
 Route::post('/votes', 'VoteController@store')->name('votes.store');
 Route::resource('reports', 'ReportController')->only(['create', 'store']);
 

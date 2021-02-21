@@ -7,9 +7,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('APP_NAME', 'OpinionUS') }}</title>
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <script src="{{ mix('js/app.js') }}" defer></script>
-  <link href="{{ mix('css/new.css') }}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="{{ asset('css/new.css') }}" rel="stylesheet">
   @yield('head')
 </head>
 <body>
@@ -33,5 +32,6 @@
       e.preventDefault();
     }, false);
   </script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </body>
 </html>

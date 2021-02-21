@@ -16,14 +16,12 @@ trait Uploads
       
       $original = $file->storeAs('public/' . $fileGroupName, $newFileName);
       
-      $thumbnail_small = Image::make( storage_path( "app/" . $original ) )->fit(300,300);
-      $thumbnail_small->save(storage_path("app/public/thumbnails/300/{$newFileName}"));
+      $sizes = [500, 300, 70];
       
-      $thumbnail_medium = Image::make( storage_path( "app/" . $original ) )->fit(500,500);
-      $thumbnail_medium->save(storage_path("app/public/thumbnails/500/{$newFileName}"));
-      
-      $thumbnail_medium = Image::make( storage_path( "app/" . $original ) )->fit(70,70);
-      $thumbnail_medium->save(storage_path("app/public/thumbnails/40/{$newFileName}"));
+      foreach( $sizes as $size ){
+        $thumbnail = Image::make( storage_path( "app/" . $original ) )->fit($size);
+        $thumbnail->save(storage_path("app/public/thumbnails/{$size}/{$newFileName}"));   
+      }
       
       return $original;
     }
