@@ -145,8 +145,9 @@ h1 {
 @media(min-width: 576px){
   .vote-choices {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
+    padding: .5%;
   }
   .vote-choice {
     flex: 0 1 49.2%;
