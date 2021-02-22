@@ -46,7 +46,7 @@
               <time-picker class="col" :selector="'#timepicker2'"/>
             </div>
 
-            <input type="hidden" name="duration" id="timepicker2" value="{{ $banner->duration }}" required>
+            <input type="hidden" name="duration" id="timepicker2" value="3600" required>
 
             <button type="submit" class="btn btn-primary">Save Banner</button>
           </form>
