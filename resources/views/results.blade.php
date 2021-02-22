@@ -35,7 +35,7 @@
       @if( $choice )
         <div class="survey-results-choice selected">
           <div class="picture-wrap">
-            <img src="{{ asset($choice->picture) }}" alt="#">
+            <img src="{{ asset($choice->small_picture) }}" alt="{{ $choice->name }}">
           </div>
           <div class="details">
             <div class="name">{{ $choice->name }}</div>

@@ -6,7 +6,7 @@
       <h1>Manage User Banners</h1>
       <h5 style="margin-bottom: 20px;">
         #{{ $user->id }}
-        <a href="/admin/users/{{ $user->id }}">
+        <a href="{{ route('admin.users.show', ['user'=>$user->id]) }}">
           {{ $user->email }}
         </a>
       </h5>
@@ -37,7 +37,7 @@
               <td>{{ $banner->duration }}</td>
               <td>
                 <form id="delete-banner-{{ $banner->id }}-form"
-                  action="/admin/banners/{{ $banner->id }}"
+                  action="{{ route('admin.banners.destroy', ['banner'=>$banner->id]) }}"
                   method="POST">
                   @csrf
                   @method('DELETE')

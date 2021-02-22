@@ -9,7 +9,7 @@ class Choice extends Model
 {
   protected $fillable = ['name', 'image', 'link_text', 'link_url', 'survey_id'];
   protected $hidden   = ['created_at', 'updated_at'];
-  protected $appends  = ['votes_count', 'picture', 'medium_picture'];
+  protected $appends  = ['votes_count', 'picture', 'medium_picture', 'small_picture'];
 
   public function getPictureAttribute(){
     return asset( str_replace('public', 'storage', $this->image) );
@@ -17,6 +17,10 @@ class Choice extends Model
 
   public function getMediumPictureAttribute(){
     return asset( str_replace('public/images', 'storage/thumbnails/500', $this->image) );
+  }
+
+  public function getSmallPictureAttribute(){
+    return asset( str_replace('public/images', 'storage/thumbnails/70', $this->image) );
   }
 
   public function survey(){

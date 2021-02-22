@@ -35,7 +35,7 @@ class AdminBannerController extends Controller
     public function create()
     {
       $banners = Banner::all();
-      return view('admin.admin-banners.create', ['banners'=>$banners]);
+      return view('admin.admin-banners.index', ['banners'=>$banners]);
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminBannerController extends Controller
       if( request()->expectsJson() ){
         return new BannerResource( $banner );
       }
-      return view('admin.banners.create', $banner);
+      return view('admin.admin-banners.index', $banner);
     }
 
     /**

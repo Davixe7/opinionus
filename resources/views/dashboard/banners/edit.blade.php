@@ -63,7 +63,9 @@
       </div>
       
       <div class="text-right">
-        <a href="/admin/banners" class="btn btn-primary">Create new banner</a>
+        <a href="{{ route('dashboard.banners.index') }}" class="btn btn-primary">
+          Create new banner
+        </a>
       </div>
     </div>
     
