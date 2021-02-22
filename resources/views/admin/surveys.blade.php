@@ -6,7 +6,7 @@
       <h1>Manage User surveys</h1>
       <h4>
         #{{ $user->id }}
-        <a href="/admin/users/{{ $user->id }}">
+        <a href="{{ route('admin.surveys.index', ['user'=>$user->id]) }}">
           {{ $user->email }}
         </a>
       </h4>
@@ -40,7 +40,7 @@
               <td>{{ $survey->votes_count }}</td>
               <td>
                 <form id="delete-survey-{{ $survey->id }}-form"
-                  action="/admin/surveys/{{ $survey->id }}"
+                  action="{{ route('admin.surveys', ['survey'=>$survey->id]) }}"
                   method="POST">
                   @csrf
                   @method('DELETE')

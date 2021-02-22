@@ -77,7 +77,7 @@
       </div>
       
       <div class="text-right">
-        <a href="{{ route('admin.banners.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.admin-banners.index') }}" class="btn btn-primary">
           Create new banner
         </a>
       </div>

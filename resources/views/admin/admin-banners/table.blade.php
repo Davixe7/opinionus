@@ -11,7 +11,7 @@
           <td>{{ $banner->name }}</td>
           <td>
             <span>
-              <a target="_blank" href="{{ $banner->image }}">
+              <a target="_blank" href="{{ $banner->picture_url }}">
                 <i class="material-icons">photo</i>
               </a>
             </span>
