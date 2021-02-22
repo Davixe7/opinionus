@@ -52,7 +52,7 @@
         <div class="survey-results-choice"
           class="@if($c->name == 'Cocacola') first @endif">
           <div class="picture-wrap">
-            <img src="{{ asset($c->picture) }}" alt="#">
+          <img src="{{ asset($c->small_picture) }}" alt="{{ $c->name }}">
           </div>
           <div class="details">
             <div class="name">{{ $c->name }}</div>
