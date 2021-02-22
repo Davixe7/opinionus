@@ -131,6 +131,6 @@ class BannerController extends Controller
       }
       
       $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
-      return redirect()->route('admin.banners.index')->with(['user'=>$banner->user]);
+      return redirect()->route('admin.banners.index', ['user'=>$banner->user]);
     }
 }
