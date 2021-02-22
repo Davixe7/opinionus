@@ -129,8 +129,8 @@ class BannerController extends Controller
       if( $request->expectsJson() ){
         return response()->json(['data'=>"Banner {$banner->id} deleted successfully"]);
       }
-      $banners = Banner::all();
+      
       $request->session()->flash('message', "Banner {$banner->id} deleted Successfully!");
-      return redirect()->route('admin.banners.index');
+      return redirect()->route('admin.banners.index')->with(['user'=>$banner->user]);
     }
 }
