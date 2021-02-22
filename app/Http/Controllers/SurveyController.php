@@ -52,9 +52,9 @@ class SurveyController extends Controller
 
       $banner = $survey->banner;
 
-      // if( !$banner && !$banner = $survey->user->banners()->active()->first() ){
-      //   $banner = Banner::restartRound( $survey->user->banners()->enabled()->get() );
-      // }
+      if( !$banner && !$banner = $survey->user->banners()->active()->first() ){
+        $banner = Banner::restartRound( $survey->user->banners()->enabled()->get() );
+      }
 
       if( !$admin_banner = Banner::where('user_id', null)->active()->first() ){
         $admin_banner = Banner::restartRound( Banner::where('user_id', null)->enabled()->get() );

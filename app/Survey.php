@@ -23,7 +23,7 @@ class Survey extends Model
   }
 
   public function banner(){
-    return $this->hasOne('App\Banner');
+    return $this->belongsTo('App\Banner');
   }
 
   public function regenerateSlugs(){

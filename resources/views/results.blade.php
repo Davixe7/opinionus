@@ -84,7 +84,7 @@
 
       @if($banner)
       <div class="banner" style="margin-top: 15px;">
-        <img src="{{ $banner->picture_url }}" alt="">
+        <img src="{{ asset($banner->picture_url) }}" alt="">
       </div>
       @endif
 
