@@ -52,8 +52,7 @@ export default {
     vote(){
       this.voting = true
       let data = {'choice_id':this.selection.id}
-      let url = window.location.href
-      axios.post(url, data).then(response=>{
+      axios.post(window.location.href, data).then(response=>{
         this.voted = true
       })
     },
