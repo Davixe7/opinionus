@@ -52,7 +52,7 @@ export default {
   props: ['choice', 'survey', 'staging', 'voting'],
   computed:{
     imageUrl(){
-      return this.choice.image ? this.choice.image.replace('public/images', '/storage/thumbnails/500') : '';
+      return this.choice.image ? this.choice.image.replace('public/images', `${this.url}storage/thumbnails/500`) : '';
     }
   },
   methods:{

@@ -8,11 +8,15 @@ use Image;
 class Choice extends Model
 {
   protected $fillable = ['name', 'image', 'link_text', 'link_url', 'survey_id'];
-  protected $hidden = ['created_at', 'updated_at'];
-  protected $appends = ['votes_count', 'picture'];
+  protected $hidden   = ['created_at', 'updated_at'];
+  protected $appends  = ['votes_count', 'picture'];
 
   public function getPictureAttribute(){
-    return str_replace('public','/storage',$this->image);
+    return asset( str_replace('public', 'storage', $this->image) );
+  }
+
+  public function getMediumPictureAttribute(){
+    return asset( str_replace('public/images', 'storage/thumbnails/500', $this->image) );
   }
 
   public function survey(){
@@ -43,14 +47,12 @@ class Choice extends Model
       $filename = str_replace('public/images', '', $image);
       $path = storage_path( "app/{$image}" );
 
-      $thumbnail_small = Image::make( $path )->fit(70,70);
-      $thumbnail_small->save(storage_path("app/public/thumbnails/70/{$filename}"));
+      $sizes = [70, 300, 500];
 
-      $thumbnail_medium = Image::make( $path )->fit(300,300);
-      $thumbnail_medium->save(storage_path("app/public/thumbnails/300/{$filename}"));
-
-      $thumbnail_large = Image::make( $path )->fit(500,500);
-      $thumbnail_large->save(storage_path("app/public/thumbnails/500/{$filename}"));
+      foreach( $sizes as $size ){
+        $thumbnail = Image::make( $path )->fit(70);
+        $thumbnail->save(storage_path("app/public/thumbnails/{$size}/{$filename}"));
+      }
     }
   }
 }

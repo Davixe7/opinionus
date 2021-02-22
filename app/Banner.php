@@ -15,7 +15,7 @@ class Banner extends Model
   ];
 
   public function getPictureUrlAttribute(){
-    return $this->image ? str_replace('public', '/storage', $this->image) : '';
+    return $this->image ? asset( str_replace('public', 'storage', $this->image) ) : '';
   }
 
   public static function restartRound($banners){

@@ -11,7 +11,8 @@ export default {
   data(){
     return {
       saving: false, 
-      status: 0
+      status: 0,
+      url: process.env.MIX_APP_URL
     }
   },
   methods:{
@@ -19,7 +20,7 @@ export default {
       this.saving = true
       console.log( Number( this.status ) );
       let data = {enabled: Number(this.status), _method:'PUT'}
-      axios.post(`/dashboard/banners/${this.banner.id}`, data).then(response=>{
+      axios.post(`${this.url}dashboard/banners/${this.banner.id}`, data).then(response=>{
         console.log(response.data.data);
         this.$toasted.show('Updated successfully')
         this.saving = false

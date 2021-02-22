@@ -10,7 +10,13 @@
           </td>
           <td>{{ $banner->name }}</td>
           <td>
-            <span><a target="_blank" href="{{ Storage::url($banner->image) }}"><i class="material-icons">photo</i></a></span>
+            <span>
+              <a
+                href="{{ asset( Storage::url($banner->image) ) }}"
+                target="_blank">
+                <i class="material-icons">photo</i>
+              </a>
+            </span>
           </td>
           <td><span>{{ $banner->url }}</span></td>
           <td class="text-right">

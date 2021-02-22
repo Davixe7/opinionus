@@ -37,7 +37,7 @@
               </div>
               <div class="form-group">
                 <label for="landing-headline">Description</label>
-                <textarea rows="3" class="form-control" v-model="description" required>{{ description }}</textarea>
+                <textarea rows="3" class="form-control" v-model="description" required></textarea>
               </div>
             </div>
           </div>
@@ -64,13 +64,14 @@
     props: ['siteconfig'],
     data(){
       return {
-        headline: 'PollyPolls',
+        headline: 'OpinionUS',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, assumenda velit! Minus esse odit nisi officiis, ex facere ea repudiandae fuga quis adipisci eos, veritatis ipsum ullam aliquam. Tempore, natus.',
-        brandname: 'PollyPolls',
+        brandname: 'OpinionUS',
         catchphrase: 'Awesome Catchphrase',
         
         saving: false,
-        errors: {}
+        errors: {},
+        url: process.env.MIX_APP_URL
       }
     },
     methods:{
@@ -85,7 +86,7 @@
             'catchphrase' : this.catchphrase,
           }
         }
-        axios.post('/admin/siteconfig', data).then(response =>{
+        axios.post(`${this.url}admin/siteconfig`, data).then(response =>{
           this.$toasted.show('Config saved successfully')
           this.saving = false
         })

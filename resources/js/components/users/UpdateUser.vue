@@ -26,10 +26,10 @@
           <i v-show="saving" class="material-icons preloader">sync</i>
           <span><i class="material-icons">delete</i></span>
         </button>
-        <a v-if="user.id" target="_blank" :href="`/admin/surveys/?user_id=${user.id}`" class="btn btn-sm btn-link" title="user polls">
+        <a v-if="user.id" target="_blank" :href="`${url}admin/surveys/?user_id=${user.id}`" class="btn btn-sm btn-link" title="user polls">
           <span><i class="material-icons">poll</i></span>
         </a>
-        <a v-if="user.id" target="_blank" :href="`/admin/users/${user.id}/banners`" class="btn btn-sm btn-link" title="user banners">
+        <a v-if="user.id" target="_blank" :href="`${url}admin/users/${user.id}/banners`" class="btn btn-sm btn-link" title="user banners">
           <span><i class="material-icons">view_carousel</i></span>
         </a>
       </div>
@@ -41,14 +41,15 @@
   export default {
     props: ['user'],
     data(){ return {
-      saving: false
+      saving: false,
+      url: process.env.MIX_APP_URL
     }},
     methods:{
       update(){
         this.saving = true
         let data = this.loadData()
         data['_method'] = 'PUT'
-        axios.post(`/admin/users/${this.user.id}`, data).then(response=>{
+        axios.post(`${this.url}admin/users/${this.user.id}`, data).then(response=>{
           this.$emit('userUpdated', response.data.data)
           this.$toasted.show('Updated successfully')
         }).then(()=>{
@@ -59,7 +60,7 @@
         this.saving = true
         let data = this.loadData()
         console.log( data );
-        axios.post(`/admin/users`, data).then(response=>{
+        axios.post(`${this.url}admin/users`, data).then(response=>{
           this.$emit('userStored', response.data.data)
           this.$toasted.show('Created successfully')
         }).then(()=>{
@@ -72,7 +73,7 @@
           let data = {
             '_method': 'DELETE'
           }
-          axios.post(`/admin/users/${user.id}`, data).then(response=>{
+          axios.post(`${this.url}admin/users/${user.id}`, data).then(response=>{
             this.$emit('userDeleted', response.data.data)
             this.$toasted.show('Deleted successfully')
           }).then(()=>{

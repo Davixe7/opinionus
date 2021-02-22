@@ -82,7 +82,7 @@ class UserController extends Controller
       $user->update([
         'name'  => $request->name ?: $user->name,
         'email' => $request->email ?: $user->email,
-        'password'  => bcrypt($request->password) ?: $user->password
+        'password'  => $request->password ? bcrypt($request->password) : $user->password
       ]);
       
       if( $request->expectsJson() ){

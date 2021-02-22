@@ -39,12 +39,13 @@ export default {
   data(){
     return {
       newImage: '',
-      saving: false
+      saving: false,
+      url: process.env.MIX_APP_URL
     }
   },
   computed:{
     thumbUrl(){
-      return this.choice.image ? this.choice.image.replace('public/images', '/storage/thumbnails/300') : '';
+      return this.choice.image ? this.choice.image.replace('public/images', `${this.url}storage/thumbnails/300`) : '';
     }
   },
   methods:{
@@ -54,7 +55,7 @@ export default {
     storeChoice(){
       if( !this.$refs.choiceForm.reportValidity() ) return
       this.saving = true
-      axios.post('/dashboard/choices', this.loadData()).then(response=>{
+      axios.post(`${this.url}dashboard/choices`, this.loadData()).then(response=>{
         this.$emit('choiceStored', response.data.data)
         this.$refs.fileInput.value = ''
         this.saving = false
@@ -66,7 +67,7 @@ export default {
       let data = this.loadData()
       data.append('_method', 'PUT')
       
-      axios.post(`/dashboard/choices/${this.choice.id}`, data).then(response=>{
+      axios.post(`${this.url}dashboard/choices/${this.choice.id}`, data).then(response=>{
         let newChoice = response.data.data
         this.$refs.fileInput.value = ''
         this.choice.image = newChoice.image ? newChoice.image : this.choice.image
@@ -77,7 +78,7 @@ export default {
     },
     deleteChoice(){
       if( confirm('Are you sure you want to deleted the choice?') ){
-        axios.delete(`/dashboard/choices/${this.choice.id}`).then(response=>{
+        axios.delete(`${this.url}dashboard/choices/${this.choice.id}`).then(response=>{
           this.$emit('choiceDeleted', this.choice.id)
           this.$toasted.show('Choice deleted succesfully')
         })

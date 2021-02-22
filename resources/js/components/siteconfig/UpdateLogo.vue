@@ -31,14 +31,15 @@ export default {
   data(){return{
     uploading: false,
     file: null,
-    success: false
+    success: false,
+    url: process.env.MIX_APP_URL
   }},
   methods:{
     updateFile(){
       this.file = this.$refs.fileInput.files[0]
     },
     upload(){
-      axios.post('/admin/updateLogo', this.loadData()).then(response=>{
+      axios.post(`${this.url}admin/updateLogo`, this.loadData()).then(response=>{
         console.log(response);
         this.success = true
         this.uploading = false

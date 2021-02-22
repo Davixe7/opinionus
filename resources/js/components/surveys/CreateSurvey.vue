@@ -36,15 +36,15 @@
           <div v-if="surveyId" class="card d-sm-inline-block">
             <div class="card-body">
               <div class="btn-group">
-                <a href="/admin/surveys" title="go back">
+                <a :href="`${url}admin/surveys`" title="go back">
                   <i class="material-icons">arrow_back</i>&nbsp;
                   <span>Go back</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${slug}/vote`" class="btn btn-link" target="_blank" title="vote">
+                <a v-if="choices.length >= 2" :href="`${url}surveys/${slug}/vote`" class="btn btn-link" target="_blank" title="vote">
                   <i class="material-icons">how_to_vote</i>&nbsp;
                   <span>Vote</span>
                 </a>
-                <a v-if="choices.length >= 2" :href="`/surveys/${slug}/results`" class="btn btn-link" title="results">
+                <a v-if="choices.length >= 2" :href="`${url}surveys/${slug}/results`" class="btn btn-link" title="results">
                   <i class="material-icons">ballot</i>&nbsp;
                   <span>Results</span>
                 </a>
@@ -133,6 +133,7 @@ export default {
     errors: {},
     saving: false,
     creatingChoice: false,
+    url: process.env.MIX_APP_URL
   }},
   methods:{
     removeChoice(id){
@@ -146,7 +147,7 @@ export default {
       if( !this.$refs.surveyNameForm.reportValidity() ) return
       this.saving = true
       let data = {name: this.name, banner_id: this.banner ? this.banner.id : null}
-      axios.post('/dashboard/surveys', data).then(response => {
+      axios.post(`${this.url}dashboard/surveys`, data).then(response => {
         this.surveyId = response.data.data.id
         this.slug = response.data.data.slug
         this.name    = response.data.data.name
@@ -157,7 +158,7 @@ export default {
     updateSurvey(){
       this.saving = true
       let data = {name: this.name, banner_id: this.banner ? this.banner.id : null, '_method':'PUT'}
-      axios.post(`/dashboard/surveys/${this.surveyId}`, data).then(response => {
+      axios.post(`${this.url}dashboard/surveys/${this.surveyId}`, data).then(response => {
         this.name  = response.data.data.name
         this.saving = false
         this.$toasted.show('Survey updated successfully')
@@ -165,7 +166,7 @@ export default {
     },
     deleteSurvey(){
       if( confirm('Are you sure you want to delete the survey?') ){
-        axios.post(`/dashboard/surveys/${this.surveyId}`, {_method:'DELETE'}).then(response=>{
+        axios.post(`${this.url}dashboard/surveys/${this.surveyId}`, {_method:'DELETE'}).then(response=>{
           this.surveyId = null
           this.$toasted.show('Survey deleted successfully')
         })

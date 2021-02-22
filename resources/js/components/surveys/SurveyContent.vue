@@ -3,14 +3,19 @@
     <div class="label-small">Survey name</div>
     <div class="poll-name">{{ survey.name }}</div>
     <ul class="poll-candidates">
-      <li v-for="choice in survey.choices" :style="{'background-image': `url(${ imageUrl(choice.image) })`}" class="poll-canditate"></li>
+      <li
+        v-for="choice in survey.choices"
+        :key="choice.id"
+        :style="{'background-image': `url(${ imageUrl(choice.image) })`}"
+        class="poll-canditate">
+      </li>
     </ul>
     <div class="poll-footer">
       <div>
         <div class="label-small">votes</div>
         <div class="poll-content-number">{{ survey.votes_count }}</div>
       </div>
-      <a :href="`/surveys/${survey.slug}/vote`" class="ml-auto btn btn-primary btn-sm">
+      <a :href="`${url}surveys/${survey.slug}/vote`" class="ml-auto btn btn-primary btn-sm">
         Take Survey
       </a>
     </div>
@@ -20,9 +25,12 @@
 <script>
 export default {
   props: ['survey'],
+  data(){return{
+    url: process.env.MIX_APP_URL
+  }},
   methods:{
     imageUrl( image ){
-      return image ? image.replace('public/images', '/storage/thumbnails/40') : ''
+      return image ? image.replace('public/images', `${this.url}storage/thumbnails/70`) : ''
     }
   },
 }

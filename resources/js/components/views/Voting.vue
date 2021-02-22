@@ -4,16 +4,18 @@
       <div style="display: flex; flex-flow: row nowrap; align-items: center; justify-content: space-between;">
         <h1>{{ survey.name }}</h1>
         <div>
-          <a :href="`/reports/create/?survey_id=${survey.id}`">
+          <a :href="`${url}reports/create/?survey_id=${survey.id}`">
             Report as inappropiated
           </a>
         </div>
       </div>
       <div class="vote-choices">
-        <vote-choice v-for="(choice,i) in choices" :key="i"
-        @selected="selectedIndex=i+1"
-        :choice="choice"
-        :number="i+1" :class="{'selected':selectedIndex == i+1}">
+        <vote-choice
+          v-for="(choice,i) in choices"
+          :key="i"
+          @selected="selectedIndex=i+1"
+          :choice="choice"
+          :number="i+1" :class="{'selected':selectedIndex == i+1}">
         </vote-choice>
       </div>
     </article>
@@ -26,7 +28,7 @@
       </button>
     </div>
 
-    <form ref="voteForm" action="/votes" method="POST" v-if="selectedIndex">
+    <form ref="voteForm" :action="`${url}votes`" method="POST" v-if="selectedIndex">
       <input type="hidden" name="choice_id" :value="choices[selectedIndex-1].id">
     </form>
   </div>
@@ -37,10 +39,11 @@ export default {
   props: ['survey'],
   data(){return{
     selectedIndex: null,
-    choices: []
+    choices: [],
+    url: process.env.MIX_APP_URL
   }},
   computed:{
-    resultsURL(){ return '/surveys/'+this.survey.slug+'/results' }
+    resultsURL(){ return `${this.url}surveys/${this.survey.slug}/results`}
   },
   methods:{
     submitVote(){

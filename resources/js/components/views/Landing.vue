@@ -4,10 +4,10 @@
       <div class="header">
         <ul class="auth-nav">
           <li>
-            <a href="/register">Signup now!</a>
+            <a :href="`${url}register`">Signup now!</a>
           </li>
           <li>
-            <a href="/login">Login</a>
+            <a :href="`${url}login`">Login</a>
           </li>
         </ul>
       </div>
@@ -16,11 +16,11 @@
           <div class="col-md-5 text-left">
             <h1>{{ headline }}</h1>
             <p>{{ description }}</p>
-            <a href="/surveys" class="btn btn-primary btn-lg">See all Surveys</a>
+            <a :href="`${url}surveys`" class="btn btn-primary btn-lg">See all Surveys</a>
           </div>
           <div class="col-md-7">
             <div class="polls-container">
-              <div v-for="survey in surveys" class="poll-content px-2">
+              <div v-for="survey in surveys" :key="survey.id" class="poll-content px-2">
                 <div class="card card-body">
                   <survey-content :survey="survey"/>
                 </div>
@@ -70,8 +70,9 @@ export default {
   props: ['surveys', 'siteconfig'],
   data(){
     return {
-      headline: 'Polly',
+      headline: 'OpinionUS',
       description: 'Access to a whole set of surveys and interesting content know what others think, share with others',
+      url: process.env.MIX_APP_URL
     }
   },
   created(){
